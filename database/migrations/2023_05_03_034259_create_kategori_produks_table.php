@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
-            $table->string('kode_pembayaran')->primary();
-            $table->float('jumlah_pembayaran');
-            $table->string('metode_pembayaran');
-            $table->enum('status', ['belum_dibayar', 'sudah_dibayar'])->default('belum_dibayar');
+        Schema::create('kategori_produks', function (Blueprint $table) {
+            $table->integer('id_kategori')->primary();
+            $table->string('nama_kategori');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembayarans');
+        Schema::dropIfExists('kategori_produks');
     }
 };
