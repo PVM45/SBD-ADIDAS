@@ -1,16 +1,10 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>N-Air a E-commerce category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>ADIDAS</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="N-Air Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+		<meta name="keywords" content="ADIDAS" />
 		<script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<meta charset utf="8">
 		<!--fonts-->
@@ -34,13 +28,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <div class="header-top">
                     <div class="logo">
-                        <a href="index.html">N-AIR</a>
+                        <img class="logoAdidas" src="images/adidas logo png 3 line - Bing images_files/adidas.png" alt="logo adidas" >
+                        <a href="index">ADIDAS</a>
                     </div>
                     <div class="login-bars">
-                        <a class="btn btn-default log-bar" href="register.html" role="button">Sign up</a>
-                        <a class="btn btn-default log-bar" href="signup.html" role="button">Login</a>
+                        <a class="btn btn-default log-bar" href="register" role="button">Sign up</a>
+                        <a class="btn btn-default log-bar" href="signup" role="button">Login</a>
                         <div class="cart box_1">
-                            <a href="checkout.html">
+                            <a href="checkout">
                             <h3>
                                 <div class="total">
 <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
@@ -71,13 +66,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="products.html">Shoes</a></li>
-                                        <li><a href="products.html">Tees</a></li>
-                                        <li><a href="products.html">Tops</a></li>
+                                        <li><a href="products">Shoes</a></li>
+                                        <li><a href="products">Tees</a></li>
+                                        <li><a href="products">Tops</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="products.html">Tracks</a></li>
+                                        <li><a href="products">Tracks</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="products.html">Gear</a></li>
+                                        <li><a href="products">Gear</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -86,13 +81,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <div class="row">
                                             <div class="col-sm-4 menu-img-pad">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="products.html">Joggers</a></li>
-                                                    <li><a href="products.html">Foot Ball</a></li>
-                                                    <li><a href="products.html">Cricket</a></li>
+                                                    <li><a href="products">Joggers</a></li>
+                                                    <li><a href="products">Foot Ball</a></li>
+                                                    <li><a href="products">Cricket</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="products.html">Tennis</a></li>
+                                                    <li><a href="products">Tennis</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="products.html">Casual</a></li>
+                                                    <li><a href="products">Casual</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4 menu-img-pad">
@@ -110,13 +105,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="products.html">Tops</a></li>
-                                                    <li><a href="products.html">Bottoms</a></li>
-                                                    <li><a href="products.html">Yoga Pants</a></li>
+                                                    <li><a href="products">Tops</a></li>
+                                                    <li><a href="products">Bottoms</a></li>
+                                                    <li><a href="products">Yoga Pants</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="products.html">Sports</a></li>
+                                                    <li><a href="products">Sports</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="products.html">Gym</a></li>
+                                                    <li><a href="products">Gym</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-6">
@@ -128,16 +123,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">kids<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="products.html">Tees</a></li>
-                                        <li><a href="products.html">Shorts</a></li>
-                                        <li><a href="products.html">Gear</a></li>
+                                        <li><a href="products">Tees</a></li>
+                                        <li><a href="products">Shorts</a></li>
+                                        <li><a href="products">Gear</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="products.html">Watches</a></li>
+                                        <li><a href="products">Watches</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="products.html">Shoes</a></li>
+                                        <li><a href="products">Shoes</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Catch</a></li>
+                                <li><a href="contact">Catch</a></li>
                                 <div class="clearfix"></div>
                             </ul>
                             <div class="clearfix"></div>
@@ -244,7 +239,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -264,7 +259,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -284,7 +279,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -304,7 +299,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -324,7 +319,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -344,7 +339,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                     <!-- end normal -->
                     <div class="quick-view">
-                        <a href="single.html">Quick view</a>
+                        <a href="single">Quick view</a>
                     </div>
                 </div>
         <div class="clearfix"></div>
@@ -380,7 +375,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="#">Delivery</a></li>
                         <li><a href="#">Return Policy</a></li>
                         <li><a href="#">Terms & conditions</a></li>
-                        <li><a href="contact.html">Sitemap</a></li>
+                        <li><a href="contact">Sitemap</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 re-ft-grd">
@@ -395,7 +390,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-2 re-ft-grd">
                     <div class="bt-logo">
                         <div class="logo">
-                            <a href="index.html" class="ft-log">N-AIR</a>
+                            <a href="index" class="ft-log">N-AIR</a>
                         </div>
                     </div>
                 </div>
