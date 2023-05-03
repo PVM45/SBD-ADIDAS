@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->string('id_pesanan')->primary();
             $table->string('id_produk');
-            $table->string('id_pengguna');
+            $table->unsignedInteger('id_pengguna');
             $table->double('total_pembayaran');
             $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmassi']);
             $table->datetime('tanggal_transaksi');
