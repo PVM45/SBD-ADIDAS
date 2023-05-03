@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keranjang_belanjas', function (Blueprint $table) {
-            $table->string('id_keranjang')->primary();
+        Schema::create('review_produks', function (Blueprint $table) {
+            $table->id();
             $table->string('id_produk');
-            $table->double('total_harga');
+            $table->string('id_pengguna');
+            $table->text('isi_ulasan');
+            $table->datetime('tanggal');
+            $table->timestamps('');
+
             $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
-            $table->enum('aksi',['checkout','hapus']);
-            $table->integer('kuantitas_beli');
-            $table->double('harga');
-            $table->timestamps();
+            $table->foreign('id_pengguna')->references('id_pengguna')->on('penggunas')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keranjang_belanjas');
+        Schema::dropIfExists('review_produks');
     }
 };

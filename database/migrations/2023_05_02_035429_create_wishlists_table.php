@@ -11,19 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
-            $table->string('kode_pembayaran')->primary();
-            $table->float('jumlah_pembayaran');
-            $table->string('metode_pembayaran');
-            $table->enum('status', ['belum_dibayar', 'sudah_dibayar'])->default('belum_dibayar');
+        Schema::create('wishlists', function (Blueprint $table) {
+            $table->string('id_wishlist')->primary();
+            $table->string('id_produk');
+            $table->enum('aksi',['beli','hapus'])->default('beli');
             $table->timestamps();
+
+            $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembayarans');
+        Schema::dropIfExists('wishlists');
     }
 };
