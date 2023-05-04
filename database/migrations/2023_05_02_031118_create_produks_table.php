@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('varian_warna');
             $table->string('kategori_produk');
             $table->string('ukuran');
+            $table->bigInteger('stok');
             $table->enum('status_produk',['tersedia','habis']);
             $table->decimal('harga_produk', $precision = 8, $scale = 2);
 

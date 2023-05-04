@@ -10,6 +10,8 @@
           <div class="login-bars">
               <a class="btn btn-default log-bar" href="register" role="button">Sign up</a>
               <a class="btn btn-default log-bar" href="signup" role="button">Login</a>
+              <a class="btn btn-default log-bar" href="{{Route('logout')}}" role="button">Logout</a>
+
               <div class="cart box_1">
                   <a href="checkout">
                   <h3>
