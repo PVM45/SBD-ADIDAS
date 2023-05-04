@@ -23,6 +23,7 @@
 			<script src="js/bootstrap.min.js"></script>
 		<!--script-->
     </head>
+
     <body>
         <div class="header">
             <div class="container">
@@ -40,7 +41,6 @@
                                 <div class="total">
 <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                             </a>
-                            <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                             <div class="clearfix"> </div>
                         </div>	
                     </div>
@@ -65,14 +65,26 @@
                             <ul class="nav navbar-nav nav-font">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="products">Shoes</a></li>
-                                        <li><a href="products">Tees</a></li>
-                                        <li><a href="products">Tops</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="products">Tracks</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="products">Gear</a></li>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="products">Shoes</a></li>
+                                                    <li><a href="products">Tees</a></li>
+                                                    <li><a href="products">Tops</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="products">Tracks</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="products">Gear</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasShop1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            </div>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasShop2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -91,19 +103,19 @@
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4 menu-img-pad">
-                        <a href="#"><img src="images/menu1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                                <a href="#"><img src="images/adidasMan1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                             </div>
                                             <div class="col-sm-4 menu-img-pad">
-                        <a href="#"><img src="images/menu2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                                <a href="#"><img src="images/adidasMan2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                             </div>
                                         </div>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
-                                    <ul class="dropdown-menu multi-column columns-2">
+                                    <ul class="dropdown-menu multi-column columns-3">
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-4 menu-img-pad">
                                                 <ul class="multi-column-dropdown">
                                                     <li><a href="products">Tops</a></li>
                                                     <li><a href="products">Bottoms</a></li>
@@ -114,22 +126,37 @@
                                                     <li><a href="products">Gym</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="col-sm-6">
-                        <a href="#"><img src="images/menu3.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasWomen1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            </div>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasWomen2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                             </div>
                                         </div>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">kids<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="products">Tees</a></li>
-                                        <li><a href="products">Shorts</a></li>
-                                        <li><a href="products">Gear</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="products">Watches</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="products">Shoes</a></li>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="products">Tees</a></li>
+                                                    <li><a href="products">Shorts</a></li>
+                                                    <li><a href="products">Gear</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="products">Watches</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="products">Shoes</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasKids1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            </div>
+                                            <div class="col-sm-4 menu-img-pad">
+                                                <a href="#"><img src="images/adidasKids2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </li>
                                 <li><a href="contact">Catch</a></li>
@@ -148,6 +175,8 @@
                     <!--header-bottom-->
             </div>
         </div>
+
+
         <div class="header-end">
             <div class="container">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -161,26 +190,26 @@
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="./images/shoe3.jpg" alt="...">
+                        <img src="./images/ultraboost.png" alt="...">
                         <div class="carousel-caption car-re-posn">
-                            <h3>AirMax</h3>
-                            <h4>You feel to fall</h4>
+                            <h3>Ultra-Boost</h3>
+                            <h4>ADIDAS ULTRABOOST SHOES MADE IN PART WITH PARLEY OCEAN PLASTIC.</h4>
                             <span class="color-bar"></span>
                         </div>
                     </div>
                     <div class="item">
-                      <img src="./images/shoe1.jpg" alt="...">
+                      <img src="./images/superstar.png" alt="...">
                         <div class="carousel-caption car-re-posn">
-                            <h3>AirMax</h3>
-                            <h4>You feel to fall</h4>
+                            <h3>Superstar</h3>
+                            <h4>ICONIC SHELL-TOE SHOES WITH A MONOCHROME LOOK.</h4>
                             <span class="color-bar"></span>
                         </div>
                     </div>
                     <div class="item">
-                      <img src="./images/shoe2.jpg" alt="...">
+                      <img src="./images/stansmith.png" alt="...">
                         <div class="carousel-caption car-re-posn">
-                            <h3>AirMax</h3>
-                            <h4>You feel to fall</h4>
+                            <h3>Stan Smith</h3>
+                            <h4>SIGNATURE SHOES INSPIRED MADE IN PART WITH RECYCLED CONTENT.</h4>
                             <span class="color-bar"></span>
                         </div>
                     </div>
@@ -203,17 +232,17 @@
             <div class="container">
                 <div class="pull-left fal-box">
                     <div class=" fall-left">
-                        <h3>Fall</h3>
-                        <img src="images/f-l.png" alt="/" class="img-responsive fl-img-wid">
-                        <p>Inspiration and innovation<br> for every athlete in the world</p>
+                        <h3>MISS NOTHING</h3>
+                        <img src="images/konten1.jpg" alt="/" class="img-responsive fl-img-wid">
+                        <p>High performance meets sustainability<br> in the new adidas collection.</p>
                         <span class="fel-fal-bar"></span>
                     </div>
                 </div>
                 <div class="pull-right fel-box">
                     <div class="feel-right">
-                        <h3>Feel</h3>
-                        <img src="images/f-r.png" alt="/" class="img-responsive fl-img-wid">
-                        <p>Inspiration and innovation<br> for every athlete in the world</p>
+                        <h3>MAKE YOUR POINT</h3>
+                        <img src="images/konten2.jpg" alt="/" class="img-responsive fl-img-wid">
+                        <p>Made for main characters.<br> where will you take it?</p>
                         <span class="fel-fal-bar2"></span>
                     </div>
                 </div>
