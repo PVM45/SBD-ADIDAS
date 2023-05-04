@@ -6630,14 +6630,6 @@ button.close {
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-@media screen and (max-width: 768px) {
-    .carousel-caption h3 {
-      font-size: 3em; 
-    }
-    .carousel-caption h4 {
-      font-size: 1.4em;
-    }
-  }
 
 .carousel-caption .btn {
     text-shadow: none;

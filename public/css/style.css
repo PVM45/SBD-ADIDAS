@@ -1,7 +1,3 @@
-.last-footer{
-    height: 40px;
-    background-color: #262626;
-}
 .logoAdidas {
     max-width: 100%;
     height: 50px;
@@ -231,6 +227,7 @@ a.left.carousel-control,a.right.carousel-control {
     font-family: 'Pathway Gothic One', cursive;
     text-shadow: none;
 }
+
 .car-re-posn h4{
     font-family: 'Pathway Gothic One' !important;
     font-weight: 400;
@@ -240,6 +237,33 @@ a.left.carousel-control,a.right.carousel-control {
     margin: 15px 0px;
     text-shadow: none;
 }
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) {
+  /* Tambahkan styling untuk iPad disini */
+}
+
+/* Styling untuk laptop */
+@media only screen 
+  and (min-width: 1025px) {
+  /* Tambahkan styling untuk laptop disini */
+}
+
+/* Styling untuk iPhone */
+@media only screen 
+  and (max-device-width: 767px) {
+  /* Tambahkan styling untuk iPhone disini */
+}
+@media screen and (max-width: 768px) {
+    .car-re-posn h3 {
+      /* font-size: 35px;  */
+    }
+    .car-re-posn h4 {
+      /* font-size: 25px; */
+    }
+  }
+
 .car-icn {
     color: #B5B2B2;
 }
@@ -433,6 +457,7 @@ span.fel-fal-bar2{
 /*--box-hover-effect--*/
 /*--subscribe--*/
 .sub-news{
+    background-color: #100b0b;
     padding: 3em 0;
     text-align: center;
 }
@@ -442,7 +467,7 @@ span.fel-fal-bar2{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 38px;
-    color: #100b0b;
+    color: white;
 }
 li.ad-2-crt a:nth-child(2) {
     margin-top: 20px;
@@ -547,10 +572,12 @@ a.ft-log, a.ft-log:hover {
 .copy-rt {
     text-align: center;
     margin-top: 20px;
+    background-color: #363738;
+    height: 40px;
 }
 .copy-rt p {
     font-family: 'Didact Gothic';
-    color: #100b0b;
+    color: #ffffff;
     font-weight: 700;
     font-size: 17px;
 }
