@@ -185,6 +185,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                              <div class="strip"></div>
                              <p>Welcome, please enter the following to continue.</p>
                              <p>If you have previously Login with us, <a href="#">Click Here</a></p>
+
                              <form action="{{ route('login_proses') }}" method="POST">
                                 @csrf
                                  <h5>Email:</h5>
@@ -197,6 +198,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <small>{{ $message }}</small>
                                 @enderror
                                  <input type="password" name="password" value=""><br>					
+      
                                  <input type="submit" value="Login">
 
                              </form>
@@ -262,6 +264,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </div>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         @if($message = Session::get('failed'))
@@ -274,5 +277,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             Swal.fire(' {{ $message }} ')
         </script>
         @endif
+
     </body>
 </html>

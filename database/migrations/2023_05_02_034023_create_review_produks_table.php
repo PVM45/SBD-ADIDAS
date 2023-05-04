@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('review_produks', function (Blueprint $table) {
             $table->string('id_produk');
             $table->unsignedInteger('id_user');
+
             $table->text('isi_ulasan');
             $table->datetime('tanggal');
             $table->timestamps('');

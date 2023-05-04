@@ -28,15 +28,23 @@ Route::get('/contact', function () {
 });
 
 Route::get('/products', function () {
+
     return view('products')->name('products');
 });
 
 Route::get('/register1', function () {
+
     return view('register');
 });
 
 Route::get('/signup', function () {
     return view('signup');
+
+});
+
+Route::get('/single', function () {
+    return view('single');
+
 });
 
 Route::get('/single', function () {

@@ -19,10 +19,10 @@ return new class extends Migration
             $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmassi']);
             $table->datetime('tanggal_transaksi');
             $table->timestamps();
-            
-
             $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+
+
         });
     }
 

@@ -29,6 +29,7 @@ class UserTableSeeders extends Seeder
             'password'      => Hash::make('admin'),
             'role'          => 'admin',
             'alamat'          => 'tm',
+
         ]]
     );
     }
