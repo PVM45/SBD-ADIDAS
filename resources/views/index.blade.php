@@ -412,24 +412,25 @@
                     <ul class="social">
                         <li><a href="#" class="fb">facebook</a></li>
                         <li><a href="#" class="twt">twitter</a></li>
-                        <li><a href="#" class="gpls">g+ plus</a></li>
+                        <li><a href="#" class="gpls">google</a></li>
                         <div class="clearfix"></div>
                     </ul>
                 </div>
                 <div class="col-md-2 re-ft-grd">
                     <div class="bt-logo">
                         <div class="logo">
-                            <a href="index" class="ft-log">N-AIR</a>
+                            <a href="index" class="ft-log">ADIDAS</a>
                         </div>
                     </div>
                 </div>
-        <div class="clearfix"></div>
+                <div class="clearfix"></div>
             </div>
             <div class="copy-rt">
                 <div class="container">
-            <p>&copy;   2015 N-AIR All Rights Reserved. Design by <a href="http://www.w3layouts.com">w3layouts</a></p>
+            <p>&copy;   2023 ADIDAS All Rights Reserved.</p>
                 </div>
             </div>
         </div>
+        <div class="last-footer"></div>
     </body>
 </html>
