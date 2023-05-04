@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembayarans', function (Blueprint $table) {
-            $table->id();
             $table->string('kode_pembayaran')->primary();
             $table->float('jumlah_pembayaran');
             $table->string('metode_pembayaran');

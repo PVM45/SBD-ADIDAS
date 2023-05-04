@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keranjang_belanjas', function (Blueprint $table) {
-            $table->id('keranjang');
+            $table->string('id_keranjang')->primary();
+            $table->string('id_produk');
             $table->double('total_harga');
             $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
             $table->enum('aksi',['checkout','hapus']);
