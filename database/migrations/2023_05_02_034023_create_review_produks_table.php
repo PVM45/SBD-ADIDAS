@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('review_produks', function (Blueprint $table) {
             $table->string('id_produk');
-            $table->unsignedInteger('id_pengguna');
+            $table->unsignedInteger('id_user');
+
             $table->text('isi_ulasan');
             $table->datetime('tanggal');
             $table->timestamps('');
 
             $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
-            $table->foreign('id_pengguna')->references('id_pengguna')->on('penggunas')->onDelete('cascade');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

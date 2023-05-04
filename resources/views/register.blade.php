@@ -183,34 +183,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h3>Register Now</h3>
 				<p>Welcome, please enter the following details to continue.</p>
 				<p>If you have previously registered with us, <a href="#">click here</a></p>
-				 <form>
-					<ul>
-						<li class="text-info">First Name: </li>
-						<li><input type="text" value=""></li>
-					</ul>
-					<ul>
-						<li class="text-info">Last Name: </li>
-						<li><input type="text" value=""></li>
-					 </ul>				 
-					<ul>
-						<li class="text-info">Email: </li>
-						<li><input type="text" value=""></li>
-					</ul>
-					<ul>
-						<li class="text-info">Password: </li>
-						<li><input type="password" value=""></li>
-					</ul>
-					<ul>
-						<li class="text-info">Re-enter Password:</li>
-						<li><input type="password" value=""></li>
-					</ul>
-					<ul>
-						<li class="text-info">Mobile Number:</li>
-						<li><input type="text" value=""></li>
-					</ul>						
-					<input type="submit" value="Register Now">
-					<p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> 
-				</form>
+                <form action="{{route('register_proses')}}" method="POST">
+                    @csrf
+                       <ul>
+                           <li class="text-info">Full Name: </li>
+                           <li><input type="text" name="nama_user" value="{{old('nama')}}"></li>
+                           @error('nama_user')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>		 
+                       <ul>
+                           <li class="text-info">Email: </li>
+                           <li><input type="email" name="email" value="{{old('email')}}"></li>
+                           @error('email')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                           <li class="text-info">Password: </li>
+                           <li><input type="password" name="password" value=""></li>
+                           @error('password')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <!-- {{-- <ul>
+                           <li class="text-info">Re-enter Password:</li>
+                           <li><input type="password" value=""></li>
+                       </ul> --}} -->
+                       <ul>
+                           <li class="text-info">Mobile Number:</li>
+                           <li><input type="text" name="telp" value="{{old('telp')}}"></li>
+                           @error('telp')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>
+                       <ul>
+                           <li class="text-info">Alamat:</li>
+                           <li><input type="text" name="alamat" value="{{old('alamat')}}"></li>
+                           @error('alamat')
+                                   <small>{{ $message }}</small>
+                       @enderror 
+                       </ul>						
+                       <input type="submit" value="Register Now">
+                       <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
+                      
+                   </form>
 			</div>
 		</div>
 	</div>

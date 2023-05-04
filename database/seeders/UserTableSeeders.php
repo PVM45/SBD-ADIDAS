@@ -14,19 +14,22 @@ class UserTableSeeders extends Seeder
      */
     public function run(): void
     {
-        DB::table('penggunas')->insert([
+        DB::table('users')->insert([
             [
-            'nama_pengguna' => 'yayan',
-            'nomor_telepon' =>001122,
+            'nama_user' => 'yayan',
+            'nomor_telepon' =>82274373432,
             'email'         => 'yayan@gmail.com',
-            'password'      => 'rahasia',
+            'password'      => Hash::make('rahasia'),
             'role'          => 'user',
+            'alamat'          => 'tm',
             ],[
-            'nama_pengguna' => 'admin',
-            'nomor_telepon' =>001122, 
+            'nama_user' => 'admin',
+            'nomor_telepon' =>82274373432, 
             'email'         => 'admin@gmail.com',
             'password'      => Hash::make('admin'),
             'role'          => 'admin',
+            'alamat'          => 'tm',
+
         ]]
     );
     }
