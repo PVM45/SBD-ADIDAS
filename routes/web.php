@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -15,58 +17,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/checkout', function () {
-    return view('checkout');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/products', function () {
-
-    return view('products')->name('products');
-});
-
-Route::get('/register1', function () {
-
-    return view('register');
-});
-
-Route::get('/signup', function () {
-    return view('signup');
-
-});
-
-Route::get('/single', function () {
-    return view('single');
-
-});
-
-Route::get('/single', function () {
-    return view('single');
-});
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-Route::get('/produk',[HomeController::class,'index'])->name('produk');
-
-Route::get('/login',[LoginController::class,'index'])->name('login');
-Route::post('/login_proses',[LoginController::class,'login_proses'])->name('login_proses');
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+//login
+Route::get('/login', [FrontendUserProfileController::class, 'login'])->name('login');
+Route::post('/login_proses', [FrontendUserProfileController::class, 'login_proses'])->name('login_proses');
+Route::get('/logout', [FrontendUserProfileController::class, 'logout'])->name('logout');
 
 
-Route::get('/register',[LoginController::class,'register'])->name('register');
-Route::post('/register_proses',[LoginController::class,'register_proses'])->name('register_proses');
+//regis
+Route::get('/register', [FrontendUserProfileController::class, 'register'])->name('register');
+Route::post('/register_proses', [FrontendUserProfileController::class, 'register_proses'])->name('register_proses');
+
+
+// Frontend Pages routes
+Route::get('/', [FrontendPageController::class, 'home'])->name('home');
+// karegori
+// Route::get('/category', [FrontendPageController::class,'category'])->name('category');
+
+
+Route::get('/produk', [FrontendPageController::class, 'index'])->name('produk');
 
 
 //middleware
-Route::group(['middleware'=>['auth','CekRole:admin'], 'as' => 'cek'],function(){
-    Route::get('/admin','HomeController@admin')->name('admin');
+Route::group(['middleware' => ['auth', 'CekRole:admin'], 'as' => 'cek'], function () {
+    Route::get('/admin', 'FrontendPageController@admin')->name('admin');
+});
 
-    });
+
+// Route::get('/checkout', function () {
+//     return view('frontend.frontend_layout.checkout_page.checkout');
+// })->name(checkout);
+
+
+Route::get('/checkout', function () {
+    return view('frontend.frontend_layout.checkout_page.checkout');
+});
+
+

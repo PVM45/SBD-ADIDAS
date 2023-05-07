@@ -1,63 +1,6 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <title>@yield('title')</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="N-Air Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-		<script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<meta charset utf="8">
-		<!--fonts-->
-		<link href='//fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-		
-		<!--fonts-->
-		<!--bootstrap-->
-			 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<!--coustom css-->
-			<link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <!--shop-kart-js-->
-        <script src="js/simpleCart.min.js"></script>
-		<!--default-js-->
-			<script src="js/jquery-2.1.4.min.js"></script>
-		<!--bootstrap-js-->
-			<script src="js/bootstrap.min.js"></script>
-		<!--script-->
-         <!-- FlexSlider -->
-            <script src="js/imagezoom.js"></script>
-              <script defer src="js/jquery.flexslider.js"></script>
-            <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-
-            <script>
-            // Can also be used with $(document).ready()
-            $(window).load(function() {
-              $('.flexslider').flexslider({
-                animation: "slide",
-                controlNav: "thumbnails"
-              });
-            });
-            </script>
-        <!-- //FlexSlider-->
-    </head>
-    <body>
-      
-        @include('layouts.nav')
-
-        <div class="head-bread">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.hml">Products</a></li>
-                    <li class="active">CART</li>
-                </ol>
-            </div>
-        </div>
-        <!-- check-out -->
+@extends('frontend.frontend_master')
+@section('frontend_content')
+        
             <div class="check">
                 <div class="container">	 
                     <div class="col-md-3 cart-total">
@@ -146,7 +89,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="clearfix"> </div>
                 </div>
             </div>
+    @section('frontend_script')
+    <!-- FlexSlider -->
+            <script src="js/imagezoom.js"></script>
+              <script defer src="js/jquery.flexslider.js"></script>
+            <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
-            @include('layouts.foot')
-    </body>
-</html>
+            <script>
+            // Can also be used with $(document).ready()
+            $(window).load(function() {
+              $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+              });
+            });
+            </script>
+        <!-- //FlexSlider-->
+@endsection
+@endsection

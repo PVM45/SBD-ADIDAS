@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-class LoginController extends Controller
+class FrontendUserProfileController extends Controller
 {
-    //
 
-    public function index(){
-        return view('signup');
+    public function login(){
+        return view('auth.login');
     }
 
     public function login_proses (Request $request){
@@ -27,20 +28,31 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($data)){
-
-            return redirect()->route('produk');
+            return redirect()->route('home');
         }else{
             return redirect('login')->with('failed','email atau password salah');
         }
     }
-
+    
     public function logout(){
         Auth::logout();
-        return redirect()->route('login')->with('success','kamu berhail logout');
+        $notification = [
+            'message' => 'Logout Successfull',
+            'alert-type' => 'success',
+        ];
+        return redirect()->route('home')->with($notification);
     }
 
+    // nanti buat tampilannya
+    
+    // public function userpasswordchange()
+    // {
+    //     $user = Auth::user();
+    //     return view('frontend.profile.changepassword', compact('user'));
+    // }
+
     public function register(){
-        return view('register');
+        return view('auth.register');
     }
     public function register_proses(Request $request){
         $request->validate([

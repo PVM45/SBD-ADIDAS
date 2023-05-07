@@ -1,22 +1,32 @@
-
-
 <div class="header">
   <div class="container">
       <div class="header-top">
           <div class="logo">
-              <img class="logoAdidas" src="images/adidas logo png 3 line - Bing images_files/adidas.png" alt="logo adidas" >
-              <a href="index">ADIDAS</a>
+              <img class="logoAdidas" src="{{ asset('frontend') }}/assets/images/adidas logo png 3 line - Bing images_files/adidas.png" alt="logo adidas" >
+              <a href="index {{ route('home') }}">ADIDAS</a>
           </div>
           <div class="login-bars">
-              <a class="btn btn-default log-bar" href="register" role="button">Sign up</a>
-              <a class="btn btn-default log-bar" href="signup" role="button">Login</a>
-              <a class="btn btn-default log-bar" href="{{Route('logout')}}" role="button">Logout</a>
+            {{--proses whistlist, my cart, checkout page dari ar-araf--}}
+
+              {{-- @auth
+                  <li><a href="{{ route('checkout-page') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
+              @endauth --}}
+              {{-- <li><a href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+              <li><a href="{{ route('myCartView') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li> --}}
+              
+              
+              @auth
+              <a class="btn btn-default log-bar" href="{{ route('logout') }}"><i class="icon fa fa-user"></i>User Logout</a> 
+              {{-- <a class="btn btn-default log-bar" href="{{Route('logout')}}" role="button">Logout</a> --}}
+              @else
+              <a class="btn btn-default log-bar" href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
+              @endauth
 
               <div class="cart box_1">
                   <a href="checkout">
                   <h3>
                       <div class="total">
-<span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
+                  <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                   </a>
                   <div class="clearfix"> </div>
               </div>	
@@ -56,10 +66,10 @@
                                       </ul>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasShop1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasShop1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasShop2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasShop2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                               </div>
                           </ul>
@@ -80,10 +90,10 @@
                                       </ul>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasMan1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasMan1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasMan2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasMan2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                               </div>
                           </ul>
@@ -104,10 +114,10 @@
                                       </ul>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasWomen1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasWomen1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasWomen2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasWomen2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                               </div>
                           </ul>
@@ -128,10 +138,10 @@
                                       </ul>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasKids1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasKids1.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                                   <div class="col-sm-4 menu-img-pad">
-                                      <a href="#"><img src="images/adidasKids2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
+                                      <a href="#"><img src="{{ asset('frontend') }}/assets/images/adidasKids2.jpg" alt="/" class="img-rsponsive men-img-wid" /></a>
                                   </div>
                               </div>
                           </ul>
