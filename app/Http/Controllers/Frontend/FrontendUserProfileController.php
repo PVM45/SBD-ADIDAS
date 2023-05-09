@@ -12,6 +12,12 @@ use App\Models\User;
 class FrontendUserProfileController extends Controller
 {
 
+    public function userdashboard()
+    {
+        $user = Auth::user();
+        return view('dashboard', compact('user'));
+    }
+
     public function login(){
         return view('auth.login');
     }
@@ -34,22 +40,21 @@ class FrontendUserProfileController extends Controller
         }
     }
     
-    public function logout(){
+    public function userlogout()
+    {
         Auth::logout();
         $notification = [
             'message' => 'Logout Successfull',
             'alert-type' => 'success',
         ];
-        return redirect()->route('home')->with($notification);
+        return redirect()->route('login')->with($notification);
     }
 
-    // nanti buat tampilannya
-    
-    // public function userpasswordchange()
-    // {
-    //     $user = Auth::user();
-    //     return view('frontend.profile.changepassword', compact('user'));
-    // }
+    public function userprofile()
+    {
+        $user = Auth::user();
+        return view('frontend.profile.index', compact('user'));
+    }
 
     public function register(){
         return view('auth.register');

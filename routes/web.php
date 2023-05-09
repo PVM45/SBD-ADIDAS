@@ -17,10 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/profile', function () {
+    return view('frontend.frontend_layout.profile.index');
+});
+
+Route::middleware(['auth:web'])->group(function(){
+
+    Route::middleware(['auth:sanctum, web', 'verified'])->get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
+
+    Route::prefix('/user')->group(function () {
+        Route::get('/logout', [FrontendUserProfileController::class, 'userlogout'])->name('user.logout');
+        Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
+        Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile');
+        Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
+        Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
+
+        // user order history
+        Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
+    });
+});
+
 //login
 Route::get('/login', [FrontendUserProfileController::class, 'login'])->name('login');
 Route::post('/login_proses', [FrontendUserProfileController::class, 'login_proses'])->name('login_proses');
-Route::get('/logout', [FrontendUserProfileController::class, 'logout'])->name('logout');
 
 
 //regis

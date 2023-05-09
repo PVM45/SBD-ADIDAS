@@ -14,13 +14,11 @@
               {{-- <li><a href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
               <li><a href="{{ route('myCartView') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li> --}}
               
-              
-              @auth
-              <a class="btn btn-default log-bar" href="{{ route('logout') }}"><i class="icon fa fa-user"></i>User Logout</a> 
-              {{-- <a class="btn btn-default log-bar" href="{{Route('logout')}}" role="button">Logout</a> --}}
-              @else
-              <a class="btn btn-default log-bar" href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
-              @endauth
+                @auth
+                    <a class="btn btn-default log-bar" href="{{ route('user.logout') }}"><i class="icon fa fa-user"></i>User Logout</a> 
+                @else
+                    <a class="btn btn-default log-bar" href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
+                @endauth
 
               <div class="cart box_1">
                   <a href="checkout">
