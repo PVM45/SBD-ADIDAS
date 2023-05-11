@@ -8,15 +8,14 @@
                      <h3>Login</h3>
                      <div class="strip"></div>
                      <p>Welcome, please enter the following to continue.</p>
-                     <p>If you have previously Login with us, <a href="#">Click Here</a></p>
 
-                     <form action="{{ route('login_proses') }}" method="POST">
+                     <form {{--action="{{ route('login_proses') }}"--}} method="POST" role="form" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
                         @csrf
-                         <h5>Email:</h5>
+                         <h5 >Email:</h5>
                          @error('email')
                         <small>{{ $message }}</small>
                         @enderror	
-                         <input type="email" name="email" value="">
+                         <input type="email" name="email" value=""><br><br>
                          <h5>Password:</h5>
                          @error('password')
                         <small>{{ $message }}</small>

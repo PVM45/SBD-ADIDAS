@@ -23,11 +23,11 @@
       <div class="col-md-2 re-ft-grd">
           <h3>Short links</h3>
           <ul class="shot-links">
-              <li><a href="#">Contact us</a></li>
+              <li><a href="/contact">Contact us</a></li>
               <li><a href="#">Support</a></li>
               <li><a href="#">Delivery</a></li>
-              <li><a href="#">Return Policy</a></li>
-              <li><a href="#">Terms & conditions</a></li>
+              <li><a href="/policy">Return Policy</a></li>
+              <li><a href="/term">Terms & conditions</a></li>
               <li><a href="contact">Sitemap</a></li>
           </ul>
       </div>

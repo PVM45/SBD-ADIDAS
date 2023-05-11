@@ -3,7 +3,7 @@
       <div class="header-top">
           <div class="logo">
               <img class="logoAdidas" src="{{ asset('frontend') }}/assets/images/adidas logo png 3 line - Bing images_files/adidas.png" alt="logo adidas" >
-              <a href="index {{ route('home') }}">ADIDAS</a>
+              <a href="{{ route('home') }}">ADIDAS</a>
           </div>
           <div class="login-bars">
             {{--proses whistlist, my cart, checkout page dari ar-araf--}}
@@ -27,7 +27,15 @@
                   <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
                   </a>
                   <div class="clearfix"> </div>
-              </div>	
+              </div>
+
+              <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+
           </div>
 <div class="clearfix"></div>
       </div>

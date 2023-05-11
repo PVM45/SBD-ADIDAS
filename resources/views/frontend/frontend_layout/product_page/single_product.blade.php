@@ -1,31 +1,22 @@
 @extends('frontend.frontend_master')
 
 @section('frontend_content')
-    <div class="head-bread">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li class="active">Shop</li>
-                </ol>
-            </div>
-        </div>
         <div class="showcase-grid">
             <div class="container">
                 <div class="col-md-8 showcase">
                     <div class="flexslider">
                           <ul class="slides">
-                            <li data-thumb="images/show.jpg">
-                                <div class="thumb-image"> <img src="images/show.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="{{ asset('frontend') }}/assets/images/show.jpg">
+                                <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show.jpg" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
-                            <li data-thumb="images/show1.jpg">
-                                 <div class="thumb-image"> <img src="images/show1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="{{ asset('frontend') }}/assets/images/show1.jpg">
+                                 <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show1.jpg" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
-                            <li data-thumb="images/show2.jpg">
-                               <div class="thumb-image"> <img src="images/show2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="{{ asset('frontend') }}/assets/images/show2.jpg">
+                               <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show2.jpg" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
-                            <li data-thumb="images/show3.jpg">
-                               <div class="thumb-image"> <img src="images/show3.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                            <li data-thumb="{{ asset('frontend') }}/assets/images/show3.jpg">
+                               <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show3.jpg" data-imagezoom="true" class="img-responsive"> </div>
                             </li>
                           </ul>
                         <div class="clearfix"></div>
@@ -132,23 +123,40 @@
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Highlights</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Terms & conditiona</a></li>
-                    
+                    <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Review</a></li>
+                </ul>
                         {{-- review --}}
 
-                    {{-- <div id="review" class="tab-pane">
+                   
+                    
+                    
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for smoother transitions through footstrike.</p> 
+                            <p>Dynamic Flywire cables integrate with the laces and wrap your midfoot for a truly adaptive, supportive fit.</p>
+                        </div>
+                        <div   div role="tabpanel" class="tab-pane" id="profile">
+                            <p>Nike is one of the leading manufacturer and supplier of sports equipment, footwear and apparels. Nike is a global brand and it continuously creates products using high technology and design innovation. Nike has a vast collection of sports shoes for men at Snapdeal. You can explore our range of basketball shoes, football shoes, cricket shoes, tennis shoes, running shoes, daily shoes or lifestyle shoes. Take your pick from an array of sports shoes in vibrant colours like red, yellow, green, blue, brown, black, grey, olive, pink, beige and white. Designed for top performance, these shoes match the way you play or run. Available in materials like leather, canvas, suede leather, faux leather, mesh etc, these shoes are lightweight, comfortable, sturdy and extremely sporty. The sole of all Nike shoes is designed to provide an increased amount of comfort and the material is good enough to provide an improved fit. These shoes are easy to maintain and last for a really long time given to their durability. Buy Nike shoes for men online with us at some unbelievable discounts and great prices. So get faster and run farther with your Nike shoes and track how hard you can play.</p>    
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                        The images represent actual product though color of the image and product may slightly differ.    
+                        </div>
+                        <div id="review" class="tab-pane" role="tabpanel"  >
                         <div class="product-tab">
 
                             <div class="product-reviews">
-                                <h4 class="title">Customer Reviews</h4>
+                                <h4 class="title">Customer Reviews</h4><br>
 
                                 <div class="reviews">
                                     <div class="review">
                                         <div class="review-title"><span class="summary">We love this
-                                                product</span><span class="date"><i
+                                                product </span><span class="date">&nbsp;<i
                                                     class="fa fa-calendar"></i><span>1 days
-                                                    ago</span></span></div>
+                                                    ago</span></span></div><br>
                                         <div class="text">"Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit.Aliquam suscipit."</div>
+                                            adipiscing elit.Aliquam suscipit."</div><br>
                                     </div>
 
                                 </div><!-- /.reviews -->
@@ -259,22 +267,7 @@
                             </div><!-- /.product-add-review -->
 
                         </div><!-- /.product-tab -->
-                    </div><!-- /.tab-pane --> --}}
-                    
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                    <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for smoother transitions through footstrike.</p> 
-                    <p>Dynamic Flywire cables integrate with the laces and wrap your midfoot for a truly adaptive, supportive fit.</p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">
-                    <p>Nike is one of the leading manufacturer and supplier of sports equipment, footwear and apparels. Nike is a global brand and it continuously creates products using high technology and design innovation. Nike has a vast collection of sports shoes for men at Snapdeal. You can explore our range of basketball shoes, football shoes, cricket shoes, tennis shoes, running shoes, daily shoes or lifestyle shoes. Take your pick from an array of sports shoes in vibrant colours like red, yellow, green, blue, brown, black, grey, olive, pink, beige and white. Designed for top performance, these shoes match the way you play or run. Available in materials like leather, canvas, suede leather, faux leather, mesh etc, these shoes are lightweight, comfortable, sturdy and extremely sporty. The sole of all Nike shoes is designed to provide an increased amount of comfort and the material is good enough to provide an improved fit. These shoes are easy to maintain and last for a really long time given to their durability. Buy Nike shoes for men online with us at some unbelievable discounts and great prices. So get faster and run farther with your Nike shoes and track how hard you can play.</p>    
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">
-                        The images represent actual product though color of the image and product may slightly differ.    
-                    </div>
+                        </div><!-- /.tab-pane -->
                     </div>
                 </div>
             </div>
@@ -287,7 +280,7 @@
                      <!-- normal -->
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                    <div class="img"><img src="images/grid4.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/" class="img-responsive gri-wid"></div>
                             <div class="info">
                                 <div class="pull-left styl-hdn">
                                     <h3>style 01</h3>
@@ -315,7 +308,7 @@
                     <!-- normal -->
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                    <div class="img"><img src="images/grid6.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid6.jpg" alt="/" class="img-responsive gri-wid"></div>
                             <div class="info">
                                 <div class="pull-left styl-hdn">
                                     <h3>style 01</h3>
@@ -335,7 +328,7 @@
                     <!-- normal -->
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                    <div class="img"><img src="images/grid3.jpg" alt="/" class="img-responsive gri-wid"></div>
+                    <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid3.jpg" alt="/" class="img-responsive gri-wid"></div>
                             <div class="info">
                                 <div class="pull-left styl-hdn">
                                     <h3>style 01</h3>

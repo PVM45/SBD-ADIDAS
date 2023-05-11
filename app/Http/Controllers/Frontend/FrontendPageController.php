@@ -20,7 +20,9 @@ class FrontendPageController extends Controller
     public function admin(){
         return view('admin.index');
     }
-    
+    public function product(){
+        return view('frontend.product_page.product');
+    }
 }
 
 

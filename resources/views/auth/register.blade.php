@@ -5,7 +5,7 @@
 			<div class="reg">
 				<h3>Register Now</h3>
 				<p>Welcome, please enter the following details to continue.</p>
-				<p>If you have previously registered with us, <a href="#">click here</a></p>
+				<p>If you have previously registered with us, <a href="/login">click here</a></p>
                 <form action="{{route('register_proses')}}" method="POST">
                     @csrf
                        <ul>
@@ -44,7 +44,7 @@
                        @enderror 
                        </ul>						
                        <input type="submit" value="Register Now">
-                       <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
+                       <p class="click"></p><input type="radio"> By clicking this button, you are agree to my  <a href="/policy">Policy Terms and Conditions.</a>
                       
                    </form>
 			</div>
