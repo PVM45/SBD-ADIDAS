@@ -9,5 +9,3 @@
     @include('frontend.frontend_layout.home_page.hero')
     @include('frontend.frontend_layout.home_page.shop_grid')
 @endsection
-
-
