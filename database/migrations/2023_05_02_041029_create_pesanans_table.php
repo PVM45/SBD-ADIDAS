@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->string('id_pesanan')->primary();
-            $table->string('id_produk');
-            $table->unsignedInteger('id_user');
+            $table->unsignedBigInteger('id_produk');
+            $table->unsignedBigInteger('id_user');
             $table->double('total_pembayaran');
             $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmassi']);
             $table->datetime('tanggal_transaksi');
             $table->timestamps();
-            $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('id_produk')->references('id')->on('produks')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
 
 
         });

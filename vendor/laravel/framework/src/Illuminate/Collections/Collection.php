@@ -12,8 +12,7 @@ use Traversable;
 
 /**
  * @template TKey of array-key
- *
- * @template-covariant TValue
+ * @template TValue
  *
  * @implements \ArrayAccess<TKey, TValue>
  * @implements \Illuminate\Support\Enumerable<TKey, TValue>
@@ -357,7 +356,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Get all items except for those with the specified keys.
      *
-     * @param  \Illuminate\Support\Enumerable<array-key, TKey>|array<array-key, TKey>|string  $keys
+     * @param  \Illuminate\Support\Enumerable<array-key, TKey>|array<array-key, TKey>  $keys
      * @return static
      */
     public function except($keys)
@@ -457,11 +456,9 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Get an item from the collection by key or add it to collection if it does not exist.
      *
-     * @template TGetOrPutValue
-     *
      * @param  mixed  $key
-     * @param  TGetOrPutValue|(\Closure(): TGetOrPutValue)  $value
-     * @return TValue|TGetOrPutValue
+     * @param  mixed  $value
+     * @return mixed
      */
     public function getOrPut($key, $value)
     {
@@ -1027,22 +1024,21 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
      * Get one or a specified number of items randomly from the collection.
      *
      * @param  (callable(self<TKey, TValue>): int)|int|null  $number
-     * @param  bool  $preserveKeys
      * @return static<int, TValue>|TValue
      *
      * @throws \InvalidArgumentException
      */
-    public function random($number = null, $preserveKeys = false)
+    public function random($number = null)
     {
         if (is_null($number)) {
             return Arr::random($this->items);
         }
 
         if (is_callable($number)) {
-            return new static(Arr::random($this->items, $number($this), $preserveKeys));
+            return new static(Arr::random($this->items, $number($this)));
         }
 
-        return new static(Arr::random($this->items, $number, $preserveKeys));
+        return new static(Arr::random($this->items, $number));
     }
 
     /**
@@ -1148,7 +1144,9 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     {
         $chunks = floor(($this->count() - $size) / $step) + 1;
 
-        return static::times($chunks, fn ($number) => $this->slice(($number - 1) * $step, $size));
+        return static::times($chunks, function ($number) use ($size, $step) {
+            return $this->slice(($number - 1) * $step, $size);
+        });
     }
 
     /**
@@ -1568,16 +1566,6 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
         $this->items = $this->map($callback)->all();
 
         return $this;
-    }
-
-    /**
-     * Flatten a multi-dimensional associative array with dots.
-     *
-     * @return static
-     */
-    public function dot()
-    {
-        return new static(Arr::dot($this->all()));
     }
 
     /**

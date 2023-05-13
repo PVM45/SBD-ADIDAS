@@ -13,16 +13,12 @@ use App\Models\SubSubCategory;
 
 class FrontendPageController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         return view('frontend.index');
     }
-    
-    public function admin(){
+    public function admin()
+    {
         return view('admin.index');
     }
-    public function product(){
-        return view('frontend.product_page.product');
-    }
 }
-
-

@@ -1,30 +1,3 @@
-.product-tabs .tab-content .tab-pane .product-reviews .title {
-    color: #666666;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 20px;
-    margin: 0 0 10px;
-    font-family: 'Open Sans', sans-serif;
-  
-  }
-  .product-tabs .tab-content .tab-pane .product-reviews .reviews .review {
-    margin-bottom: 20px;
-    font-family: 'Open Sans', sans-serif, sans-serif;
-    text-transform: none;
-    background:#f8f8f8;
-    padding:20px
-  }
-  .product-tabs .tab-content .tab-pane .product-reviews .reviews .review .review-title {
-    margin-bottom: 5px;
-  }
-  .product-tabs .tab-content .tab-pane .product-reviews .reviews .review .review-title .summary {
-    color: #666666;
-    font-size: 14px;
-    font-weight: normal;
-    margin-right: 10px;
-    font-style:italic
-  
-  }
 .logoAdidas {
     max-width: 100%;
     height: 50px;
