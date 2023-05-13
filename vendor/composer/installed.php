@@ -1,16 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-<<<<<<< HEAD
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
-
-=======
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f1066b1b7db3c169214e82e170076390e2c3eb40',
->>>>>>> 4748808c827061a3c878b919e507ddf37effe2cf
+        'reference' => '877958821e28de2372d0fd3a3e96181904012f2b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -390,24 +383,18 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-<<<<<<< HEAD
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
-=======
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f1066b1b7db3c169214e82e170076390e2c3eb40',
->>>>>>> 4748808c827061a3c878b919e507ddf37effe2cf
+            'reference' => '877958821e28de2372d0fd3a3e96181904012f2b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
-            'pretty_version' => 'v1.21.5',
-            'version' => '1.21.5.0',
-            'reference' => '27af207bb1c53faddcba34c7528b3e969f6a646d',
+            'pretty_version' => 'v1.22.0',
+            'version' => '1.22.0.0',
+            'reference' => '923e1e112b6a8598664dbb0ee79dd3137f1c9d56',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/sail',
             'aliases' => array(),
@@ -654,9 +641,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.6.7',
-            'version' => '9.6.7.0',
-            'reference' => 'c993f0d3b0489ffc42ee2fe0bd645af1538a63b2',
+            'pretty_version' => '9.6.8',
+            'version' => '9.6.8.0',
+            'reference' => '17d621b3aff84d0c8b62539e269e87d8d5baa76e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -749,11 +736,7 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-<<<<<<< HEAD
-                0 => '3.0.0',
-=======
                 0 => '1.0.0 || 2.0.0 || 3.0.0',
->>>>>>> 4748808c827061a3c878b919e507ddf37effe2cf
                 1 => '1.0|2.0|3.0',
             ),
         ),
@@ -773,9 +756,9 @@
             ),
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.11.16',
-            'version' => '0.11.16.0',
-            'reference' => '151b145906804eea8e5d71fea23bfb470c904bfb',
+            'pretty_version' => 'v0.11.17',
+            'version' => '0.11.17.0',
+            'reference' => '3dc5d4018dabd80bceb8fe1e3191ba8460569f0a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
@@ -860,9 +843,9 @@
             'dev_requirement' => true,
         ),
         'sebastian/diff' => array(
-            'pretty_version' => '4.0.4',
-            'version' => '4.0.4.0',
-            'reference' => '3461e3fccc7cfdfc2720be910d3bd73c69be590d',
+            'pretty_version' => '4.0.5',
+            'version' => '4.0.5.0',
+            'reference' => '74be17022044ebaaecfdf0c5cd504fc9cd5a7131',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/diff',
             'aliases' => array(),
