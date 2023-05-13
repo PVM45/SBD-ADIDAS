@@ -8,18 +8,22 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id_user');
-            $table->string('nama_user');
+
+            $table->id();
+            $table->integer('role_id')->default(2);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('alamat');
             $table->string('nomor_telepon');
-            $table->date('tanggal_lahir')->nullable();
-            $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('alamat');
-            $table->enum('role', ['admin','user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,8 +31,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
     }

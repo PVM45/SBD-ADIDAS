@@ -118,7 +118,7 @@ trait ResolvesDumpSource
      */
     protected function isCompiledViewFile($file)
     {
-        return str_starts_with($file, $this->compiledViewPath) && str_ends_with($file, '.php');
+        return str_starts_with($file, $this->compiledViewPath);
     }
 
     /**
@@ -149,7 +149,7 @@ trait ResolvesDumpSource
     {
         try {
             $editor = config('app.editor');
-        } catch (Throwable) {
+        } catch (Throwable $e) {
             // ..
         }
 

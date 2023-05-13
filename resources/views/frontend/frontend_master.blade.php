@@ -221,6 +221,7 @@
                     var miniCart = "";
                     $.each(response.carts, function(key, value) {
                         miniCart += `
+
                   <div class="cart-item product-summary">
                       <div class="row">
                           <div class="col-xs-4">

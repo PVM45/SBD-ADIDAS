@@ -13,6 +13,7 @@ use App\Models\SubSubCategory;
 
 class FrontendPageController extends Controller
 {
+<<<<<<< HEAD
     public function home(){
         return view('frontend.index');
     }
@@ -26,3 +27,14 @@ class FrontendPageController extends Controller
 }
 
 
+=======
+    public function home()
+    {
+        return view('frontend.index');
+    }
+    public function admin()
+    {
+        return view('admin.index');
+    }
+}
+>>>>>>> 4748808c827061a3c878b919e507ddf37effe2cf
