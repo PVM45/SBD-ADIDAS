@@ -46,50 +46,43 @@
     <div class="col-md-12">
 <div class="card">
     <div class="card-header"></div>
-<h4>Category
-    <a href="{{url('admin/categories/create')}} " class="btn btn-primary btn-sm float-end">Add Category</a>
-    <a href="{{url('admin/subcategories/create')}} " class="btn btn-primary btn-sm float-end">Add SubCategory</a>
-</h4>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h4>Daftar Kategori</h4>
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Kategori</th>
-                    <th> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($categories as $category)
+
+    <div class="card">
+        <div class="card-header">{{ __('Daftar Sub Kategori') }}</div>
+    
+        <div class="card-body">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->nama_kategori }}</td>
-                        <td>
-                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" value="{{ $category->name }}">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nama Sub Kategori</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($subcategories as $subcategory)
+                        <tr>
+                            <td>{{ $subcategory->id }}</td>
+                            <td>{{ $subcategory->name }}</td>
+                            <td>
+                                <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="text" name="name" value="{{ $subcategory->name }}">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form></td><td>
+                                <form action="{{ route('admin.subcategories.destroy', $subcategory->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </div>
     </div>
                 </div>
@@ -153,5 +146,7 @@
 </body>
 
 </html>        
+
+
 
 

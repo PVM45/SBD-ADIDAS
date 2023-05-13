@@ -44,54 +44,50 @@
 
 <div class="row" >
     <div class="col-md-12">
-<div class="card">
-    <div class="card-header"></div>
-<h4>Category
-    <a href="{{url('admin/categories/create')}} " class="btn btn-primary btn-sm float-end">Add Category</a>
-    <a href="{{url('admin/subcategories/create')}} " class="btn btn-primary btn-sm float-end">Add SubCategory</a>
-</h4>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h4>Daftar Kategori</h4>
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Kategori</th>
-                    <th> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->nama_kategori }}</td>
-                        <td>
-                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" value="{{ $category->name }}">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Add New Sub Category</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('admin.subcategories.index') }}"> Back</a>
+        </div>
     </div>
 </div>
-</div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
+@endif
+
+<form action="{{ route('admin.subcategories.store') }}" method="POST">
+    @csrf
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Sub Category Name:</strong>
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
+
+       
+    </div>
+</div>
+    </div></div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -152,6 +148,5 @@
 
 </body>
 
-</html>        
-
+</html>
 

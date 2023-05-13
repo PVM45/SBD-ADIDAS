@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class subkategori extends Model
 {
     use HasFactory;
-
+    protected $table = 'subkategoris';
+    protected $fillable = ['nama_subkategori'];
     public function kategori()
     {
         return $this->belongsToMany(kategori::class);
