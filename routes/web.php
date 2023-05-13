@@ -70,5 +70,5 @@ Route::get('/checkout', function () {
 
 
 // Frontend Pages routes
-Route::get('/home', [FrontendPageController::class, 'home'])->name('home');
+Route::get('/', [FrontendPageController::class, 'home'])->name('home');
 
