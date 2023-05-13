@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('subkategoris', function (Blueprint $table) {
             $table->id();
             $table->string('nama_subkategori');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('kategoris');
         });
     }
 

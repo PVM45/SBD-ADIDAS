@@ -43,7 +43,7 @@
                     @csrf
                 <button type="submit"> add category</button>
                 </form> --}}
-                <a class="collapse-item" href="cards.html">View Category</a>
+                <a class="collapse-item" href="{{route('admin.subcategories.index')}}">View SubCategory</a>
             </div>
         </div>
     </li>
