@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
 use App\Http\Controllers\sessionproduk;
+use App\Http\Controllers\Admin\SubbCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,9 @@ use App\Http\Controllers\sessionproduk;
 Route::get('/single_produk', function () {
     return view('frontend.frontend_layout.product_page.single_product');
 });
-
+Route::get('/', function () {
+    return view('frontend.index');
+});
 
 require __DIR__ . '/auth.php';
 
@@ -35,6 +38,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::get('/subcategories/create', [SubbCategoryController::class, 'create'])->name('subcategories.create');
+    Route::post('/subcategories', [SubbCategoryController::class, 'store'])->name('subcategories.store');
+Route::get('/subcategories', [SubbCategoryController::class, 'index'])->name('subcategories.index');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/subcategories/{subcategory}', [SubbCategoryController::class, 'destroy'])->name('subcategories.destroy');
+Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
+Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
 });
 
 Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 'author']], function () {
