@@ -1,5 +1,4 @@
 <div class="feel-fall">
-<<<<<<< HEAD
     <div class="container">
         <div class="pull-left fal-box">
             <div class=" fall-left">
