@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Frontend\FrontendPageController;
-use App\Http\Controllers\Frontend\FrontendUserProfileController;
+
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\sessionproduk;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
@@ -22,92 +27,48 @@ Route::get('/single_produk', function () {
     return view('frontend.frontend_layout.product_page.single_product');
 });
 
-// tes produk
-Route::get('/produk', function () {
-    return view('frontend.frontend_layout.product_page.products');
+
+require __DIR__ . '/auth.php';
+
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 });
 
-//tes policy
-Route::get('/policy', function () {
-    return view('policy');
+Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 'author']], function () {
+    Route::get('dashboard', [AuthorDashboard::class, 'index'])->name('dashboard');
+
 });
 
-//tes term
-Route::get('/term', function () {
-    return view('term');
-});
-
-
-//tes changepassword
-Route::get('/user/password/change', function () {
-    return view('frontend.profile.changepassword');
-});
-
-
-//tes profile
 Route::get('/profile', function () {
-    return view('frontend.profile.index');
+    return view('frontend.frontend_layout.profile.index');
 });
+Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
+// Route::middleware(['auth:web'])->group(function(){
 
-//login
-Route::get('/login', [FrontendUserProfileController::class, 'login'])->name('login');
-Route::post('/login_proses', [FrontendUserProfileController::class, 'login_proses'])->name('login_proses');
+//     Route::middleware(['auth:sanctum, web', 'verified'])->get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
 
+//     Route::prefix('/user')->group(function () {
+//         Route::get('/logout', [FrontendUserProfileController::class, 'userlogout'])->name('user.logout');
+//         Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
+//         Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile');
+//         Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
+//         Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
 
-//regis
-Route::get('/register', [FrontendUserProfileController::class, 'register'])->name('register');
-Route::post('/register_proses', [FrontendUserProfileController::class, 'register_proses'])->name('register_proses');
+//         // user order history
+//         Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
+//     });
+// });
 
-
-
-
-// category
-// Route::get('/category', [FrontendPageController::class,'category'])->name('category');
-
-
-//product (belum)
-Route::get('/product', [FrontendPageController::class, 'index'])->name('Product');
-
-
-//tes checkout
 Route::get('/checkout', function () {
-    return view('frontend.checkout_page.checkout');
-});
-
-//tes contact
-Route::get('/contact', function () {
-    return view('frontend.frontend_layout.contact_page.contact');
+    return view('frontend.frontend_layout.checkout_page.checkout');
 });
 
 
-// Frontend customer/user logout, profile, change password routes
-Route::middleware(['auth:web'])->group(function(){
 
-    Route::middleware(['auth:sanctum, web', 'verified'])->get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
-
-    Route::prefix('/user')->group(function () {
-        Route::get('/logout', [FrontendUserProfileController::class, 'userlogout'])->name('user.logout');
-        Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
-        Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile');
-        // Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
-        Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
-
-        // user order history
-        Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
-    });
-});
-
-
-//Frontend Pages routes
-Route::get('/', [FrontendPageController::class, 'home'])->name('home');
-
-
-
-//middleware
-Route::group(['middleware' => ['auth', 'CekRole:admin'], 'as' => 'cek'], function () {
-    Route::get('/admin', 'FrontendPageController@admin')->name('admin');
-});
-
-
+// Frontend Pages routes
+Route::get('/home', [FrontendPageController::class, 'home'])->name('home');
 

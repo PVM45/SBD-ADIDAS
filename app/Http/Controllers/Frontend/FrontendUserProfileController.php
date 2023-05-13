@@ -39,12 +39,13 @@ class FrontendUserProfileController extends Controller
             return redirect('login')->with('failed','email atau password salah');
         }
     }
-    
+
     public function userlogout()
     {
         Auth::logout();
         $notification = [
             'message' => 'Logout Successful',
+
             'alert-type' => 'success',
         ];
         return redirect()->route('login')->with($notification);
@@ -77,7 +78,7 @@ class FrontendUserProfileController extends Controller
         ];
 
         User::create($data);
-        
+
         return redirect()->route('login');
         // $login = [
         //     'email' => $request->email,
@@ -95,6 +96,7 @@ class FrontendUserProfileController extends Controller
     {
         return [
             'password.required' => 'The password must contain at least 6 character and Uppercase and lowercase and number.',
+
             // 'price.required' => 'The product price field is required.',
             // 'price.numeric' => 'The product price must be numeric.',
         ];
