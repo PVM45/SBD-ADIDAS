@@ -12,10 +12,8 @@ use App\Models\User;
 class FrontendUserProfileController extends Controller
 {
 
-    public function userdashboard()
-    {
-        $user = Auth::user();
-        return view('dashboard', compact('user'));
+    public function userdashboard() {
+        return view('layouts.author.dashboard');
     }
 
     public function login(){

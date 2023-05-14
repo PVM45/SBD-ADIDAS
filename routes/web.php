@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\sessionproduk;
 use App\Http\Controllers\Admin\SubbCategoryController;
-// use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,39 +47,24 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
 
 //user
 Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 'author']], function () {
-    Route::get('dashboard', [AuthorDashboard::class, 'index'])->name('dashboard.author');
-
+    Route::get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
 
 });
-
 
 
 // Frontend Pages routes
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
 
 
+//TES
+Route::get('/checkout', function () {
+    return view('frontend.frontend_layout.checkout_page.checkout');
+});
 
-// Route::middleware(['auth:web'])->group(function(){
-
-//     Route::middleware(['auth:sanctum, web', 'verified'])->get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
-
-//     Route::prefix('/user')->group(function () {
-//         Route::get('/logout', [FrontendUserProfileController::class, 'userlogout'])->name('user.logout');
-//         Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
-//         Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile');
-//         Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
-//         Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
-
-//         // user order history
-//         Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
-//     });
-// });
 
 
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
-
-
 
 
 //tes co

@@ -19,10 +19,10 @@
                 {{-- @auth
                     <a class="btn btn-default log-bar" href="{{ route('user.logout') }}"><i class="icon fa fa-user"></i>User
                         Logout</a>
-                @else
+                @else --}}
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>
-                @endauth --}}
+                {{-- @endauth --}}
 
                     <div class="cart box_1">
                         <a href="checkout">
