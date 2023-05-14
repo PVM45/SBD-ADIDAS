@@ -24,9 +24,6 @@
                             class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth --}}
 
-                @if (Route::current('dashboard.author'))
-                
-                @else
                     <div class="cart box_1">
                         <a href="checkout">
                             <h3>
@@ -46,7 +43,6 @@
              <i class="fa fa-search"></i>
             </span> --}}
                     </div>
-                @endif
 
             </div>
             <div class="clearfix"></div>
