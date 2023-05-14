@@ -15,3 +15,19 @@
         </div>
     </div>
 </x-app-layout>
+{{-- 
+@extends('frontend.frontend_master')
+
+@section('frontend_content')
+<div class="body-content">
+    <div class="container">
+        <div class="row">
+                @include('frontend.profile.user-sidebar')
+            <div class="col-md-10">
+                Halo selamat datang <span class="font-bold text-green-600">{{ Auth::user()->name }}!!</span>
+                @yield('userdashboard_content')
+            </div>
+        </div>
+    </div>
+</div>
+@endsection --}}

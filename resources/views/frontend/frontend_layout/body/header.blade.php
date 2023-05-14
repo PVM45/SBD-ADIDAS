@@ -12,37 +12,42 @@
 
                 {{-- @auth
                   <li><a href="{{ route('checkout-page') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
-              @endauth --}}
-                {{-- <li><a href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+              @endauth
+                <li><a href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
               <li><a href="{{ route('myCartView') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li> --}}
 
-                @auth
+                {{-- @auth
                     <a class="btn btn-default log-bar" href="{{ route('user.logout') }}"><i class="icon fa fa-user"></i>User
                         Logout</a>
                 @else
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>
-                @endauth
+                @endauth --}}
 
-                <div class="cart box_1">
-                    <a href="checkout">
-                        <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span>(<span id="simpleCart_quantity"
-                                    class="simpleCart_quantity"></span>)
-                            </div>
-                        </h3>
-                    </a>
-                    <div class="clearfix"> </div>
-                </div>
+                @if (Route::current('dashboard.author'))
+                
+                @else
+                    <div class="cart box_1">
+                        <a href="checkout">
+                            <h3>
+                                <div class="total">
+                                    <span class="simpleCart_total"></span>(<span id="simpleCart_quantity"
+                                        class="simpleCart_quantity"></span>)
+                                </div>
+                            </h3>
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div>
 
-                <div class="input-group rounded ">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon" />
-                    {{-- <span class="input-group-text border-0" id="search-addon">
-                 <i class="fa fa-search"></i>
-                </span> --}}
-                </div>
+                    <div class="input-group rounded ">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                            aria-describedby="search-addon" />
+                        {{-- <span class="input-group-text border-0" id="search-addon">
+             <i class="fa fa-search"></i>
+            </span> --}}
+                    </div>
+                @endif
+
             </div>
             <div class="clearfix"></div>
         </div>
@@ -196,4 +201,3 @@
         <!--header-bottom-->
     </div>
 </div>
-
