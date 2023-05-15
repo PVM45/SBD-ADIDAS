@@ -21,18 +21,27 @@
                         Logout</a>
                 @else --}}
                 @auth
-                    <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-info"></i>Profile</a>
+                    <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-address-card"></i></a>
                     <a class="btn btn-default " href="{{ route('checkout') }}"><i
-                            class="icon fa fa-shopping-cart"></i>Checkout</a>
+                            class="icon fa fa-shopping-cart"></i></a>
                     <a class="btn btn-danger " href="{{ route('listWishlist') }}"><i
-                            class="icon fa fa-heart"></i>Wishlist</a>
-                    <div class="btn btn-dark">
+                            class="icon fa fa-heart"></i></a>
+                    {{-- <div class="btn btn-dark">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a :href="route('logout')"onclick="event.preventDefault();this.closest('form').submit();"><i
                                     class="icon fa fa-sign-out ">Logout</i></a>
                         </form>
-                    </div>
+                    </div> --}}
+                    <a class="btn btn-dark href="{{ route('logout') }}" 
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <i class="icon fa fa-sign-out"></i>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 @else
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>

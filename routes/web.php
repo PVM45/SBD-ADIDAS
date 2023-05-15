@@ -63,13 +63,6 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
 
 
-
-//TES
-Route::get('/checkout', function () {
-    return view('frontend.frontend_layout.checkout_page.checkout');
-});
-
-
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
@@ -87,9 +80,19 @@ Route::get('/checkout', function () {
 //tes all product
 Route::get('/produk', function () {
     return view('frontend.frontend_layout.product_page.products ');
-});
+})->name('produk');
 
 //tes single produk
 Route::get('/single_produk', function () {
     return view('frontend.frontend_layout.product_page.single_product');
-});
+})->name('single_produk');
+
+//tes contact 
+Route::get('/contact', function () {
+    return view('frontend.frontend_layout.contact_page.contact');
+})->name('contact');
+
+//tes policy term
+Route::get('/term_policy', function () {
+    return view('term_policy');
+})->name('term_policy');
