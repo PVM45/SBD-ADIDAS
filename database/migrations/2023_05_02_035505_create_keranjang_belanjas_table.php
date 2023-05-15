@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('keranjang_belanjas', function (Blueprint $table) {
             $table->string('id_keranjang')->primary();
-            $table->string('id_produk');
+
+            $table->unsignedBigInteger('id_produk');
             $table->double('total_harga');
-            $table->foreign('id_produk')->references('id_produk')->on('produks')->onDelete('cascade');
+            $table->foreign('id_produk')->references('id')->on('produks')->onDelete('cascade');
             $table->enum('aksi',['checkout','hapus']);
             $table->integer('kuantitas_beli');
             $table->double('harga');
