@@ -2,7 +2,7 @@
 
 @section('userdashboard_content')
     <div class="card-body">
-        <form action="{{ route('user.profile') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('author.user.profile') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id"{{-- value="{{ $user->id }}" --}}>
             <div class="form-group">
@@ -29,23 +29,11 @@
             @error('phone_number')
                 <span class="alert text-danger">{{ $message }}</span>
             @enderror
-            <div class="form-group">
-                <h5>Profile Picture <span class="text-danger">*</span></h5>
-                <div class="controls">
-                    <input type="file" name="image" id="image" class="form-control" required="">
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-12 widget-user-image">
-                <img id="show-image" class="rounded-circle"
-                    src="{{ !empty($user->profile_photo_path) ? url('storage/profile-photos/' . $user->profile_photo_path) : url('storage/profile-photos/blank_profile_photo.jpg') }}"
-                    alt="User Avatar" style="float: right" width="100px" height="100px">
-            </div>
             <div class="text-xs-right">
                 <button type="submit" class="btn btn-rounded btn-primary mb-5">Update Profile</button>
             </div>
         </form>
-    </div>
+    </div><br>
 @section('frontend_script')
     <script type="text/javascript">
         $(document).ready(function() {
@@ -60,4 +48,6 @@
     </script>
 @endsection
 @endsection
+
+
 
