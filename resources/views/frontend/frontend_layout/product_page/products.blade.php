@@ -296,6 +296,14 @@
             </div>
             <div class="col-md-3 grid-details">
                 <div class="grid-addon">
+
+                    <!-- Search form -->
+                    <form class="input-group-lg form-inline d-flex justify-content-center md-form form-sm ">
+                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                            aria-label="Search">
+                    </form>
+
                     <section class="sky-form">
                         <div class="product_right">
                             <h4 class="m_2"><span class="glyphicon glyphicon-minus"

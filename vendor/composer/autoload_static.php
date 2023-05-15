@@ -526,7 +526,9 @@ class ComposerStaticInit965ff011991b3e0be19485f5635cc0ad
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
+
         'App\\Http\\Controllers\\Admin\\ProdukController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProdukController.php',
+
         'App\\Http\\Controllers\\Admin\\SubbCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubbCategoryController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
