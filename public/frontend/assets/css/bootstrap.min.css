@@ -3362,6 +3362,13 @@ fieldset[disabled] .btn-warning:hover {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
+    
+}
+.btn-dark {
+    color: white;
+    background-color: #100b0b;
+    border-color: #100b0b;
+    
 }
 .btn-danger.active,
 .btn-danger.focus,

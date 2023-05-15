@@ -34,10 +34,9 @@
                         <h4>&#36;190</h4>
                     </div>
                     <div class="pull-left rating-stars">
-                        <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
-                                                        title="" href="#" data-original-title="Wishlist">
-                                                        <i class="fa fa-heart"></i>
-                                                    </a>
+                        <a class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="" href="#" data-original-title="Wishlist">
+                            <i class="fa fa-heart"></i>
+                            </a>
                         <ul>
                             <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
                                         aria-hidden="true"></span></a></li>
