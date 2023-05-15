@@ -80,7 +80,7 @@
                             <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" name="name" value="{{ $category->name }}">
+                                <input type="text" name="name" value="{{ $category->nama_kategori }}">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </td>

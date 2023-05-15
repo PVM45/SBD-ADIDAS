@@ -9,7 +9,7 @@ class produk extends Model
 {
     use HasFactory;
 
-
+    protected $table = 'produks';
     protected $fillable = [
         'id_produk',
         'nama_produk',

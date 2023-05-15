@@ -9,7 +9,7 @@ class productController extends Controller
 {
     public function index()
     {
-        $produks = Produk::all();
+        $produks = produk::all();
         return view('layouts.author.produk', compact('produks'));
     }
 }
