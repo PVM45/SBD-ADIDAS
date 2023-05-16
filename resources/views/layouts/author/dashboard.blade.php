@@ -26,6 +26,7 @@
         <div class="row">
                 @include('frontend.profile.user-sidebar')
             <div class="col-md-10">
+
                <h3> Halo selamat datang <span class="font-bold text-green-600">{{ Auth::user()->name }}!!</span></h3>
                 @yield('userdashboard_content')
             </div>

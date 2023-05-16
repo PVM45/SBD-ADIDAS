@@ -57,8 +57,9 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 
-    Route::post('/wishlist/{productId}', [WishlistController::class, 'addProduct'])->name('wishlist.add');
-    Route::delete('/wishlist/{productId}', [WishlistController::class, 'removeProduct'])->name('wishlist.remove');
+    Route::post('/wishlist/{produkId}}', [WishlistController::class, 'addProduct'])->name('wishlist.add');
+    Route::delete('/wishlist/{produkId}', [WishlistController::class, 'removeProduct'])->name('wishlist.remove');
+
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

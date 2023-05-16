@@ -28,6 +28,7 @@
                 <li><a href="/contact">Contact us</a></li>
                 <li><a href="#">Support</a></li>
                 <li><a href="#">Delivery</a></li>
+
                 <li><a href="/term_policy">Return Policy</a></li>
                 <li><a href="/term_policy">Terms & conditions</a></li>
                 <li><a href="contact">Sitemap</a></li>
