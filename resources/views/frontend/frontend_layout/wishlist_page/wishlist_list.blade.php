@@ -1,5 +1,8 @@
+//cek
+{{-- @extends('frontend.frontend_master')
+=======
 @extends('frontend.frontend_master')
-
+//
 @section('title')
     ADIDAS - Wishlist Page
 @endsection
@@ -19,15 +22,16 @@
                         </thead>
                         <tbody>
                             @foreach ($wishlists as $wish)
-                            @foreach ($wish->products as $product )
+                            @foreach ($wish->produk as $produks )
                             <tr>
-                                <td class="col-md-2"><img src="{{ asset($product->product_thumbnail) }}" alt="imga"></td>
+                                <td class="col-md-2"><img src="{{ asset($produks->produks_thumbnail) }}" alt="imga"></td>
                                 <td class="col-md-7">
-                                    <div class="product-name"><a href="{{ route('frontend-product-details',['id' => $product->id, 'slug' => $product->product_slug_en]) }}">
+                                    <div class="product-name"><a href="{{ route('frontend-product-details',['id' => $produks->id, 'slug' => $produks->product_slug_en]) }}">
                                         @if (session()->get('language') == 'bangla')
-                                            {{ $product->product_name_bn }}
+                                            {{ $produks->nama_produk }}
                                         @else
-                                            {{ $product->product_name_en }}
+                                            {{ $produks->product_name_en }}
+
                                         @endif
                                     </a></div>
                                         @if ($product->discount_price == NULL)
@@ -57,4 +61,41 @@
     </div>
     </div>
 </div>
+@endsection --}}
+@extends('frontend.frontend_master')
+
+@section('title')
+
+@endsection
+
+@section('frontend_content')
+    <div class="container">
+        <h1>My Wishlist</h1>
+
+        @if(count($wishlists) > 0)
+            <div class="row">
+                @foreach($wishlists as $wishlist)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $wishlist->produk->nama_produk }}</h5>
+                                <p class="card-text">{{ $wishlist->produk->deskripsi_produk }}</p>
+                                <p class="card-text">Price: ${{ $wishlist->produk->harga_produk }}</p>
+                                <form action="{{ route('wishlist.remove', $wishlist->produk->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{ $wishlists->links() }}
+        @else
+            <p>No items in wishlist.</p>
+        @endif
+    </div>
+
 @endsection

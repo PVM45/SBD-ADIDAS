@@ -26,17 +26,27 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            @foreach ($produk as $produk1)
             <div class="col-md-4 showcase">
                 <div class="showcase-rt-top">
                     <div class="pull-left shoe-name">
-                        <h3>Nike Air Max 2015</h3>
-                        <p>Men's running shoes</p>
-                        <h4>&#36;190</h4>
-                    </div>
+                        <h3>{{ $produk1->produk->nama_produk}}</h3>
+                        <p>{{ $produk1->kategori->nama_kategori }},{{ $produk1->subkategori->nama_subkategori }}</p>
+                        <h4>Rp.{{ $produk1->produk->harga_produk }}</h4>
+                    </div> 
                     <div class="pull-left rating-stars">
-                        <a class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="" href="#" data-original-title="Wishlist">
-                            <i class="fa fa-heart"></i>
-                            </a>
+                        <form action="{{ route('wishlist.add', $produk1->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
+                                <button type="submit">Add to Wishlist</button>
+                                                </form>
+                                                    <form action="{{ route('wishlist.remove', $produk1->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit">Remove from Wishlist</button>
+                                                    </form>
+                                                    @endforeach
+
                         <ul>
                             <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
                                         aria-hidden="true"></span></a></li>
@@ -133,9 +143,13 @@
             <div class="detai-tabs">
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills tab-nike" role="tablist">
+//cek
+                    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab"
+=======
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
                             data-toggle="tab">Highlights</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+//
                             data-toggle="tab">Description</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
                             data-toggle="tab">Terms & conditiona</a></li>
@@ -150,6 +164,10 @@
 
                 <!-- Tab panes -->
                 <div class="tab-content">
+//cek
+                    <div div role="tabpanel" class="tab-pane active" id="profile">
+                        <p>{{ $produk1->produk->deskripsi_produk }}</p>
+=======
                     <div role="tabpanel" class="tab-pane active" id="home">
                         <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for smoother
                             transitions through footstrike.</p>
@@ -170,6 +188,7 @@
                             maintain and last for a really long time given to their durability. Buy Nike shoes for men
                             online with us at some unbelievable discounts and great prices. So get faster and run farther
                             with your Nike shoes and track how hard you can play.</p>
+//cek
                     </div>
                     <div role="tabpanel" class="tab-pane" id="messages">
                         The images represent actual product though color of the image and product may slightly differ.
@@ -302,6 +321,12 @@
         </div>
     </div>
 
+//cek
+    {{-- @include('frontend.frontend_layout.product_page.more_products') --}}
+@endsection
+
+    <!-- //FlexSlider-->
+=======
     <div class="you-might-like">
         <div class="container">
             <h3 class="you-might">Products You May Like</h3>

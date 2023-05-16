@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\produk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +16,8 @@ class wishlist extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function produk()
+
     {
         return $this->belongsTo(produk::class);
     }

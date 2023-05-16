@@ -102,6 +102,7 @@
     
                     </ul>							
                        <input type="submit" value="Register Now">
+
                        <p class="click"></p><input type="radio"> By clicking this button, you are agree to my <a
                         href="/term_policy">Policy Terms and Conditions.</a>
                    </form>

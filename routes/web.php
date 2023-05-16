@@ -11,6 +11,8 @@ use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\sessionproduk;
 use App\Http\Controllers\Admin\SubbCategoryController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\productController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,14 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
 
 
+
+//TES
+Route::get('/checkout', function () {
+    return view('frontend.frontend_layout.checkout_page.checkout');
+});
+
+
+
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
@@ -78,9 +88,18 @@ Route::get('/checkout', function () {
 
 
 //tes all product
-Route::get('/produk', function () {
-    return view('frontend.frontend_layout.product_page.products ');
-})->name('produk');
+Route::get('/produk', [productController::class,'index'])->name('produk.index');
+
+
+//tes single produk
+Route::post('/produk/{id}', [productController::class,'show'])->name('produk.show');
+
+
+Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show');
+
+//More Products
+Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
+
 
 //tes single produk
 Route::get('/single_produk', function () {
