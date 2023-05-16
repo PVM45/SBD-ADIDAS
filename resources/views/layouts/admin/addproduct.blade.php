@@ -48,10 +48,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New Sub Category</h2>
+            <h2>Add New Product</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.subcategories.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -67,26 +67,71 @@
     </div>
 @endif
 
-<form action="{{ route('admin.subcategories.store') }}" method="POST">
+<form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
     @csrf
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="name">Nama SubKategori</label>
-                <input type="text" class="form-control" id="name" name="nama_subkategori" required>
-            </div>
-            <div class="form-group">
-                <label for="id">ID SubKategori</label>
-                <input type="number" class="form-control" id="id" name="id" required>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+    <div>
+        <label for="product_id">ID Produk</label>
+        <input type="text" name="product_id" id="product_id" required>
     </div>
-
-</form>
+    <div>
+        <label for="product_name">Nama Produk</label>
+        <input type="text" name="product_name" id="product_name" required>
+    </div>
+    <div class="form-group">
+        <label for="id_kategori">Id Kategori:</label>
+        <select class="form-control" id="id_kategori" name="id_kategori">
+            @foreach($categories as $kategori)
+                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_sub_kategori">Sub Kategori:</label>
+        <select class="form-control" id="id_sub_kategori" name="id_sub_kategori">
+            @foreach($subcategories as $sub_kategori)
+                <option value="{{ $sub_kategori->id }}">{{ $sub_kategori->nama_subkategori }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div>
+        <label for="product_description">Deskripsi Produk</label>
+        <textarea name="product_description" id="product_description" rows="5" required></textarea>
+    </div>
+    <div>
+        <label for="product_stock">Stok</label>
+        <input type="number" name="product_stock" id="product_stock" required>
+    </div>
+    <div>
+        <label for="product_color">Warna</label>
+        <input type="text" name="product_color" id="product_color" required>
+    </div>
+    <div>
+        <label for="product_size">Ukuran</label>
+        <input type="text" name="product_size" id="product_size" required>
+    </div>
+    <div>
+        <label for="product_status">Status</label>
+        <select name="product_status" id="product_status" required>
+            <option value="1">Tersedia</option>
+            <option value="0">Habis</option>
+        </select>
+    </div>
+    <div>
+        <label for="product_price">Harga</label>
+        <input type="number" name="product_price" id="product_price" required>
+    </div>
+    <div>
+        <label for="product_image_1">Gambar 1</label>
+        <input type="file" name="product_image_1" id="product_image_1" enctype="multipart/form-data" required>
+<div>
+    <label for="product_image_2">Gambar 2</label>
+    <input type="file" name="product_image_2" id="product_image_2" enctype="multipart/form-data" required>
+</div>
+<div>
+    <label for="product_image_3">Gambar 3</label>
+    <input type="file" name="product_image_3" id="product_image_3" required>
+</div>
+<button type="submit">Tambah Produk</button>
 
        
     </div>
@@ -153,4 +198,6 @@
 </body>
 
 </html>
+
+
 

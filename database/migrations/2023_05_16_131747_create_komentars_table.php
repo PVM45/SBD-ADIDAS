@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subkategoris', function (Blueprint $table) {
+        Schema::create('komentars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_subkategori');
+            $table->text('comment');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('produk_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('produk_id')->references('id')->on('produks');
         });
     }
 
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subkategoris');
+        Schema::dropIfExists('komentars');
     }
 };

@@ -19,21 +19,19 @@ class SubbCategoryController extends Controller
         return view('layouts.admin.viewsubcategory', compact('subcategories'));
     }
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-         
-        ]);
+{
+    $validated = $request->validate([
+        'nama_subkategori' => 'required|unique:subkategoris|max:255',
+        'id' => 'required|unique:subkategoris|integer',
+    ]);
 
-        subkategori::create([
-            'name' => $request->nama_subkategori,
-           
-           
-        ]);
+    $subcategory = new subkategori();
+    $subcategory->nama_subkategori = $validated['nama_subkategori'];
+    $subcategory->id = $validated['id'];
+    $subcategory->save();
 
-        return redirect()->route('admin.categories.index')
-                         ->with('success','Sub Category created successfully.');
-    }
+    return redirect('/admin/categories')->with('success', 'Sub Kategori berhasil ditambahkan!');
+}
     public function destroy(subkategori $subcategory)
 {
     $subcategory->delete();
@@ -42,14 +40,9 @@ class SubbCategoryController extends Controller
 
 public function update(Request $request, $id)
 {
-    $request->validate([
-        'name' => 'required|string|max:255',
-    ]);
-
-    $subCategory = subkategori::findOrFail($id);
-    $subCategory->name = $request->nama_subkategori;
-    $subCategory->save();
-
-    return redirect()->route('subcategories.index')->with('success', 'Subcategory updated successfully.');
+    $subcategory = subkategori::findOrFail($id);
+    $subcategory->nama_subkategori = $request->name;
+    $subcategory->save();
+    return redirect()->back()->with('success', 'Category updated successfully');
 }
 }

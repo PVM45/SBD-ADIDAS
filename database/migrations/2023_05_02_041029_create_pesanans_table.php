@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_produk');
             $table->unsignedBigInteger('id_user');
             $table->double('total_pembayaran');
-            $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmassi']);
+            $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmasi'])->default('belum_terkonfirmasi');
             $table->datetime('tanggal_transaksi');
             $table->timestamps();
 

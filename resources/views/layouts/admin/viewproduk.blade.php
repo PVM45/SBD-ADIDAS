@@ -44,54 +44,76 @@
 
 <div class="row" >
     <div class="col-md-12">
+<div class="card">
+    <div class="card-header"></div>
+<h4>Product
+    <a href="{{url('admin/products/create')}} " class="btn btn-primary btn-sm float-end">Add Products</a>
+</h4>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4>Daftar Produk</h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Daftar Produk</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID Produk</th>
+            <th>Nama Produk</th>
+            <th>Kategori</th>
+            <th>Sub Kategori</th>
+            <th>Deskripsi</th>
+            <th>Stok</th>
+            <th>Warna</th>
+            <th>Ukuran</th>
+            <th>Status</th>
+            <th>Harga</th>
+            <th>Gambar 1</th>
+            <th>Gambar 2</th>
+            <th>Gambar 3</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($products as $product)
+            <tr>
+                <td>{{ $product->id }}</td>
+                <td>{{ $product->nama_produk }}</td>
+                <td>{{ $product->id_kategori }}</td>
+                <td>{{ $product->id_subkategori }}</td>
+                <td>{{ $product->deskripsi_produk }}</td>
+                <td>{{ $product->stok }}</td>
+                <td>{{ $product->varian_warna }}</td>
+                <td>{{ $product->ukuran }}</td>
+                <td>{{ $product->status_produk }}</td>
+                <td>{{ $product->harga_produk }}</td>
+                <td><img src="{{ asset('storage/'.$product->gambar_produk) }}" alt=""></td>
+                <td><img src="{{ asset('storage/'.$product->gambar_produk_2) }}" alt=""></td>
+                <td><img src="{{ asset('storage/'.$product->gambar_produk_3) }}" alt=""></td>
+                <td><a href="{{ route('admin.produk.edit', $product->id) }}"><button>Edit</button></a></td>
+                <td>
+                    <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
 
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Sub Category</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.subcategories.index') }}"> Back</a>
+            </div>
         </div>
     </div>
 </div>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<form action="{{ route('admin.subcategories.store') }}" method="POST">
-    @csrf
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="name">Nama SubKategori</label>
-                <input type="text" class="form-control" id="name" name="nama_subkategori" required>
-            </div>
-            <div class="form-group">
-                <label for="id">ID SubKategori</label>
-                <input type="number" class="form-control" id="id" name="id" required>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-
-</form>
-
-       
-    </div>
 </div>
-    </div></div>
+    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -152,5 +174,4 @@
 
 </body>
 
-</html>
-
+</html>       
