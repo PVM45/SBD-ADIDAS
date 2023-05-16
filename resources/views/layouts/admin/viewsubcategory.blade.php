@@ -63,15 +63,15 @@
                     @foreach ($subcategories as $subcategory)
                         <tr>
                             <td>{{ $subcategory->id }}</td>
-                            <td>{{ $subcategory->name }}</td>
+                            <td>{{ $subcategory->nama_subkategori }}</td>
                             <td>
                                 <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <input type="text" name="name" value="{{ $subcategory->name }}">
+                                    <input type="text" name="name" value="{{ $subcategory->nama_subkategori }}">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form></td><td>
-                                <form action="{{ route('admin.subcategories.destroy', $subcategory->id) }}" method="POST" style="display: inline-block;">
+                                <form action="{{ route('admin.subcategories.destroy', $subcategory->id) }}" method="POST" style="display: inline-block;" >
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>

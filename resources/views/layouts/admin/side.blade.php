@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup>    {{ __('Dashboard') }}</div>
+        <div class="sidebar-brand-text mx-3">Adidas Admin    {{ __('Dashboard') }}</div>
     </a>
 
     <!-- Divider -->
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="/admin/dashboard">
+        <a class="nav-link" href="{{url('admin/dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -36,8 +36,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Product:</h6>
-                <a class="collapse-item" href="addproduct">Add Product</a>
-                <a class="collapse-item" href="">Edit Product</a>
+                <a class="collapse-item" href="{{route('admin.products.index')}}">Add Product</a>
+                <a class="collapse-item" href="">Edit Stock</a>
                 <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a> 
                 {{-- <form action="{{route('kategori')}}" method="POST">
                     @csrf
