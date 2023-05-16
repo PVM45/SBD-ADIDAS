@@ -72,6 +72,7 @@ Route::get('/checkout', function () {
 });
 
 
+
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
@@ -98,3 +99,19 @@ Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show
 
 //More Products
 Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
+
+
+//tes single produk
+Route::get('/single_produk', function () {
+    return view('frontend.frontend_layout.product_page.single_product');
+})->name('single_produk');
+
+//tes contact 
+Route::get('/contact', function () {
+    return view('frontend.frontend_layout.contact_page.contact');
+})->name('contact');
+
+//tes policy term
+Route::get('/term_policy', function () {
+    return view('term_policy');
+})->name('term_policy');

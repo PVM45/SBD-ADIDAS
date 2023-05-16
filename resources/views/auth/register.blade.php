@@ -52,7 +52,7 @@
         </div>
     </div>
 @endsection --}}
-=======
+
 	<div class="reg-form">
 		<div class="container">
 			<div class="reg">
@@ -102,12 +102,13 @@
     
                     </ul>							
                        <input type="submit" value="Register Now">
-                       <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p>
-                      
+
+                       <p class="click"></p><input type="radio"> By clicking this button, you are agree to my <a
+                        href="/term_policy">Policy Terms and Conditions.</a>
                    </form>
 			</div>
 		</div>
 	</div>
        
 @endsection
->>>>>>> 4748808c827061a3c878b919e507ddf37effe2cf
+

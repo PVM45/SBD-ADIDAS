@@ -17,6 +17,7 @@ class wishlist extends Model
     }
 
     public function produk()
+
     {
         return $this->belongsTo(produk::class);
     }

@@ -6,6 +6,7 @@ use App\Models\produk;
 use App\Models\kategori;
 use App\Models\kategoris_subkategoris;
 
+
 use Illuminate\Http\Request;
 
 class productController extends Controller
@@ -26,6 +27,7 @@ class productController extends Controller
     {
         $produks = Produk::latest()->take(3)->get();
         return view('frontend.frontend_layout.product_page.more_product', compact('produks'));
+
 
     }
 }

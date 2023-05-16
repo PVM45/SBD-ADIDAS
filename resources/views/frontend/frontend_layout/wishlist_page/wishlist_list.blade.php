@@ -1,5 +1,8 @@
+//cek
 {{-- @extends('frontend.frontend_master')
-
+=======
+@extends('frontend.frontend_master')
+//
 @section('title')
     ADIDAS - Wishlist Page
 @endsection
@@ -28,6 +31,7 @@
                                             {{ $produks->nama_produk }}
                                         @else
                                             {{ $produks->product_name_en }}
+
                                         @endif
                                     </a></div>
                                         @if ($product->discount_price == NULL)
@@ -93,4 +97,5 @@
             <p>No items in wishlist.</p>
         @endif
     </div>
+
 @endsection
