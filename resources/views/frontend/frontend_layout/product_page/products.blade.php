@@ -7,37 +7,38 @@
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     <!-- normal -->
                     @foreach ($produks as $produk)
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>{{ $produk->nama_produk}}</h3>
+                        <div class="ih-item square effect3 bottom_to_top">
+                            <div class="bottom-2-top">
+                                <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/"
+                                        class="img-responsive gri-wid"></div>
+                                <div class="info">
+                                    <div class="pull-left styl-hdn">
+                                        <h3>{{ $produk->nama_produk }}</h3>
 
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">Rp.{{ $produk->harga_produk }}</span></a></p>
+                                    </div>
+                                    <div class="pull-right styl-price">
+                                        <p><a href="#" class="item_add"><span
+                                                    class="glyphicon glyphicon-shopping-cart grid-cart"
+                                                    aria-hidden="true"></span> <span
+                                                    class=" item_price">Rp.{{ $produk->harga_produk }}</span></a></p>
 
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <form action="{{ route('produk.show', ['id' => $produk->id]) }}"" method="POST">
-                        @csrf
-                        <button type="submit"> Quick view </button>
-                        </form>
-                    </div>
+                        <!-- end normal -->
+                        <div class="quick-view">
+                            <form action="{{ route('produk.show', ['id' => $produk->id]) }}"" method="POST">
+                                @csrf
+                                <button type="submit"> Quick view </button>
+                            </form>
+                        </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     @endforeach
                     <!-- normal -->
-                    {{-- <div class="ih-item square effect3 bottom_to_top">
+                    <div class="ih-item square effect3 bottom_to_top">
 
                         <div class="bottom-2-top">
                             <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid6.jpg" alt="/"
@@ -56,252 +57,7 @@
                         </div>
                     </div>
                     <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
                 </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid3.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem"> --}}
-                    <!-- normal -->
-                    {{-- <div class="ih-item square effect3 bottom_to_top">
-
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid5.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid7.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid8.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid9.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid10.jpg"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid11.jpg"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid12.jpg"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid13.jpg"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div>
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid14.jpg"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <a href="single.html">Quick view</a>
-                    </div>
-                </div> --}}
-
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-3 grid-details">
@@ -316,8 +72,8 @@
 
                     <section class="sky-form">
                         <div class="product_right">
-                            <h4 class="m_2"><span class="glyphicon glyphicon-minus"
-                                    aria-hidden="true"></span>Categories</h4>
+                            <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories
+                            </h4>
                             <div class="tab1">
                                 <ul class="place">
                                     <li class="sort">Shoes</li>
@@ -429,13 +185,13 @@
                             </script>
                             <!-- script -->
                     </section>
-                    {{-- <section class="sky-form">
+                    <section class="sky-form">
 
                         <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>DISCOUNTS</h4>
                         <div class="row row1 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"
-                                        checked=""><i></i>Upto - 10% (20)</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Upto -
+                                    10% (20)</label>
                             </div>
                             <div class="col col-4">
                                 <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>40% - 50%
@@ -511,6 +267,5 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </div> --}}
-
+    </div>
 @endsection

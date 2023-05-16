@@ -10,9 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\sessionproduk;
 use App\Http\Controllers\Admin\SubbCategoryController;
-
 use App\Http\Controllers\Admin\ProdukController;
-
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
 use App\Http\Controllers\productController;
 
@@ -118,11 +116,6 @@ Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show
 Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
 
 
-//tes single produk
-Route::get('/single_produk', function () {
-    return view('frontend.frontend_layout.product_page.single_product');
-})->name('single_produk');
-
 //tes contact 
 Route::get('/contact', function () {
     return view('frontend.frontend_layout.contact_page.contact');
@@ -132,3 +125,8 @@ Route::get('/contact', function () {
 Route::get('/term_policy', function () {
     return view('term_policy');
 })->name('term_policy');
+
+//tes single produk
+// Route::get('/single_produk', function () {
+//     return view('frontend.frontend_layout.product_page.single_product');
+// })->name('single_produk');

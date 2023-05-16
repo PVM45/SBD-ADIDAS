@@ -1,4 +1,3 @@
-//cek
 {{-- @extends('frontend.frontend_master')
 =======
 @extends('frontend.frontend_master')
@@ -64,7 +63,7 @@
 @endsection --}}
 @extends('frontend.frontend_master')
 
-@section('title')
+@section('Wishlist')
 
 @endsection
 

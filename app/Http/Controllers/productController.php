@@ -13,10 +13,7 @@ class productController extends Controller
 {
     public function index()
     {
-//cek
-      $produks = produk::all();
-        return view('layouts.author.produk', compact('produks'));
-=======
+
         $produks = Produk::all();
         return view('frontend.frontend_layout.product_page.products', compact('produks'));
     }
@@ -32,6 +29,5 @@ class productController extends Controller
         $produks = Produk::latest()->take(3)->get();
         return view('frontend.frontend_layout.product_page.more_product', compact('produks'));
 
-//end
     }
 }
