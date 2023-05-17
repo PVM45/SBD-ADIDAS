@@ -22,9 +22,19 @@ class productController extends Controller
 {   
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
     $produks = Komentar::where('produk_id', $id)->get();
-    $produksr = Rating::where('produk_id', $id)->get();
+    $produksr = Rating::where('produk_id', $id)->take(1)->get();
     $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
     return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produks','produksr'));
 
-}   
+}
+
+  public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $products = Produk::where('nama_produk',  'LIKE', "%$keyword%")->get();
+        if ($products->isEmpty()) {
+            return view('produk.not-found');
+        }
+         return view('produk.search', compact('products'));
+}
 }
