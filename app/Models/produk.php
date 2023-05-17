@@ -31,4 +31,12 @@ class produk extends Model
     public function kategori_produks() {
         return $this->hasMany(kategori_produk::class);
     }
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class);
+    }
 }
