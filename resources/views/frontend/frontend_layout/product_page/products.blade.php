@@ -8,8 +8,8 @@
                     <!-- normal -->
                     @foreach ($produks as $produk)
 
-                    $more =  $produk->latest()->take(3)->get();
-                    @foreach ($more as $leo)
+                    {{-- $more =  $produk->latest()->take(3)->get();
+                    @foreach ($more as $leo) --}}
                         
                    
 
@@ -21,7 +21,7 @@
                                 <div class="info">
                                     <div class="pull-left styl-hdn">
 
-                                        <h3>{{ $leo->nama_produk }}</h3>
+                                        <h3>{{ $produk->nama_produk }}</h3>
 
 
                                     </div>
@@ -29,7 +29,7 @@
                                         <p><a href="#" class="item_add"><span
                                                     class="glyphicon glyphicon-shopping-cart grid-cart"
                                                     aria-hidden="true"></span> <span
-                                                    class=" item_price">Rp.{{ $leo->harga_produk }}</span></a></p>
+                                                    class=" item_price">Rp.{{ $produk->harga_produk }}</span></a></p>
 
                                     </div>
                                     <div class="clearfix"></div>
@@ -45,7 +45,7 @@
                         </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    @endforeach
+                    {{-- @endforeach --}}
                     @endforeach
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
@@ -86,7 +86,7 @@
                             </h4>
                             <div class="tab1">
                                 <ul class="place">
-                                    <li class="sort">Shoes</li>
+                                    <li class="sort">Men</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="tab2">
                                 <ul class="place">
-                                    <li class="sort">Clothing</li>
+                                    <li class="sort">Women</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="tab3">
                                 <ul class="place">
-                                    <li class="sort">Gear</li>
+                                    <li class="sort">Kids</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
@@ -233,46 +233,8 @@
 
                         }); //]]>
                     </script>
-                    <section class="sky-form">
-                        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Type</h4>
-                        <div class="row row1 scroll-pane">
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Air
-                                    Max (30)</label>
-                            </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Armagadon
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Helium (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kyron (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Napolean
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Foot Rock
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Radiated
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Spiked (30)</label>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="sky-form">
-                        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Brand</h4>
-                        <div class="row row1 scroll-pane">
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"
-                                        checked=""><i></i>Roadstar</label>
-                            </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tornado</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kissan</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Oakley</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Manga</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Wega</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kings</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Zumba</label>
-                            </div>
-                        </div>
-                    </section>
+                    
+                    
                 </div>
             </div>
             <div class="clearfix"></div>
