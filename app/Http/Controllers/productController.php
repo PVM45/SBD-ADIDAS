@@ -15,6 +15,7 @@ class productController extends Controller
 {
     public function index()
     {
+
         $produks = Produk::all();
         return view('frontend.frontend_layout.product_page.products', compact('produks'));
     }
@@ -26,5 +27,15 @@ class productController extends Controller
     $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
     return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produks','produksr'));
 
+
 }   
+//=======
+
+    public function Showmore()
+    {
+        $produks = Produk::latest()->take(3)->get();
+        return view('frontend.frontend_layout.product_page.more_product', compact('produks'));
+
+    }
+
 }

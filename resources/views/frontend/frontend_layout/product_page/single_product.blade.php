@@ -41,7 +41,7 @@
                                 <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
                                 <button class="btn btn-danger" type="submit"><i class="icon fa fa-heart"></i></button>
                             </form>
-                            
+
                             {{-- <form action="{{ route('wishlist.remove', $produk1->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -81,6 +81,7 @@
 
 
                                 {{-- <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
+
                                             aria-hidden="true"></span></a></li>
                                 <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
                                             aria-hidden="true"></span></a></li>
@@ -90,6 +91,7 @@
                                             aria-hidden="true"></span></a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-star star-stn"
                                             aria-hidden="true"></span></a></li> --}}
+
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -166,7 +168,7 @@
                         </ul>
                     </div>
                 </div>
-            
+
             <div class="clearfix"></div>
         </div>
     </div>
@@ -194,6 +196,7 @@
                             <p>{{ $produk1->produk->deskripsi_produk }}</p>
                         </div>
                         @endforeach
+
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for
                                 smoother
@@ -373,6 +376,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+
             </div>
                 
             <!-- end normal -->
@@ -525,3 +529,4 @@
 
 @endsection 
         
+

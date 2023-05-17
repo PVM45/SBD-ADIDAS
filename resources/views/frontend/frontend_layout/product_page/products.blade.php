@@ -7,17 +7,22 @@
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     <!-- normal -->
                     @foreach ($produks as $produk)
+
                     $more =  $produk->latest()->take(3)->get();
                     @foreach ($more as $leo)
                         
                    
+
+
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
                                 <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/"
                                         class="img-responsive gri-wid"></div>
                                 <div class="info">
                                     <div class="pull-left styl-hdn">
+
                                         <h3>{{ $leo->nama_produk }}</h3>
+
 
                                     </div>
                                     <div class="pull-right styl-price">
