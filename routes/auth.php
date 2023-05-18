@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -64,6 +68,8 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
+    // Rute untuk menyimpan review
+Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
 
   
 });

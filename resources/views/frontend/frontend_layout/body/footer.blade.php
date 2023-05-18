@@ -5,7 +5,7 @@
             <h3>DAFTARKAN EMAIL ANDA UNTUK MENDAPATKAN INFO DAN PENAWARAN SPESIAL</h3>
             <input type="text" class="sub-email" value="Email" onfocus="this.value = '';"
                 onblur="if (this.value == '') {this.value = 'Email';}">
-            <a class="btn btn-default subs-btn" href="#" role="button">SUBSCRIBE</a>
+            <a class="btn btn-default subs-btn" href="#" role="button" >SUBSCRIBE</a>
         </form>
     </div>
 </div>

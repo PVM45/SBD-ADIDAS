@@ -12,14 +12,16 @@
                   <li><a>Profile</a> </li>
               @elseif (request()->routeIs('contact'))
                   <li><a>Contact</a> </li>
-              @elseif (request()->routeIs('produk'))
-                  <li><a>Products</a> </li>
               @elseif (request()->routeIs('author.dashboard'))
                   <li><a>Dashboard</a> </li>
-              @elseif (request()->routeIs('single_produk'))
+              @elseif (request()->routeIs('produk.show'))
                   <li><a>Product Detail</a> </li>
               @elseif (request()->routeIs('term_policy'))
                   <li><a>Term & Policy</a> </li>
+              @elseif (request()->routeIs('listWishlist'))
+                  <li><a>Wishlist</a> </li>
+              @elseif (request()->routeIs('produk.search'))
+                  <li><a>Search Results</a> </li>
               @else
                   {{-- <li class="request()->routeIs('')? 'active': ''">{{ request()->route() }}</li> --}}
               @endif
@@ -27,4 +29,3 @@
       </div>
   </div>
   <a></a>
-

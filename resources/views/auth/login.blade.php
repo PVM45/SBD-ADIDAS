@@ -85,7 +85,7 @@
                                 </script>
                             @endif
                      </form>
-                    <a href="#">Forgot Password ?</a>
+                    <a href="{{ route('password.request') }}">Forgot Password ?</a>
             </div>
             <div class="col-md-6 login-right">
                     <h3>New Registration</h3>
