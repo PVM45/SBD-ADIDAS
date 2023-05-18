@@ -44,90 +44,53 @@
 
 <div class="row" >
     <div class="col-md-12">
-
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Product</h2>
+<div class="card">
+    <div class="card-header">
+        <h4>Daftar Produk</h4>
+    </div>
+    <div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID Produk</th>
+                <th>Nama Produk</th>
+                <th>Stok</th>
+                <th></th>
+                <th></th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($products as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->nama_produk }}</td>
+                    <td>{{ $product->stok}}</td>
+                    <td>
+                        <form action="{{ route('admin.stok.update', $product->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <input type="number" name="stok" value="{{ $product->stok }}">
+                            <button type="submit">Update Stok</button>
+                        </form>
+                    </td>
+                    <td></td>
+                    
+                    <td>{{ $product->status_produk}}</td>
+                   
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    </div>
+{{ $products->links() }}
+            </div>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
-        </div>
     </div>
 </div>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
-    @csrf
-    <div>
-        <label for="product_id">ID Produk</label>
-        <input type="text" name="product_id" id="product_id" required>
-    </div>
-    <div>
-        <label for="product_name">Nama Produk</label>
-        <input type="text" name="product_name" id="product_name" required>
-    </div>
-    <div class="form-group">
-        <label for="id_kategori">Id Kategori:</label>
-        <select class="form-control" id="id_kategori" name="id_kategori">
-            @foreach($categories as $kategori)
-                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="id_sub_kategori">Sub Kategori:</label>
-        <select class="form-control" id="id_sub_kategori" name="id_sub_kategori">
-            @foreach($subcategories as $sub_kategori)
-                <option value="{{ $sub_kategori->id }}">{{ $sub_kategori->nama_subkategori }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div>
-        <label for="product_description">Deskripsi Produk</label>
-        <textarea name="product_description" id="product_description" rows="5" required></textarea>
-    </div>
-  
-    <div>
-        <label for="product_color">Warna</label>
-        <input type="text" name="product_color" id="product_color" required>
-    </div>
-    <div>
-        <label for="product_size">Ukuran</label>
-        <input type="text" name="product_size" id="product_size" required>
-    </div>
-    
-    <div>
-        <label for="product_price">Harga</label>
-        <input type="number" name="product_price" id="product_price" required>
-    </div>
-    <div>
-        <label for="product_image_1">Gambar 1</label>
-        <input type="file" name="product_image_1" id="product_image_1" enctype="multipart/form-data" required>
-<div>
-    <label for="product_image_2">Gambar 2</label>
-    <input type="file" name="product_image_2" id="product_image_2" enctype="multipart/form-data" required>
 </div>
-<div>
-    <label for="product_image_3">Gambar 3</label>
-    <input type="file" name="product_image_3" id="product_image_3" required>
-</div>
-<button type="submit">Tambah Produk</button>
-
-       
     </div>
-</div>
-    </div></div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -188,7 +151,16 @@
 
 </body>
 
-</html>
-
-
-
+</html>       
+{{-- @foreach ($collection as $item)
+    
+@if ($item->status_pesanan == 'belum dibayar')
+    <button class="btn btn-danger">belum Dibaya</button>
+    @else
+    <button class="btn btn-succes"></button>
+@endif
+@if ($item->status_pesanan == 'belum dibayar')
+   <form action="" method="post"></form>
+    <button class="btn btn-succes"></button>
+@endif
+@endforeach --}}

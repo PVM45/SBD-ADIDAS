@@ -63,14 +63,13 @@
         <tr>
             <th>ID Produk</th>
             <th>Nama Produk</th>
-            <th>Kategori</th>
-            <th>Sub Kategori</th>
+            <th>ID Kategori</th>
+            <th>ID Sub Kategori</th>
             <th>Deskripsi</th>
-            <th>Stok</th>
             <th>Warna</th>
             <th>Ukuran</th>
-            <th>Status</th>
             <th>Harga</th>
+            <th>Status</th>
             <th>Gambar 1</th>
             <th>Gambar 2</th>
             <th>Gambar 3</th>
@@ -86,14 +85,17 @@
                 <td>{{ $product->id_kategori }}</td>
                 <td>{{ $product->id_subkategori }}</td>
                 <td>{{ $product->deskripsi_produk }}</td>
-                <td>{{ $product->stok }}</td>
+             
                 <td>{{ $product->varian_warna }}</td>
                 <td>{{ $product->ukuran }}</td>
-                <td>{{ $product->status_produk }}</td>
+            
                 <td>{{ $product->harga_produk }}</td>
-                <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt=""></td>
-                <td><img src="{{ asset('storage/'.$product->gambar_produk_2) }}" alt=""></td>
-                <td><img src="{{ asset('storage/'.$product->gambar_produk_3) }}" alt=""></td>
+
+                <td>{{ $product->status_produk }}</td>
+                <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt="gambar1" height="100" width="100"></td>
+                <td><img src="{{ url('storage/'.$product->gambar_produk_2) }}" alt="gambar1" height="100" width="100"></td>
+                <td><img src="{{ url('storage/'.$product->gambar_produk_3) }}" alt="gambar1" height="100" width="100"></td>
+
                 <td><a href="{{ route('admin.produk.edit', $product->id) }}"><button>Edit</button></a></td>
                 <td>
                     <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
@@ -106,7 +108,7 @@
         @endforeach
     </tbody>
 </table>
-
+{{ $products->links() }}
             </div>
         </div>
     </div>
@@ -175,3 +177,15 @@
 </body>
 
 </html>       
+{{-- @foreach ($collection as $item)
+    
+@if ($item->status_pesanan == 'belum dibayar')
+    <button class="btn btn-danger">belum Dibaya</button>
+    @else
+    <button class="btn btn-succes"></button>
+@endif
+@if ($item->status_pesanan == 'belum dibayar')
+   <form action="" method="post"></form>
+    <button class="btn btn-succes"></button>
+@endif
+@endforeach --}}

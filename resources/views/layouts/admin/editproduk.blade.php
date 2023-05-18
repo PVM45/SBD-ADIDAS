@@ -99,10 +99,7 @@
         <textarea name="deskripsi_produk" id="deskripsi_produk" rows="5" required>{{ $product->deskripsi_produk }}</textarea>
     </div>
 
-    <div>
-        <label for="stok">Stok</label>
-        <input type="number" name="stok" id="stok" value="{{ $product->stok }}" required>
-    </div>
+   
 
     <div>
         <label for="varian_warna">Warna</label>
@@ -114,13 +111,7 @@
         <input type="text" name="ukuran" id="ukuran" value="{{ $product->ukuran }}" required>
     </div>
 
-    <div>
-        <label for="status_produk">Status</label>
-        <select name="status_produk" id="status_produk" required>
-            <option value="tersedia" {{ $product->status_produk == 'tersedia' ? 'selected' : '' }}>Tersedia</option>
-            <option value="tidak tersedia" {{ $product->status_produk == 'tidak tersedia' ? 'selected' : '' }}>Tidak Tersedia</option>
-        </select>
-    </div>
+    
 
     <div>
         <label for="harga_produk">Harga</label>
@@ -129,17 +120,17 @@
 
     <div>
         <label for="product_image_1">Gambar 1</label>
-        <input type="file" name="product_image_1" id="product_image_1" required>
+        <input type="file" name="gambar_produk" id="product_image_1" >
     </div>
 
     <div>
         <label for="product_image_2">Gambar 2</label>
-        <input type="file" name="product_image_2" id="product_image_2" required>
+        <input type="file" name="gambar_produk_2" id="product_image_2" >
     </div>
 
     <div>
         <label for="product_image_3">Gambar 3</label>
-        <input type="file" name="product_image_2" id="product_image_2" required>
+        <input type="file" name="gambar_produk_3" id="product_image_2" >
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Submit</button>
