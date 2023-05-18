@@ -16,7 +16,7 @@ class productController extends Controller
 //cek
       $produks = produk::all();
         return view('layouts.author.produk', compact('produks'));
-=======
+
         $produks = Produk::all();
         return view('frontend.frontend_layout.product_page.products', compact('produks'));
     }

@@ -37,7 +37,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Product:</h6>
                 <a class="collapse-item" href="{{route('admin.products.index')}}">Add Product</a>
-                <a class="collapse-item" href="">Edit Stock</a>
                 <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a> 
                 {{-- <form action="{{route('kategori')}}" method="POST">
                     @csrf
@@ -65,6 +64,18 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.stok.index')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Edit Stock</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Monitor Barang</span></a>
+    </li>
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -86,7 +97,7 @@
             </div>
         </div>
     </li>
-
+   
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

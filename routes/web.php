@@ -60,7 +60,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::delete('/subcategories/{subcategory}', [SubbCategoryController::class, 'destroy'])->name('subcategories.destroy');
     Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
     Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
-
+    Route::get('/stok', [ProdukController::class, 'show'])->name('stok.index');
+Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
 });
 
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\produk;
 use App\Models\kategori;
 use App\Models\subkategori;
+use App\Models\kategoris_subkategoris;
 class ProdukController extends Controller
 {
     public function create()
@@ -18,7 +19,7 @@ class ProdukController extends Controller
     }
     public function index()
     {
-        $products = produk::all();
+        $products = produk::paginate(10);;
 //         $imageUrls = [];
 // foreach ($products as $product) {
 //     $imageUrls[] = Storage::url($product->gambar_produk);
@@ -35,10 +36,10 @@ return view('layouts.admin.viewproduk', compact('products'));
             'id_kategori' => 'required',
             'id_sub_kategori' => 'required',
             'product_description' => 'required',
-            'product_stock' => 'required',
+           
             'product_color' => 'required',
             'product_size' => 'required',
-            'product_status' => 'required',
+           
             'product_price' => 'required',
             'product_image_1' => 'required|image',
             'product_image_2' => 'required|image',
@@ -52,10 +53,10 @@ return view('layouts.admin.viewproduk', compact('products'));
         $product->id_kategori = $request->input('id_kategori');
         $product->id_subkategori = $request->input('id_sub_kategori');
         $product->deskripsi_produk = $request->input('product_description');
-        $product->stok = $request->input('product_stock');
+     
         $product->varian_warna = $request->input('product_color');
         $product->ukuran = $request->input('product_size');
-        $product->status_produk = $request->input('product_status');
+     
         $product->harga_produk = $request->input('product_price');
     
         // Handle image uploads
@@ -72,7 +73,11 @@ return view('layouts.admin.viewproduk', compact('products'));
         $product->gambar_produk_3 = str_replace('public/', '', $product_image_3_path);
     
         $product->save();
-    
+        $kategori_subkategori = new kategoris_subkategoris;
+        $kategori_subkategori->kategori_id = $request->input('id_kategori');
+        $kategori_subkategori->subkategori_id = $request->input('id_sub_kategori');
+        $kategori_subkategori->produk_id = $product->id;
+        $kategori_subkategori->save();
         // Redirect to products index with success message
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
@@ -91,10 +96,10 @@ public function update(Request $request, $id)
     $product->id_kategori = $request->input('id_kategori');
     $product->id_subkategori = $request->input('id_subkategori');
     $product->deskripsi_produk = $request->input('deskripsi_produk');
-    $product->stok = $request->input('stok');
+  
     $product->varian_warna = $request->input('varian_warna');
     $product->ukuran = $request->input('ukuran');
-    $product->status_produk = $request->input('status_produk');
+    
     $product->harga_produk = $request->input('harga_produk');
     
     if ($request->hasFile('gambar_produk')) {
@@ -124,4 +129,26 @@ public function destroy($id)
     return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
 }
 
+public function updatestok(Request $request, $id)
+{
+    $product = produk::findOrFail($id);
+    $product->stok = $request->stok;
+
+    // Jika stok habis, ubah status_produk menjadi false
+    if ($request->stok >=1) {
+        $product->status_produk = 'Tersedia';
+    }
+else {
+    $product->status_produk = 'Tidak Tersedia';
+}
+    $product->save();
+
+    return redirect()->back()->with('success', 'Stok produk berhasil diperbarui.');
+}
+public function show()
+{
+    $products = produk::paginate(10);;
+
+return view('layouts.admin.stock', compact('products'));
+}
 }

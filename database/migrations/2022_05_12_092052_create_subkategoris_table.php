@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('subkategoris', function (Blueprint $table) {
             $table->id();
             $table->string('nama_subkategori');
+            $table->unsignedBigInteger('id_kategori');
             $table->timestamps();
+            $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
         });
     }
 
