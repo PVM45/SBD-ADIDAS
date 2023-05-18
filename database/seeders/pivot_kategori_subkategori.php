@@ -44,6 +44,6 @@ class pivot_kategori_subkategori extends Seeder
                 'subkategori_id' =>3,
             ]
             ];
-    }
+    
     \DB::table('pivot_kategori_subkategori')->insert( $kategori_subkategori);
 }
