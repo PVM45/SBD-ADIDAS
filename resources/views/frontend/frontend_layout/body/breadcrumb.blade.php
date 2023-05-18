@@ -20,6 +20,8 @@
                   <li><a>Product Detail</a> </li>
               @elseif (request()->routeIs('term_policy'))
                   <li><a>Term & Policy</a> </li>
+                  @elseif (request()->routeIs('listWishlist'))
+                  <li><a>Wishlist</a> </li>
               @else
                   {{-- <li class="request()->routeIs('')? 'active': ''">{{ request()->route() }}</li> --}}
               @endif

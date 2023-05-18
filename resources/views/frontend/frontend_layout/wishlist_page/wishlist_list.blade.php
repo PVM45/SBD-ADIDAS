@@ -95,6 +95,6 @@
         @else
             <p>No items in wishlist.</p>
         @endif
-    </div>
+    </div><br>
 
 @endsection
