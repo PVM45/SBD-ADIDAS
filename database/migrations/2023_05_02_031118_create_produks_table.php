@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('ukuran');
             $table->bigInteger('stok');
             $table->enum('status_produk',['tersedia','habis']);
-            $table->decimal('harga_produk', $precision = 12, $scale = 2);
+            $table->float('harga_produk');
             $table->timestamps();
             $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
             $table->foreign('id_subkategori')->references('id')->on('subkategoris')->onDelete('cascade');

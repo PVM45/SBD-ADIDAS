@@ -1,7 +1,7 @@
 <div class="col-md-2">
     <ul class="list-group list-group-flush">
 
-        <a href="{{ route('home') }}" class="btn btn-dark btn-block">Mari Belanja</a>
+        <a href="{{ route('home') }}" class="btn btn-dark btn-block">Shop</a>
         <a href="{{ route('author.user.profile') }}" class="btn btn-dark btn-block">Profile Update</a>
         <a href="{{ route('author.user.change.password') }}" class="btn btn-dark btn-block">Change Password</a>
         {{-- <a href="{{ route('user.orders') }}" class="btn btn-dark btn-block">Order History</a> --}}

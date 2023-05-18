@@ -29,17 +29,17 @@ use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 */
 require __DIR__ . '/auth.php';
 
-//admin 
+//admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
-    
+
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-    
+
     //sub category
     Route::get('/subcategories/create', [SubbCategoryController::class, 'create'])->name('subcategories.create');
     Route::post('/subcategories', [SubbCategoryController::class, 'store'])->name('subcategories.store');
@@ -79,27 +79,21 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
 
 // Frontend Pages routes
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
-
-//route searching
 Route::get('/search', [ProductController::class,'search'])->name('produk.search');
-
-
-// Route::get('/forget-password');
-
-//TES
-Route::get('/checkout', function () {
-    return view('frontend.frontend_layout.checkout_page.checkout');
-});
+Route::get('/list/wishlists', [WishlistController::class,'listWishList'])->name('listWishlist');
+Route::post('/produk/{id}', [productController::class,'show'])->name('produk.show');
+Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show');
+Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
 
 
 
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-
-//tes wishlist
-Route::get('/list/wishlists', [WishlistController::class,'listWishList'])->name('listWishlist');
-   
+//TES
+Route::get('/checkout', function () {
+    return view('frontend.frontend_layout.checkout_page.checkout');
+});
 
 //tes co
 Route::get('/checkout', function () {
@@ -107,31 +101,20 @@ Route::get('/checkout', function () {
 })->name('checkout');
 
 
-//tes all product
-Route::get('/produk', [productController::class,'index'])->name('produk.index');
-
-
-//tes single produk
-Route::post('/produk/{id}', [productController::class,'show'])->name('produk.show');
-
-
-Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show');
-
-//More Products
-Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
-
-
-//tes contact 
+//tes contact
 Route::get('/contact', function () {
     return view('frontend.frontend_layout.contact_page.contact');
 })->name('contact');
+
 
 //tes policy term
 Route::get('/term_policy', function () {
     return view('term_policy');
 })->name('term_policy');
 
-//tes single produk
-// Route::get('/single_produk', function () {
-//     return view('frontend.frontend_layout.product_page.single_product');
-// })->name('single_produk');
+
+// untuk cart
+Route::post('/cart/add', [CartController::class,'addToCart']);
+Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
+Route::post('/cart/update', [CartController::class,'updateCart'])->name('cart.update');
+Route::get('/cart', [CartController::class,'showCart']);

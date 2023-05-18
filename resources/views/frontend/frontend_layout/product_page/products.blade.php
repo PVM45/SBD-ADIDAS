@@ -13,7 +13,7 @@
 
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                                <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/"
+                                <div class="img"><img src="{{ url('storage/'.$produk->gambar_produk) }}" alt="/"
                                         class="img-responsive gri-wid"></div>
                                 <div class="info">
                                     <div class="pull-left styl-hdn">
@@ -45,32 +45,6 @@
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     {{-- @endforeach --}}
                     @endforeach
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid6.jpg" alt="/"
-                                    class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>style 01</h3>
-                                </div>
-                                <div class="pull-right styl-price">
-                                    <p><a href="#" class="item_add"><span
-                                                class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span> <span class=" item_price">$190</span></a></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end normal -->
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-3 grid-details">
-                <div class="grid-addon">
-
                     <!-- Search form -->
                     <form class="input-group-lg form-inline d-flex justify-content-center md-form form-sm ">
                         <i class="fa fa-search fa-2x" aria-hidden="true"></i>

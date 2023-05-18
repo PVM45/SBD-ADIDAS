@@ -26,13 +26,18 @@
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth
-            <!-- ini kolom searching -->
-                <form action="{{ route('produk.search') }}" method="GET">
-    <input type="text" name="keyword" placeholder="Search products">
-    <button type="submit">Search</button>
-</form>
+                <!-- ini kolom searching -->
+                {{-- <form action="{{ route('produk.search') }}" method="GET">
+                    <input type="text" name="keyword" placeholder="Search products">
+                    <button type="submit">Search</button>
+                </form> --}}
 
-                {{-- <div class="cart box_1">
+                <form action="{{ route('produk.search') }}" method="GET" class="input-group-sm input-group form-inline d-flex justify-content-center md-form form-sm ">
+                    <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                        aria-label="Search"name="keyword">
+                        <button type="submit" class="btn btn-light"><i class="fa fa-search fa-1x" aria-hidden="true"></i></button>
+                </form>
+                {{-- <div class="cart box_1">F
                         <a href="checkout">
                             <h3>
                                 <div class="total">
@@ -66,7 +71,7 @@
                     <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav nav-font">
                             <li class="">
-                                <a href="/produk">Shop<b class="caret"></b></a>
+                                <a href="/search">Shop<b class="caret"></b></a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<b
@@ -75,9 +80,9 @@
                                     <div class="row">
                                         <div class="col-sm-4 menu-img-pad">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="products">Joggers</a></li>
-                                                <li><a href="products">Foot Ball</a></li>
-                                                <li><a href="products">Cricket</a></li>
+                                                <li><a href="products">Clothes</a></li>
+                                                <li><a href="products">Original</a></li>
+                                                <li><a href="products">Sport</a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="products">Tennis</a></li>
                                                 <li class="divider"></li>
@@ -104,9 +109,9 @@
                                     <div class="row">
                                         <div class="col-sm-4 menu-img-pad">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="products">Tops</a></li>
-                                                <li><a href="products">Bottoms</a></li>
-                                                <li><a href="products">Yoga Pants</a></li>
+                                                <li><a href="products">Clothes</a></li>
+                                                <li><a href="products">Original</a></li>
+                                                <li><a href="products">Sport</a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="products">Sports</a></li>
                                                 <li class="divider"></li>
@@ -133,9 +138,9 @@
                                     <div class="row">
                                         <div class="col-sm-4 menu-img-pad">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="products">Tees</a></li>
-                                                <li><a href="products">Shorts</a></li>
-                                                <li><a href="products">Gear</a></li>
+                                                <li><a href="products">Clothes</a></li>
+                                                <li><a href="products">Original</a></li>
+                                                <li><a href="products">Sport</a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="products">Watches</a></li>
                                                 <li class="divider"></li>
