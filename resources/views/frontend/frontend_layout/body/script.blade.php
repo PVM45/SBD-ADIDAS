@@ -6,7 +6,7 @@
  <script src="{{ asset('frontend') }}/assets/js/bootstrap.min.js"></script>
  <!--script-->
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>   
 
 
  <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>

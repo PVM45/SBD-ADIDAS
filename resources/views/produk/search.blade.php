@@ -1,8 +1,3 @@
-<!-- Tampilkan hasil pencarian -->
-<h1>Search Results</h1>
-<ul>
-   
-   
 @extends('frontend.frontend_master')
 
 @section('frontend_content')
@@ -11,8 +6,7 @@
             <div class="col-md-9 grid-gallery">
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     <!-- normal -->
-                    @foreach($products as $product)                       
-                   
+                    @foreach ($products as $product)
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
                                 <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg" alt="/"
@@ -37,7 +31,7 @@
                         <div class="quick-view">
                             <form action="{{ route('produk.show', ['id' => $product->id]) }}" method="POST">
                                 @csrf
-                                <button type="submit"> Quick view </button>
+                                <button type="submit" class="btn btn-light"><i class="fa fa-eye fa-1x"></i></button>
                             </form>
                         </div>
                 </div>
@@ -50,77 +44,64 @@
             <div class="col-md-3 grid-details">
                 <div class="grid-addon">
 
-                    <!-- Search form -->
-                    <form class="input-group-lg form-inline d-flex justify-content-center md-form form-sm ">
-                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                            aria-label="Search">
-                    </form>
-
                     <section class="sky-form">
                         <div class="product_right">
                             <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories
                             </h4>
                             <div class="tab1">
                                 <ul class="place">
-                                    <li class="sort">Shoes</li>
+                                    <li class="sort">Men</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Running</p>
+                                        <p>Clothes</p>
                                     </a>
                                     <a href="#">
-                                        <p>Foot ball</p>
+                                        <p>Original</p>
                                     </a>
                                     <a href="#">
-                                        <p>Daily</p>
-                                    </a>
-                                    <a href="#">
-                                        <p>Sneakers</p>
+                                        <p>Sport</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="tab2">
                                 <ul class="place">
-                                    <li class="sort">Clothing</li>
+                                    <li class="sort">Women</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Tracks</p>
+                                        <p>Clothes</p>
                                     </a>
                                     <a href="#">
-                                        <p>Tees</p>
+                                        <p>Original</p>
                                     </a>
                                     <a href="#">
-                                        <p>Hair bands</p>
-                                    </a>
-                                    <a href="#">
-                                        <p>Wrist bands</p>
+                                        <p>Sport</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="tab3">
                                 <ul class="place">
-                                    <li class="sort">Gear</li>
+                                    <li class="sort">Kids</li>
                                     <li class="by"><img src="{{ asset('frontend') }}/assets/images/do.png"
                                             alt=""></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Running app</p>
+                                        <p>Clothes</p>
                                     </a>
                                     <a href="#">
-                                        <p>Training club</p>
+                                        <p>Original</p>
                                     </a>
                                     <a href="#">
-                                        <p>Nike Fuel+Band se</p>
+                                        <p>Sport</p>
                                     </a>
                                 </div>
                             </div>
@@ -210,50 +191,9 @@
 
                         }); //]]>
                     </script>
-                    <section class="sky-form">
-                        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Type</h4>
-                        <div class="row row1 scroll-pane">
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Air
-                                    Max (30)</label>
-                            </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Armagadon
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Helium (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kyron (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Napolean
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Foot Rock
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Radiated
-                                    (30)</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Spiked (30)</label>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="sky-form">
-                        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Brand</h4>
-                        <div class="row row1 scroll-pane">
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"
-                                        checked=""><i></i>Roadstar</label>
-                            </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tornado</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kissan</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Oakley</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Manga</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Wega</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kings</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Zumba</label>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 @endsection
-
