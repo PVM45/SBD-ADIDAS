@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\sessionproduk;
-use App\Http\Controllers\Admin\SubbCategoryController;
-use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\Frontend\FrontendUserProfileController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\OrderHistoryController;
+use App\Http\Controllers\Admin\SubbCategoryController;
+use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 
 
 
@@ -67,7 +68,7 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
     Route::get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
     Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
     Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
-    Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile');
+    Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile.update');
     Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
 
     // user order history
@@ -79,7 +80,11 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
 // Frontend Pages routes
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
 
+//route searching
+Route::get('/search', [ProductController::class,'search'])->name('produk.search');
 
+
+// Route::get('/forget-password');
 
 //TES
 Route::get('/checkout', function () {

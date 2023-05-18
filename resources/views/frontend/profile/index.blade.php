@@ -2,7 +2,7 @@
 
 @section('userdashboard_content')
     <div class="card-body">
-        <form action="{{ route('author.user.profile') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('author.user.profile.update') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id"{{-- value="{{ $user->id }}" --}}>
             <div class="form-group">
