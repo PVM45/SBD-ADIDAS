@@ -26,6 +26,12 @@
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth
+            <!-- ini kolom searching -->
+                <form action="{{ route('produk.search') }}" method="GET">
+    <input type="text" name="keyword" placeholder="Search products">
+    <button type="submit">Search</button>
+</form>
+
                 {{-- <div class="cart box_1">
                         <a href="checkout">
                             <h3>

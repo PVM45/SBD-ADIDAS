@@ -55,29 +55,47 @@
                                     @else
                                         <p>Belum ada rating untuk artikel ini.</p>
                                     @endif --}}
-                                    <h3>Rating</h3> 
-                                        @foreach($produksr as $produk2)
-                                    @if ($produk2->count() > 0)
-                                        <p>Rata-rata Rating: {{ $produk2->pluck('rating')->average() }}</p>
-                                    @else
-                                        <p>Belum ada rating untuk artikel ini.</p>
-                                    @endif 
+                                    @foreach($produksr as $produk2)
+                                        @php $rating = $produk2->pluck('rating')->average(); @endphp
+                                        @php $roundedRating = round($rating); @endphp
+                                        @foreach(range(1,5) as $i)
+                                            <span class="fa-stack" style="width:1em">
+                                                <i class="far fa-star fa-stack-1x"></i>
+                                                @if($rating > 0)
+                                                    @if($rating > $i)
+                                                        <i class="fas fa-star fa-stack-1x"></i>
+                                                    @elseif($rating > ($i - 0.5))
+                                                        <i class="fas fa-star-half fa-stack-1x"></i>
+                                                    @endif
+                                                @endif
+                                            </span>
+                                        @endforeach
+                                    @endforeach
+                                    
+                        
 
-                                    <form action="/single_produk/{{ $produk1->id }}/rate" method="POST">
+
+                                    {{-- <h3>Rating</h3> 
+                                    <br>
+                                    <p>Rata-rata Rating:</p>
+                                        @foreach($produksr as $produk2) --}}
+                                    {{-- @if ($produk2->count() > 0) --}}
+                                        {{-- <p> {{ $produk2->pluck('rating')->average() }}</p> --}}
+                                    {{-- @else
+                                        <p>Belum ada rating untuk artikel ini.</p>
+                                    @endif --}}
+                                        {{-- @endforeach --}}
+                                    {{-- <form action="/single_produk/{{ $produk1->id }}/review" method="POST">
                                         @csrf
                                         <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
                                         <input type="number" name="rating" min="1" max="5" required>
-                                        <button type="submit">Rate</button>
-                                    </form>
                                     
                                     <h3>Komentar</h3>
-                                    <form action="/single_produk/{{ $produk1->id }}/comment" method="POST">
-                                        @csrf
                                         <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
                                         <textarea name="komentar" required></textarea>
-                                        <button type="submit">Komentar</button>
-                                    </form>
-                                    @endforeach
+                                        <button type="submit">Submit</button>
+                                    </form> --}}
+                                    
 
 
                                 {{-- <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
@@ -230,12 +248,10 @@
 
                                     <div class="reviews">
                                         <div class="review">
-                                            <div class="review-title"><span class="summary">We love this
-                                                    product </span><span class="date">&nbsp;<i
-                                                        class="fa fa-calendar"></i><span>1 days
-                                                        ago</span></span></div><br>
-                                            <div class="text">"Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit.Aliquam suscipit."</div><br>
+                                                        @foreach($produks as $komen)
+                                            <div class="text">{{ $komen->komentar }}</div><br>
+                                                <ul>
+                                                    @endforeach
                                         </div>
 
                                     </div><!-- /.reviews -->
@@ -247,90 +263,52 @@
                                     <h4 class="title">Write your own review</h4>
                                     <div class="review-table">
                                         <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="cell-label">&nbsp;</th>
-                                                        <th>1 star</th>
-                                                        <th>2 stars</th>
-                                                        <th>3 stars</th>
-                                                        <th>4 stars</th>
-                                                        <th>5 stars</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="cell-label">Quality</td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="1"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="2"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="3"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="4"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="cell-label">Price</td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="1"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="2"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="3"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="4"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="cell-label">Value</td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="1"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="2"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="3"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="4"></td>
-                                                        <td><input type="radio" name="quality" class="radio"
-                                                                value="5"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table><!-- /.table .table-bordered -->
                                         </div><!-- /.table-responsive -->
                                     </div><!-- /.review-table -->
 
                                     <div class="review-form">
                                         <div class="form-container">
-                                            <form role="form" class="cnt-form">
-
+                                            <form role="form" class="cnt-form" action="/single_produk/{{ $produk1->id }}/review" method="POST">
+                                                    @csrf
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="cell-label">&nbsp;</th>
+                                                                <th>1 star</th>
+                                                                <th>2 stars</th>
+                                                                <th>3 stars</th>
+                                                                <th>4 stars</th>
+                                                                <th>5 stars</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="cell-label">Quality</td>
+                                                                <input type="hidden" name="produk_id" value="{{ $produk1->id  }}">
+                                                                <td><input type="radio" name="rating" class="radio"
+                                                                        value="1"></td>
+                                                                <td><input type="radio" name="rating" class="radio"
+                                                                        value="2"></td>
+                                                                <td><input type="radio" name="rating" class="radio"
+                                                                        value="3"></td>
+                                                                <td><input type="radio" name="rating" class="radio"
+                                                                        value="4"></td>
+                                                                <td><input type="radio" name="rating" class="radio"
+                                                                        value="5"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputName">Your Name <span
-                                                                    class="astk">*</span></label>
-                                                            <input type="text" class="form-control txt"
-                                                                id="exampleInputName" placeholder="">
-                                                        </div><!-- /.form-group -->
-                                                        <div class="form-group">
-                                                            <label for="exampleInputSummary">Summary <span
-                                                                    class="astk">*</span></label>
-                                                            <input type="text" class="form-control txt"
-                                                                id="exampleInputSummary" placeholder="">
-                                                        </div><!-- /.form-group -->
-                                                    </div>
-
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="exampleInputReview">Review <span
                                                                     class="astk">*</span></label>
-                                                            <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
+                                                                    <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
+                                                            <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder="" name="komentar" required></textarea>
                                                         </div><!-- /.form-group -->
                                                     </div>
-                                                </div><!-- /.row -->
+                                                </div><!-- /.row --> 
 
                                                 <div class="action text-right">
                                                     <button class="btn btn-primary btn-upper">SUBMIT
@@ -512,14 +490,16 @@
     @endforeach
 </ul> --}}
 
-    <h3>Komentar Terakhir</h3>
     {{-- @if ($produk1->komentar->count() > 0) --}}
+
+    {{-- <h3>Komentar Terakhir</h3>
+
         <ul>
             
         @foreach($produks as $komen)
         <li>{{ $komen->komentar }}</li>
         </ul> 
-        @endforeach
+        @endforeach --}}
         @endforeach
     {{-- @else
         <p>Belum ada komentar untuk artikel</p>

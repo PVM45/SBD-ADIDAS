@@ -91,7 +91,7 @@
                 <td>{{ $product->ukuran }}</td>
                 <td>{{ $product->status_produk }}</td>
                 <td>{{ $product->harga_produk }}</td>
-                <td><img src="{{ asset('storage/'.$product->gambar_produk) }}" alt=""></td>
+                <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt=""></td>
                 <td><img src="{{ asset('storage/'.$product->gambar_produk_2) }}" alt=""></td>
                 <td><img src="{{ asset('storage/'.$product->gambar_produk_3) }}" alt=""></td>
                 <td><a href="{{ route('admin.produk.edit', $product->id) }}"><button>Edit</button></a></td>
