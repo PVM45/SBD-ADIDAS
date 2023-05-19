@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\kategoris_subkategoris;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -71,14 +71,17 @@ return view('layouts.admin.viewproduk', compact('products'));
         $product->gambar_produk = str_replace('public/', '', $product_image_1_path);
         $product->gambar_produk_2 = str_replace('public/', '', $product_image_2_path);
         $product->gambar_produk_3 = str_replace('public/', '', $product_image_3_path);
-    
         $product->save();
+
+        // Attach kategori dan subkategori menggunakan attach()
         $kategori_subkategori = new kategoris_subkategoris;
         $kategori_subkategori->kategori_id = $request->input('id_kategori');
         $kategori_subkategori->subkategori_id = $request->input('id_sub_kategori');
         $kategori_subkategori->produk_id = $product->id;
         $kategori_subkategori->save();
-        // Redirect to products index with success message
+
+            // Redirect to products index with success message
+
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
     public function edit($id)

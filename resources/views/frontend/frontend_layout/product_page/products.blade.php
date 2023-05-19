@@ -6,21 +6,28 @@
             <div class="col-md-9 grid-gallery">
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     <!-- normal -->
-                    @foreach ($products as $product)
+                    @foreach ($produks as $produk)                        
+
+                   
+
+
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                                <div class="img"><img src="{{ url('storage/'.$product->gambar_produk) }}" alt="/"
+                                <div class="img"><img src="{{ url('storage/'.$produk->gambar_produk) }}" alt="/"
                                         class="img-responsive gri-wid"></div>
                                 <div class="info">
                                     <div class="pull-left styl-hdn">
-                                        <h3>{{ $product->nama_produk }}</h3>
+                                        <h3>{{ $produk->nama_produk }}</h3>
+
+
+
 
                                     </div>
                                     <div class="pull-right styl-price">
                                         <p><a href="#" class="item_add"><span
                                                     class="glyphicon glyphicon-shopping-cart grid-cart"
                                                     aria-hidden="true"></span> <span
-                                                    class=" item_price">Rp.{{ $product->harga_produk }}</span></a></p>
+                                                    class=" item_price">Rp.{{ $produk->harga_produk }}</span></a></p>
 
                                     </div>
                                     <div class="clearfix"></div>
@@ -29,20 +36,21 @@
                         </div>
                         <!-- end normal -->
                         <div class="quick-view">
-                            <form action="{{ route('produk.show', ['id' => $product->id]) }}" method="POST">
+                            <form action="{{ route('produk.show', ['id' => $produk->id]) }}"" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-light"><i class="fa fa-eye fa-1x"></i></button>
+                                <button type="submit"> Quick view </button>
                             </form>
                         </div>
                 </div>
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     {{-- @endforeach --}}
                     @endforeach
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="col-md-3 grid-details">
-                <div class="grid-addon">
+                    <!-- Search form -->
+                    <form class="input-group-lg form-inline d-flex justify-content-center md-form form-sm ">
+                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                            aria-label="Search">
+                    </form>
 
                     <section class="sky-form">
                         <div class="product_right">
@@ -57,13 +65,16 @@
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Clothes</p>
+                                        <p>Running</p>
                                     </a>
                                     <a href="#">
-                                        <p>Original</p>
+                                        <p>Foot ball</p>
                                     </a>
                                     <a href="#">
-                                        <p>Sport</p>
+                                        <p>Daily</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>Sneakers</p>
                                     </a>
                                 </div>
                             </div>
@@ -76,13 +87,16 @@
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Clothes</p>
+                                        <p>Tracks</p>
                                     </a>
                                     <a href="#">
-                                        <p>Original</p>
+                                        <p>Tees</p>
                                     </a>
                                     <a href="#">
-                                        <p>Sport</p>
+                                        <p>Hair bands</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>Wrist bands</p>
                                     </a>
                                 </div>
                             </div>
@@ -95,13 +109,13 @@
                                 </ul>
                                 <div class="single-bottom">
                                     <a href="#">
-                                        <p>Clothes</p>
+                                        <p>Running app</p>
                                     </a>
                                     <a href="#">
-                                        <p>Original</p>
+                                        <p>Training club</p>
                                     </a>
                                     <a href="#">
-                                        <p>Sport</p>
+                                        <p>Nike Fuel+Band se</p>
                                     </a>
                                 </div>
                             </div>
@@ -191,6 +205,8 @@
 
                         }); //]]>
                     </script>
+                    
+                    
                 </div>
             </div>
             <div class="clearfix"></div>

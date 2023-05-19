@@ -112,3 +112,10 @@ Route::get('/contact', function () {
 Route::get('/term_policy', function () {
     return view('term_policy');
 })->name('term_policy');
+
+
+// untuk cart
+Route::post('/cart/add', [CartController::class,'addToCart']);
+Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
+Route::post('/cart/update', [CartController::class,'updateCart'])->name('cart.update');
+Route::get('/cart', [CartController::class,'showCart']);
