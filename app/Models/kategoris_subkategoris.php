@@ -10,7 +10,8 @@ use App\Models\kategori;
 class kategoris_subkategoris extends Model
 {
     use HasFactory;
-
+    protected $table = 'kategoris_subkategoris';
+    protected $fillable = ['produk,kategori,subkategori'];
     public function kategori()
     {
         return $this->BelongsTo(kategori::class);

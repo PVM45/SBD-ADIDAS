@@ -14,6 +14,16 @@ use Illuminate\Http\Request;
 class productController extends Controller
 {
 
+    public function index()
+    {
+//cek
+      $produks = produk::all();
+        return view('layouts.author.produk', compact('produks'));
+
+        $produks = Produk::all();
+        return view('frontend.frontend_layout.product_page.products', compact('produks'));
+    }
+
     public function show($id)
 {
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();

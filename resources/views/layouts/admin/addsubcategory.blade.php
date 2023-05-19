@@ -51,7 +51,7 @@
             <h2>Add New Sub Category</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.subcategories.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('admin.categories') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -80,6 +80,12 @@
                 <label for="id">ID SubKategori</label>
                 <input type="number" class="form-control" id="id" name="id" required>
             </div>
+            <label for="category_id">Kategori</label>
+    <select name="category_id" id="category_id">
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
+        @endforeach
+    </select>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>

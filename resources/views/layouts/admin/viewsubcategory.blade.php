@@ -56,6 +56,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama Sub Kategori</th>
+                        <th>Nama Kategori</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                         <tr>
                             <td>{{ $subcategory->id }}</td>
                             <td>{{ $subcategory->nama_subkategori }}</td>
+                            <td>{{ $subcategory->id_kategori }}</td>
                             <td>
                                 <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="POST">
                                     @csrf
