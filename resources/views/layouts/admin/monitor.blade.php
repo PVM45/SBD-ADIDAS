@@ -47,44 +47,38 @@
 <div class="card">
     <div class="card-header"></div>
 
-    <div class="card">
-        <div class="card-header">{{ __('Daftar Sub Kategori') }}</div>
+</div>
+<div class="card">
+   
+    <div class="container">
+        <h1>Monitor Barang</h1>
     
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nama Sub Kategori</th>
-                        <th>Nama Kategori</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($subcategories as $subcategory)
-                        <tr>
-                            <td>{{ $subcategory->subkategori->id }}</td>
-                            <td>{{ $subcategory->subkategori->nama_subkategori }}</td>
-                            <td>{{ $subcategory->kategori->nama_kategori }}</td>
-                            <td>
-                                <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="text" name="name" value="{{ $subcategory->subkategori->nama_subkategori }}">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </form></td><td>
-                                <form action="{{ route('admin.subcategories.destroy', $subcategory->id) }}" method="POST" style="display: inline-block;" >
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <h2>Barang Masuk</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->nama_produk }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+            </div>
         </div>
     </div>
+</div>
+
 </div>
     </div>
                 </div>
@@ -147,8 +141,4 @@
 
 </body>
 
-</html>        
-
-
-
-
+</html>  

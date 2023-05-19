@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('kategoris_subkategoris', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('produk');
-            $table->unsignedBigInteger('kategori');
-            $table->unsignedBigInteger('subkategori');
+            $table->unsignedBigInteger('produk_id');
+            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('subkategori_id');
             $table->timestamps();
 
-            $table->foreign('produk')->references('id')->on('produks')->onDelete('cascade');
-            $table->foreign('kategori')->references('id')->on('kategoris')->onDelete('cascade');
-            $table->foreign('subkategori')->references('id')->on('subkategoris')->onDelete('cascade');
+            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
+            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
+            $table->foreign('subkategori_id')->references('id')->on('subkategoris')->onDelete('cascade');
         });
     }
 

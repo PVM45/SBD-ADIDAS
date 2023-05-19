@@ -39,4 +39,8 @@ class produk extends Model
     {
         return $this->hasMany(Komentar::class);
     }
+    public function logs()
+    {
+        return $this->hasMany(ProductLog::class);
+    }
 }

@@ -72,7 +72,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('admin.product.monitor')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Monitor Barang</span></a>
     </li>

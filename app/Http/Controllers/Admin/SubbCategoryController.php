@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\subkategori;
 use App\Models\kategori;
+use App\Models\kategoris_subkategoris;
 
 class SubbCategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class SubbCategoryController extends Controller
     }
     public function index()
     {
-        $subcategories = subkategori::all();
+        $subcategories = kategoris_subkategoris::all();
         return view('layouts.admin.viewsubcategory', compact('subcategories'));
     }
     public function store(Request $request)
