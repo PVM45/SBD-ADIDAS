@@ -169,8 +169,12 @@
                         </div>
                         <ul>
                             <li class="ad-2-crt simpleCart_shelfItem">
-                                <a class="btn item_add" href="#" role="button">Add To Cart</a>
-                                <a class="btn" href="#" role="button">Buy Now</a>
+                       <form method="POST" action="/cart/add">
+        @csrf
+        <input type="hidden" name="product_id" value="{{ $produk1->id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn item_add">Add To Cart</button>
+    </form>
                             </li>
                         </ul>
                     </div>
