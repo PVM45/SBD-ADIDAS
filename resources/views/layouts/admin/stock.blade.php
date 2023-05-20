@@ -71,7 +71,7 @@
                             @csrf
                             @method('PUT')
                             <input type="number" name="stok" value="{{ $product->stok }}">
-                            <button type="submit">Update Stok</button>
+                            <button type="submit">Tambah Stok</button>
                         </form>
                     </td>
                     <td></td>

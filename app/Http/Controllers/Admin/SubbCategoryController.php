@@ -17,8 +17,11 @@ class SubbCategoryController extends Controller
     }
     public function index()
     {
-        $subcategories = kategoris_subkategoris::all();
-        return view('layouts.admin.viewsubcategory', compact('subcategories'));
+        $subcategories = subkategori::join('kategoris', 'subkategoris.id_kategori', '=', 'kategoris.id')
+        ->select('subkategoris.id', 'subkategoris.nama_subkategori', 'kategoris.nama_kategori')
+        ->get();
+        $kategori=kategori::all();
+        return view('layouts.admin.viewsubcategory', compact('subcategories','kategori'));
     }
     public function store(Request $request)
 {
@@ -46,6 +49,7 @@ public function update(Request $request, $id)
 {
     $subcategory = subkategori::findOrFail($id);
     $subcategory->nama_subkategori = $request->name;
+    $subcategory->id_kategori = $request->input('kategori_id');
     $subcategory->save();
     return redirect()->back()->with('success', 'Category updated successfully');
 }

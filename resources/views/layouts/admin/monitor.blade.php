@@ -57,10 +57,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Id Produk</th>
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
-                    <th>Tanggal</th>
+                    <th>Tanggal Masuk</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,6 +74,7 @@
             @endforeach
             </tbody>
         </table>
+        {{ $products->links() }}
             </div>
         </div>
     </div>
