@@ -45,45 +45,36 @@
 <div class="row" >
     <div class="col-md-12">
 <div class="card">
-    <div class="card-header">
-        <h4>Daftar Produk</h4>
-    </div>
+    <div class="card-header"></div>
+
+</div>
+<div class="card">
+   
     <div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>ID Produk</th>
-                <th>Nama Produk</th>
-                <th>Stok</th>
-                <th></th>
-                <th></th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($products as $product)
+        <h1>Monitor Barang</h1>
+    
+        <h2>Barang Masuk</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id Produk</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal Masuk</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->nama_produk }}</td>
-                    <td>{{ $product->stok}}</td>
-                    <td>
-                        <form action="{{ route('admin.stok.update', $product->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="number" name="stok" value="{{ $product->stok }}">
-                            <button type="submit">Tambah Stok</button>
-                        </form>
-                    </td>
-                    <td></td>
-                    
-                    <td>{{ $product->status_produk}}</td>
-                   
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->created_at }}</td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
-    </div>
-{{ $products->links() }}
+            </tbody>
+        </table>
+        {{ $products->links() }}
             </div>
         </div>
     </div>
@@ -151,16 +142,4 @@
 
 </body>
 
-</html>       
-{{-- @foreach ($collection as $item)
-    
-@if ($item->status_pesanan == 'belum dibayar')
-    <button class="btn btn-danger">belum Dibaya</button>
-    @else
-    <button class="btn btn-succes"></button>
-@endif
-@if ($item->status_pesanan == 'belum dibayar')
-   <form action="" method="post"></form>
-    <button class="btn btn-succes"></button>
-@endif
-@endforeach --}}
+</html>  

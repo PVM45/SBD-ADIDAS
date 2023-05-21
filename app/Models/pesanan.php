@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class pesanan extends Model
 {
     use HasFactory;
+    public function productLog()
+    {
+        return $this->hasOne(ProductLog::class);
+    }
 }

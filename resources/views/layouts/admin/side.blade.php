@@ -72,7 +72,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{route('admin.product.monitor')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Monitor Barang</span></a>
     </li>
@@ -92,8 +92,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Order Reports:</h6>
-                <a class="collapse-item" href="login.html">Orders & Payment</a>
-              
+                <a class="collapse-item" href="login.html">Pesanan</a>
+               <a class="collapse-item" href="login.html">Payment</a>
             </div>
         </div>
     </li>
