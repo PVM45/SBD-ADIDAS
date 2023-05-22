@@ -32,7 +32,7 @@ require __DIR__ . '/auth.php';
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
-
+    Route::get('/generate-report', [DashboardController::class,'generate'])->name('generate.report');
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
