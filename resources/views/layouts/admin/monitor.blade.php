@@ -47,15 +47,24 @@
 <div class="card">
     <div class="card-header"></div>
 
-</div>
+
 <div class="card">
-   
     <div class="container">
         <h1>Monitor Barang</h1>
     
-        <h2>Barang Masuk</h2>
-        <table class="table">
+        <div class="filter">
+            <label for="filter_type">Filter:</label>
+            <select id="filter_type" onchange="filterTable()">
+                <option value="all">Semua</option>
+                <option value="masuk">Barang Masuk</option>
+                <option value="keluar">Barang Keluar</option>
+            </select>
+        </div>
+    
+      
+        <table class="table" id="table_masuk">
             <thead>
+                <h2 id="judul_masuk">Barang Masuk</h2>
                 <tr>
                     <th>Id Produk</th>
                     <th>Nama Barang</th>
@@ -74,8 +83,39 @@
             @endforeach
             </tbody>
         </table>
-        {{ $products->links() }}
-            </div>
+        <div id="pagination_masuk">
+            {{ $products->links() }}
+        </div>
+    
+        <table class="table" id="table_keluar">
+         
+        
+            <thead>
+                <h2 id="judul_keluar">Barang Keluar</h2>
+                <tr>
+                    <th>Id Produk</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal Masuk</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($produks as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->nama_produk }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div id="pagination_keluar">
+            {{ $produks->links() }}
+        </div>
+    </div>
+    
+</div>
         </div>
     </div>
 </div>
@@ -143,3 +183,32 @@
 </body>
 
 </html>  
+<script>
+    // Fungsi untuk menampilkan tabel sesuai dengan filter yang dipilih
+    function filterTable() {
+        var filterType = document.getElementById("filter_type").value;
+
+        if (filterType === "masuk") {
+            document.getElementById("table_masuk").style.display = "table";
+            document.getElementById("pagination_masuk").style.display = "block";
+            document.getElementById("table_keluar").style.display = "none";
+            document.getElementById("pagination_keluar").style.display = "none";
+            document.getElementById("judul_masuk").style.display = "block";
+            document.getElementById("judul_keluar").style.display = "none";
+        } else if (filterType === "keluar") {
+            document.getElementById("table_masuk").style.display = "none";
+            document.getElementById("pagination_masuk").style.display = "none";
+            document.getElementById("table_keluar").style.display = "table";
+            document.getElementById("pagination_keluar").style.display = "block";
+            document.getElementById("judul_masuk").style.display = "none";
+            document.getElementById("judul_keluar").style.display = "block";
+        } else {
+            document.getElementById("table_masuk").style.display = "table";
+            document.getElementById("pagination_masuk").style.display = "block";
+            document.getElementById("table_keluar").style.display = "table";
+            document.getElementById("pagination_keluar").style.display = "block";
+            document.getElementById("judul_masuk").style.display = "block";
+            document.getElementById("judul_keluar").style.display = "block";
+        }
+    }
+</script>
