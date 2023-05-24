@@ -4,7 +4,11 @@
             <h2>Add New Sub Category</h2>
         </div>
         <div class="pull-right">
+<<<<<<< Updated upstream
             <a class="btn btn-primary" href="{{ route('subcategories.index') }}"> Back</a>
+=======
+            <a class="btn btn-primary" href="{{ route('admin.categories') }}"> Back</a>
+>>>>>>> Stashed changes
         </div>
     </div>
 </div>
@@ -39,6 +43,12 @@
                     @endforeach
                 </select>
             </div>
+            <label for="category_id">Kategori</label>
+    <select name="category_id" id="category_id">
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
+        @endforeach
+    </select>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>

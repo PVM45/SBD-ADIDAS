@@ -22,11 +22,23 @@ return new class extends Migration
             $table->string('ukuran');
             $table->bigInteger('stok');
             $table->enum('status_produk',['tersedia','habis']);
+<<<<<<< Updated upstream
             $table->decimal('harga_produk', $precision = 12, $scale = 2);
             $table->timestamps();
             $table->foreign('id_kategori')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('id_subkategori')->references('id')->on('subcategories')->onDelete('cascade');
             
+=======
+            $table->double('harga_produk');
+            $table->integer('stok')->default(0);
+            $table->enum('status_produk', ['Tersedia', 'Tidak Tersedia'])->default('Tidak Tersedia');
+            $table->float('harga_produk');
+            $table->timestamps();
+
+            $table->foreign('id_kategori')->references('id')->on('subkategoris')->onDelete('cascade');
+            $table->foreign('id_subkategori')->references('id')->on('subkategoris')->onDelete('cascade');
+
+>>>>>>> Stashed changes
         });
     }
 

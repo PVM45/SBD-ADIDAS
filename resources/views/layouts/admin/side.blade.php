@@ -36,9 +36,14 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Product:</h6>
+<<<<<<< Updated upstream
                 <a class="collapse-item" href="{{route('admin.products.create')}}">Add Product</a>
                 <a class="collapse-item" href="">Edit Product</a>
                 <a class="collapse-item" href="{{route('categories.create')}}">Add Category</a> 
+=======
+                <a class="collapse-item" href="{{route('admin.products.index')}}">Add Product</a>
+                <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a> 
+>>>>>>> Stashed changes
                 {{-- <form action="{{route('kategori')}}" method="POST">
                     @csrf
                 <button type="submit"> add category</button>
@@ -66,6 +71,18 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.stok.index')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Edit Stock</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.product.monitor')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Monitor Barang</span></a>
+    </li>
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -82,12 +99,12 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Order Reports:</h6>
-                <a class="collapse-item" href="login.html">Orders & Payment</a>
-              
+                <a class="collapse-item" href="login.html">Pesanan</a>
+               <a class="collapse-item" href="login.html">Payment</a>
             </div>
         </div>
     </li>
-
+   
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

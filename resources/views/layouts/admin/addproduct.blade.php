@@ -30,6 +30,7 @@
         <label for="deskripsi">Deskripsi</label>
         <textarea name="deskripsi" class="form-control" required></textarea>
     </div>
+<<<<<<< Updated upstream
     
     <div class="form-group">
         <label for="warna">Warna</label>
@@ -39,6 +40,12 @@
     <div class="form-group">
         <label for="ukuran">Ukuran</label>
         <input type="text" name="ukuran" class="form-control" required>
+=======
+  
+    <div>
+        <label for="product_color">Warna</label>
+        <input type="text" name="product_color" id="product_color" required>
+>>>>>>> Stashed changes
     </div>
     
     <div class="form-group">
@@ -46,6 +53,7 @@
         <input type="number" name="stok" class="form-control" required>
     </div>
     
+<<<<<<< Updated upstream
     <div class="form-group">
         <label for="harga_produk">Harga Produk</label>
         <input type="number" name="harga_produk" class="form-control" required>
@@ -54,6 +62,11 @@
     <div class="form-group">
         <label for="gambar">Gambar</label>
         <input type="file" name="gambar" class="form-control-file" required>
+=======
+    <div>
+        <label for="product_price">Harga</label>
+        <input type="number" name="product_price" id="product_price" required>
+>>>>>>> Stashed changes
     </div>
     
     <button type="submit" class="btn btn-primary">Tambah Produk</button>

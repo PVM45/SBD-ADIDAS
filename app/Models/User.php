@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+<<<<<<< Updated upstream
+=======
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+    public function pesanan()
+    {
+        return $this->hasMany(produk_pesanan::class);
+    }
+    public function alamat()
+    {
+        return $this->hasMany(Alamat::class);
+    }
+>>>>>>> Stashed changes
 }
