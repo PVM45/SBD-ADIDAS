@@ -8,17 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-<<<<<<< Updated upstream:app/Models/Category.php
-    protected $table = 'categories';
-protected $fillable = ['name', 'id'];
-=======
+//     protected $table = 'categories';
+// protected $fillable = ['name', 'id'];
     protected $fillable = [
         'user_id',
         'pembayaran_id',
         'kode_pembayaran',
         'total_pembayaran',
         'status_pesanan',
-        'tanggal_transaksi',        
+        'tanggal_transaksi',
     ];
 
     public function productLog()
@@ -37,5 +35,4 @@ protected $fillable = ['name', 'id'];
     {
         return $this->hasOne(Alamat_pesanan::class);
     }
->>>>>>> Stashed changes:app/Models/pesanan.php
 }
