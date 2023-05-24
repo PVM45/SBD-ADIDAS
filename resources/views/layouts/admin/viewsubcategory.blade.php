@@ -65,18 +65,25 @@
                         <tr>
                             <td>{{ $subcategory->id }}</td>
                             <td>{{ $subcategory->nama_subkategori }}</td>
-                            <td>{{ $subcategory->id_kategori }}</td>
+                            <td>{{ $subcategory->nama_kategori }}</td>
                             <td>
                                 <form action="{{ route('admin.subcategories.update', $subcategory->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <input type="text" name="name" value="{{ $subcategory->nama_subkategori }}">
+                                    <select name="kategori_id">
+                                        @foreach ($kategori as $category)
+                                            <option value="{{ $category->id }}" @if($subcategory->id_kategori == $category->id) selected @endif>
+                                                {{ $category->nama_kategori }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form></td><td>
                                 <form action="{{ route('admin.subcategories.destroy', $subcategory->id) }}" method="POST" style="display: inline-block;" >
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus subkategori ini?')">Delete</button>
                                 </form>
                             </td>
                         </tr>

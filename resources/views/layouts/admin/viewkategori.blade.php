@@ -73,7 +73,7 @@
                             <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Delete</button>
                             </form>
                         </td>
                         <td>
@@ -81,7 +81,7 @@
                                 @csrf
                                 @method('PUT')
                                 <input type="text" name="name" value="{{ $category->nama_kategori }}">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit nama kategori ini?')">Update</button>
                             </form>
                         </td>
                     </tr>

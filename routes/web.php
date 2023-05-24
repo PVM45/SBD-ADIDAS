@@ -32,7 +32,7 @@ require __DIR__ . '/auth.php';
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
-
+    Route::get('/generate-report', [DashboardController::class,'generate'])->name('generate.report');
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
@@ -60,6 +60,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
     Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
     Route::get('/stok', [ProdukController::class, 'show'])->name('stok.index');
+    Route::get('/monitor', [ProdukController::class,'monitor'])->name('product.monitor');
 Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
 });
 

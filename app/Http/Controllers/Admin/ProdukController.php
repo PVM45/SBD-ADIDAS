@@ -9,6 +9,7 @@ use App\Models\produk;
 use App\Models\kategori;
 use App\Models\subkategori;
 use App\Models\kategoris_subkategoris;
+use App\Models\Productlog;
 class ProdukController extends Controller
 {
     public function create()
@@ -37,13 +38,16 @@ return view('layouts.admin.viewproduk', compact('products'));
             'id_sub_kategori' => 'required',
             'product_description' => 'required',
            
-            'product_color' => 'required',
-            'product_size' => 'required',
-           
-            'product_price' => 'required',
+            'product_color' => ['required', 'string'],
+    'product_size' => ['required', 'string'],
+    'product_price' => ['required', 'numeric'],
             'product_image_1' => 'required|image',
             'product_image_2' => 'required|image',
             'product_image_3' => 'required|image',
+        ],[
+            'product_color.string' => 'Warna produk harus berupa teks.',
+            'product_size.string' => 'Ukuran produk harus berupa teks.',
+            'product_price.numeric' => 'Harga produk harus berupa angka.',
         ]);
     
         // Save product to database
@@ -95,6 +99,16 @@ return view('layouts.admin.viewproduk', compact('products'));
 public function update(Request $request, $id)
 {
     $product = produk::find($id);
+    $request->validate([
+        'varian_warna' => ['required', 'string'],
+        'ukuran' => ['required', 'string'],
+        'harga_produk' => ['required', 'numeric'],
+    ], [
+        'varian_warna.string' => 'Warna produk harus berupa teks.',
+        'ukuran.string' => 'Ukuran produk harus berupa teks.',
+        'harga_produk.numeric' => 'Harga produk harus berupa angka.',
+    ]);
+    
     $product->nama_produk = $request->input('nama_produk');
     $product->id_kategori = $request->input('id_kategori');
     $product->id_subkategori = $request->input('id_subkategori');
@@ -107,17 +121,23 @@ public function update(Request $request, $id)
     
     if ($request->hasFile('gambar_produk')) {
         Storage::delete($product->gambar_produk);
-        $product->gambar_produk = $request->file('gambar_produk')->store('public');
+        $product_image_1 = $request->file('gambar_produk');
+        $product_image_1_path = $product_image_1->store('public/products');
+        $product->gambar_produk = str_replace('public/', '', $product_image_1_path);
     }
     
     if ($request->hasFile('gambar_produk_2')) {
         Storage::delete($product->gambar_produk_2);
-        $product->gambar_produk_2 = $request->file('gambar_produk_2')->store('public');
+        $product_image_2 = $request->file('gambar_produk_2');
+        $product_image_2_path = $product_image_2->store('public/products');
+        $product->gambar_produk_2 = str_replace('public/', '', $product_image_2_path);
     }
     
     if ($request->hasFile('gambar_produk_3')) {
         Storage::delete($product->gambar_produk_3);
-        $product->gambar_produk_3 = $request->file('gambar_produk_3')->store('public');
+        $product_image_3 = $request->file('gambar_produk_3');
+        $product_image_3_path = $product_image_3->store('public/products');
+        $product->gambar_produk_3 = str_replace('public/', '', $product_image_3_path);
     }
     
     $product->save();
@@ -135,7 +155,11 @@ public function destroy($id)
 public function updatestok(Request $request, $id)
 {
     $product = produk::findOrFail($id);
-    $product->stok = $request->stok;
+    $currentStok = $product->stok;
+    $additionalStok = $request->stok;
+    $newStok = $currentStok + $additionalStok;
+    
+    $product->stok = $newStok;
 
     // Jika stok habis, ubah status_produk menjadi false
     if ($request->stok >=1) {
@@ -145,7 +169,11 @@ else {
     $product->status_produk = 'Tidak Tersedia';
 }
     $product->save();
-
+    $log = new ProductLog();
+    $log->product_id = $product->id;
+    $log->type = 'in';
+    $log->quantity = $request->stok;
+    $log->save();
     return redirect()->back()->with('success', 'Stok produk berhasil diperbarui.');
 }
 public function show()
@@ -154,4 +182,16 @@ public function show()
 
 return view('layouts.admin.stock', compact('products'));
 }
+public function monitor()
+    {
+        $products = produk::join('product_logs', 'produks.id', '=', 'product_logs.product_id')
+        ->where('product_logs.type', 'in')
+        ->select('produks.id','produks.nama_produk', 'product_logs.quantity', 'product_logs.created_at')
+        ->paginate(10);
+        $produks = produk::join('product_logs', 'produks.id', '=', 'product_logs.product_id')
+        ->where('product_logs.type', 'out')
+        ->select('produks.id','produks.nama_produk', 'product_logs.quantity', 'product_logs.created_at')
+        ->paginate(10);
+        return view('layouts.admin.monitor', compact('products','produks'));
+    }
 }

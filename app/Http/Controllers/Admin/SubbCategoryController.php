@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\subkategori;
 use App\Models\kategori;
+use App\Models\kategoris_subkategoris;
 
 class SubbCategoryController extends Controller
 {
@@ -16,8 +17,11 @@ class SubbCategoryController extends Controller
     }
     public function index()
     {
-        $subcategories = subkategori::all();
-        return view('layouts.admin.viewsubcategory', compact('subcategories'));
+        $subcategories = subkategori::join('kategoris', 'subkategoris.id_kategori', '=', 'kategoris.id')
+        ->select('subkategoris.id', 'subkategoris.nama_subkategori', 'kategoris.nama_kategori')
+        ->get();
+        $kategori=kategori::all();
+        return view('layouts.admin.viewsubcategory', compact('subcategories','kategori'));
     }
     public function store(Request $request)
 {
@@ -45,6 +49,7 @@ public function update(Request $request, $id)
 {
     $subcategory = subkategori::findOrFail($id);
     $subcategory->nama_subkategori = $request->name;
+    $subcategory->id_kategori = $request->input('kategori_id');
     $subcategory->save();
     return redirect()->back()->with('success', 'Category updated successfully');
 }

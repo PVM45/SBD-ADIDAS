@@ -133,7 +133,7 @@
         <input type="file" name="gambar_produk_3" id="product_image_2" >
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit produk ini?')">Submit</button>
     </div></form>
     </div>
 </div>
