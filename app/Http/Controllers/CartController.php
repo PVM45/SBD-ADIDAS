@@ -7,7 +7,9 @@ use App\Models\pesanan;
 use App\Models\alamat;
 use App\Models\user;
 use App\Models\pembayaran;
+use App\Models\produk_pesanan;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -89,6 +91,7 @@ public function ShowCheckout() {
 
     $user = Auth::user();
     $alamat = Alamat::where('user_id', auth()->user()->id)->get();
+    $pembayarans = Pembayaran::all();
 
     $totalPrice = 0;
 
@@ -97,7 +100,7 @@ public function ShowCheckout() {
             $totalPrice += $cart->produk->harga_produk * $cart->kuantitas;
         }
 
-    return view('frontend.checkout_page.checkout', compact('cartItems', 'totalPrice', 'alamat'));
+    return view('frontend.checkout_page.checkout', compact('cartItems', 'totalPrice', 'alamat','pembayarans'));
 }
 
 public function processCheckout(Request $request)
@@ -111,6 +114,22 @@ public function processCheckout(Request $request)
     ]);
 
     $cartItems = keranjang_belanja::where('user_id', auth()->user()->id)->get();
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $kodePembayaran = '';
+
+    $tanggalWaktu = Carbon::now();
+    $formatTanggalWaktu = $tanggalWaktu->format('y-m-d-H:i');
+
+    
+    $totalPrice = 0;
+
+    for ($i = 0; $i < 10; $i++) {
+        $kodePembayaran .= $characters[rand(0, strlen($characters) - 1)];
+    }
+
+        foreach ($cartItems as $cart) {
+            $totalPrice += $cart->produk->harga_produk * $cart->kuantitas;
+        }
 
     // $PilihanAlamat = $request->input('PilihanAlamat');
 
@@ -124,33 +143,70 @@ public function processCheckout(Request $request)
         $alamat->alamat = $request->newAlamat;
         $alamat->save();
 
-
     }
 
+    $metodePembayaran = $request->input('metode_pembayaran');
+
+        $pesanans = new pesanan;
+        $pesanans->user_id = auth()->user()->id;
+        $pesanans->alamat_id=$alamat->id;
+        $pesanans->pembayaran_id=$metodePembayaran;
+        $pesanans->total_pembayaran=$totalPrice;
+        $pesanans->kode_pembayaran=$kodePembayaran;
+        $pesanans->tanggal_transaksi=$formatTanggalWaktu;
+        $pesanans->save();
+
+        $totalHargaProduk = 0;
+
+        foreach ($cartItems as $cart) {
+            $totalHargaProduk += $cart->produk->harga_produk * $cart->kuantitas;
+
+            $produk_pesanan = new produk_pesanan;
+            $produk_pesanan->pesanan_id=$pesanans->id;
+            $produk_pesanan->produk_id=$cart->produk->id;
+            $produk_pesanan->kuantitas=$cart->kuantitas;
+            
+            $produk_pesanan->harga=$totalHargaProduk;
+            $produk_pesanan->save();
+
+        }
+        keranjang_belanja::where('user_id', auth()->user()->id)->delete();
     // return redirect()->route('author.checkout.pembayaran', compact('cartItems','alamat'));
 
-    return view('frontend.checkout_page.checkout', compact('alamat','cartItems'));
+    return redirect()->route('author.checkout.receipt');
+    //return redirect('frontend.checkout_page.receipt','com');
 
-    // Hapus item-item keranjang belanja
-//    keranjang_belanja::where('user_id', auth()->user()->id)->delete();
+    //Hapus item-item keranjang belanja
+   
 
 
 }
 
-public function pilihanMetodePembayaran(Request $request,)
-{   
-    $request->validate([
-        'address_option' => 'required|in:existing,new',
-        'existing_address' => 'required_if:address_option,existing|exists:alamats,id',
-        'new_address' => 'required_if:address_option,new',
-    ]);
+public function receipt()
+{
+    $pesanan = Pesanan::where('user_id', auth()->user()->id)
+        ->where('status_pesanan', 'belum_terkonfirmasi')
+        ->get();
 
-    $cartItems = $request->cartItems;
-    $alamat = $request->alamat;
+        $produk_pesanan = produk_pesanan::whereHas('pesanan', function ($query) use ($pesanan) {
+            $query->whereIn('id', $pesanan->pluck('id'));
+        })->get();
+
+        
+
+
+        return view('frontend.checkout_page.receipt', compact('pesanan','produk_pesanan'));
+}
+
+public function pilihanMetodePembayaran()
+{   
+
+    // $cartItems = $request->cartItems;
+    // $alamat = $request->alamat;
 
     $pembayarans = Pembayaran::all();
 
-    return view('frontend.checkout_page.checkout_pembayaran', compact('pembayarans','alamat','cartItems'));
+    return view('frontend.checkout_page.checkout_pembayaran', compact('pembayarans',));
 }
 
 public function prosesPilihanMetodePembayaran(Request $request)

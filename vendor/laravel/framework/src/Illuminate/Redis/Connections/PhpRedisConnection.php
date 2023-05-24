@@ -4,6 +4,7 @@ namespace Illuminate\Redis\Connections;
 
 use Closure;
 use Illuminate\Contracts\Redis\Connection as ConnectionContract;
+use Illuminate\Support\Arr;
 use Redis;
 use RedisException;
 
@@ -240,7 +241,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      */
     public function zrangebyscore($key, $min, $max, $options = [])
     {
-        if (isset($options['limit']) && ! array_is_list($options['limit'])) {
+        if (isset($options['limit']) && Arr::isAssoc($options['limit'])) {
             $options['limit'] = [
                 $options['limit']['offset'],
                 $options['limit']['count'],
@@ -261,7 +262,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      */
     public function zrevrangebyscore($key, $min, $max, $options = [])
     {
-        if (isset($options['limit']) && ! array_is_list($options['limit'])) {
+        if (isset($options['limit']) && Arr::isAssoc($options['limit'])) {
             $options['limit'] = [
                 $options['limit']['offset'],
                 $options['limit']['count'],
@@ -440,7 +441,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      *
      * @param  string  $script
      * @param  int  $numberOfKeys
-     * @param  mixed  ...$arguments
+     * @param  dynamic  ...$arguments
      * @return mixed
      */
     public function eval($script, $numberOfKeys, ...$arguments)
@@ -530,7 +531,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
         try {
             return parent::command($method, $parameters);
         } catch (RedisException $e) {
-            foreach (['went away', 'socket', 'read error on connection', 'Connection lost'] as $errorMessage) {
+            foreach (['went away', 'socket', 'read error on connection'] as $errorMessage) {
                 if (str_contains($e->getMessage(), $errorMessage)) {
                     $this->client = $this->connector ? call_user_func($this->connector) : $this->client;
 

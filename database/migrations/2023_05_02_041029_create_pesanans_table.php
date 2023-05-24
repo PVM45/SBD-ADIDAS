@@ -14,17 +14,22 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
 
             $table->id();
+
+            
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('alamat_id');
             $table->unsignedBigInteger('pembayaran_id');
-            $table->string('kode_pembayaran')->unique();
             $table->double('total_pembayaran');
+            $table->string('kode_pembayaran');
             $table->enum('status_pesanan',['terkonfirmasi','belum_terkonfirmasi'])->default('belum_terkonfirmasi');
             $table->datetime('tanggal_transaksi');
             $table->timestamps();
 
-            
+            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('alamat_id')->references('id')->on('alamats')->onDelete('cascade');
             $table->foreign('pembayaran_id')->references('id')->on('pembayarans')->onDelete('cascade');
+
 
         });
     }

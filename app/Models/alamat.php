@@ -20,5 +20,9 @@ class alamat extends Model
     {
         return $this->hasMany(Alamat::class);
     }
+    public function pesanan()
+    {
+        return $this->hasOne(Pesanan::class);
+    }
 }
 

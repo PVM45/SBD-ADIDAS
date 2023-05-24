@@ -13,16 +13,12 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-<<<<<<< Updated upstream:database/migrations/2021_05_12_145435_create_categories_table.php
-            $table->string('name');
-            $table->timestamps();
 
-=======
             $table->string('nama_subkategori');
             $table->unsignedBigInteger('id_kategori');
             $table->timestamps();
             $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
->>>>>>> Stashed changes:database/migrations/2022_05_12_092052_create_subkategoris_table.php
+
         });
     }
 

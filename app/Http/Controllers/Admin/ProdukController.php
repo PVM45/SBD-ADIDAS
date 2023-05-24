@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\produk;
 use App\Models\kategori;
 use App\Models\subkategori;
+use App\Models\kategoris_subkategoris;
 use App\Models\Productlog;
 class ProdukController extends Controller
 {

@@ -23,6 +23,17 @@ class PruneBatchesCommand extends Command
                 {--cancelled= : The number of hours to retain cancelled batch data }';
 
     /**
+     * The name of the console command.
+     *
+     * This name is used to identify the command during lazy loading.
+     *
+     * @var string|null
+     *
+     * @deprecated
+     */
+    protected static $defaultName = 'queue:prune-batches';
+
+    /**
      * The console command description.
      *
      * @var string
@@ -46,7 +57,7 @@ class PruneBatchesCommand extends Command
 
         $this->components->info("{$count} entries deleted.");
 
-        if ($this->option('unfinished') !== null) {
+        if ($this->option('unfinished')) {
             $count = 0;
 
             if ($repository instanceof DatabaseBatchRepository) {
@@ -56,7 +67,7 @@ class PruneBatchesCommand extends Command
             $this->components->info("{$count} unfinished entries deleted.");
         }
 
-        if ($this->option('cancelled') !== null) {
+        if ($this->option('cancelled')) {
             $count = 0;
 
             if ($repository instanceof DatabaseBatchRepository) {

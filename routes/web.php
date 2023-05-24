@@ -1,21 +1,34 @@
 <?php
 
+namespace App\Http\Controllers;
+
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\sessionproduk;
+use App\Http\Controllers\productController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\User\OrderHistoryController;
+use App\Http\Controllers\Admin\SubbCategoryController;
+use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__ . '/auth.php';
 
-<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,7 +46,6 @@ Route::get('/subcategories/{subcategory}/edit', [SubCategoryController::class, '
 Route::put('/subcategories/{subcategory}', [SubCategoryController::class, 'update'])->name('subcategories.update');
 Route::get('products/create', [ProductController::class,'create'])->name('admin.products.create');
 Route::post('products',[ProductController::class,'store'] )->name('admin.products.store');
-=======
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
@@ -77,17 +89,15 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
     Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
     Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile.update');
     Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
+    // Route::post('profile/alamat',[FrontUserProfileController::class, ''])
 
     // user order history
     Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
 
     //checkout
     Route::get('/checkout', [CartController::class, 'ShowCheckout'])->name('checkout');
-    Route::post('/checkout', [CartController::class, 'ShowCheckout'])->name('checkout');
-
-    //pembayaran
-    Route::get('/checkout/pembayaran/', [CartController::class, 'pilihanMetodePembayaran'])->name('checkout.pembayaran');
-    Route::post('/checkout/pembayaran/proses', [CartController::class, 'prosesPilihanMetodePembayaran'])->name('checkout.proses.pembayaran');
+    Route::post('/checkout/proses', [CartController::class, 'processCheckout'])->name('checkout.process');
+    Route::get('/checkout/receipt', [CartController::class, 'receipt'])->name('checkout.receipt');
 
 
 
@@ -145,5 +155,3 @@ Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('car
 Route::post('/cart/update', [CartController::class,'updateCart'])->name('cart.update');
 Route::get('/cart', [CartController::class,'showCart'])->name('cart');
 
-
->>>>>>> Stashed changes

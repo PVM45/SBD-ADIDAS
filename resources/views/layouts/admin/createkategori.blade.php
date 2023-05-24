@@ -47,10 +47,9 @@
 <div class="card">
     <div class="card-header"></div>
 <h4>Add Category
-<a href="{{url('categories')}}" class="btn btn-primary btn-sm text-white float-end">Back</a>
+<a href="{{url('admin/categories')}}" class="btn btn-primary btn-sm text-white float-end">Back</a>
 </h4>
 </div>
-
 <div class="card">
     <div class="card-header">
         <h4>Tambah Kategori</h4>
@@ -65,11 +64,11 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="{{ route('categories.store') }}">
+        <form method="POST" action="{{ route('admin.categories.store') }}">
             @csrf
             <div class="form-group">
                 <label for="name">Nama Kategori</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="nama_kategori" required>
             </div>
             <div class="form-group">
                 <label for="id">ID Kategori</label>

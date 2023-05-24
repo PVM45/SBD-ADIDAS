@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-<<<<<<< Updated upstream:app/Models/Category.php
+
     protected $table = 'categories';
-protected $fillable = ['name', 'id'];
-=======
+// protected $fillable = ['name', 'id'];
     protected $fillable = [
         'user_id',
         'pembayaran_id',
@@ -37,5 +36,4 @@ protected $fillable = ['name', 'id'];
     {
         return $this->hasOne(Alamat_pesanan::class);
     }
->>>>>>> Stashed changes:app/Models/pesanan.php
 }
