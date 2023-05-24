@@ -22,6 +22,10 @@
                   <li><a>Wishlist</a> </li>
               @elseif (request()->routeIs('produk.search'))
                   <li><a>Search Results</a> </li>
+              @elseif (request()->routeIs('author.user.change.password'))
+                  <li><a>Change Password</a> </li>
+              @elseif (request()->routeIs('author.user.profile'))
+                  <li><a>Profile Update</a> </li>
               @else
                   {{-- <li class="request()->routeIs('')? 'active': ''">{{ request()->route() }}</li> --}}
               @endif

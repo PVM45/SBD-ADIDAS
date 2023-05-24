@@ -160,7 +160,7 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li><a href="contact">Catch</a></li>
+                            <li><a href="/contact">Catch</a></li>
                             <div class="clearfix"></div>
                         </ul>
                         <div class="clearfix"></div>

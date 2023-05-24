@@ -91,11 +91,6 @@ Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-//TES
-Route::get('/checkout', function () {
-    return view('frontend.frontend_layout.checkout_page.checkout');
-});
-
 //tes co
 Route::get('/checkout', function () {
     return view('frontend.frontend_layout.checkout_page.checkout');
