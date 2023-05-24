@@ -2295,7 +2295,15 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     private function stopOutputBuffering(): void
     {
-        if (ob_get_level() !== $this->outputBufferingLevel) {
+        $bufferingLevel = ob_get_level();
+
+        if ($bufferingLevel !== $this->outputBufferingLevel) {
+            if ($bufferingLevel > $this->outputBufferingLevel) {
+                $message = 'Test code or tested code did not close its own output buffers';
+            } else {
+                $message = 'Test code or tested code closed output buffers other than its own';
+            }
+
             while (ob_get_level() >= $this->outputBufferingLevel) {
                 ob_end_clean();
             }

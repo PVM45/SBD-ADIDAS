@@ -23,10 +23,10 @@ class CartController extends Controller
     $cart->save();
 
 
-   
+
     // Redirect atau tampilkan pesan sukses
      return redirect()->back()->with('success', 'Komentar berhasil disimpan.');
-   
+
 }
 public function showCart(){
     $cartItems = keranjang_belanja::where('user_id', auth()->user()->id)->get();

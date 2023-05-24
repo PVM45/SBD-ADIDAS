@@ -3418,6 +3418,7 @@ fieldset[disabled] .btn-danger:hover {
 .btn-light {
     font-weight: 400;
     border-radius: 0;
+    background-color: white;
 }
 .btn-link,
 .btn-link.active,

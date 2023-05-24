@@ -37,7 +37,7 @@ return view('layouts.admin.viewproduk', compact('products'));
             'id_kategori' => 'required',
             'id_sub_kategori' => 'required',
             'product_description' => 'required',
-           
+
             'product_color' => ['required', 'string'],
     'product_size' => ['required', 'string'],
     'product_price' => ['required', 'numeric'],
@@ -49,7 +49,7 @@ return view('layouts.admin.viewproduk', compact('products'));
             'product_size.string' => 'Ukuran produk harus berupa teks.',
             'product_price.numeric' => 'Harga produk harus berupa angka.',
         ]);
-    
+
         // Save product to database
         $product = new produk;
         $product->id = $request->input('product_id');
@@ -57,21 +57,21 @@ return view('layouts.admin.viewproduk', compact('products'));
         $product->id_kategori = $request->input('id_kategori');
         $product->id_subkategori = $request->input('id_sub_kategori');
         $product->deskripsi_produk = $request->input('product_description');
-     
+
         $product->varian_warna = $request->input('product_color');
         $product->ukuran = $request->input('product_size');
-     
+
         $product->harga_produk = $request->input('product_price');
-    
+
         // Handle image uploads
         $product_image_1 = $request->file('product_image_1');
         $product_image_2 = $request->file('product_image_2');
         $product_image_3 = $request->file('product_image_3');
-    
+
         $product_image_1_path = $product_image_1->store('public/products');
         $product_image_2_path = $product_image_2->store('public/products');
         $product_image_3_path = $product_image_3->store('public/products');
-    
+
         $product->gambar_produk = str_replace('public/', '', $product_image_1_path);
         $product->gambar_produk_2 = str_replace('public/', '', $product_image_2_path);
         $product->gambar_produk_3 = str_replace('public/', '', $product_image_3_path);
@@ -108,38 +108,38 @@ public function update(Request $request, $id)
         'ukuran.string' => 'Ukuran produk harus berupa teks.',
         'harga_produk.numeric' => 'Harga produk harus berupa angka.',
     ]);
-    
+
     $product->nama_produk = $request->input('nama_produk');
     $product->id_kategori = $request->input('id_kategori');
     $product->id_subkategori = $request->input('id_subkategori');
     $product->deskripsi_produk = $request->input('deskripsi_produk');
-  
+
     $product->varian_warna = $request->input('varian_warna');
     $product->ukuran = $request->input('ukuran');
-    
+
     $product->harga_produk = $request->input('harga_produk');
-    
+
     if ($request->hasFile('gambar_produk')) {
         Storage::delete($product->gambar_produk);
         $product_image_1 = $request->file('gambar_produk');
         $product_image_1_path = $product_image_1->store('public/products');
         $product->gambar_produk = str_replace('public/', '', $product_image_1_path);
     }
-    
+
     if ($request->hasFile('gambar_produk_2')) {
         Storage::delete($product->gambar_produk_2);
         $product_image_2 = $request->file('gambar_produk_2');
         $product_image_2_path = $product_image_2->store('public/products');
         $product->gambar_produk_2 = str_replace('public/', '', $product_image_2_path);
     }
-    
+
     if ($request->hasFile('gambar_produk_3')) {
         Storage::delete($product->gambar_produk_3);
         $product_image_3 = $request->file('gambar_produk_3');
         $product_image_3_path = $product_image_3->store('public/products');
         $product->gambar_produk_3 = str_replace('public/', '', $product_image_3_path);
     }
-    
+
     $product->save();
     return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diubah.');
 }
@@ -158,7 +158,7 @@ public function updatestok(Request $request, $id)
     $currentStok = $product->stok;
     $additionalStok = $request->stok;
     $newStok = $currentStok + $additionalStok;
-    
+
     $product->stok = $newStok;
 
     // Jika stok habis, ubah status_produk menjadi false

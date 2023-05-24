@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->unsignedBigInteger('id_kategori');
             $table->unsignedBigInteger('id_subkategori');
+            $table->unsignedBigInteger('id_kategori');
+            $table->unsignedBigInteger('id_subkategori');
             $table->text('deskripsi_produk');
             $table->string('gambar_produk');
             $table->string('gambar_produk_2');

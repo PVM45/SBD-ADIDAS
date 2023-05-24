@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Adidas Admin    {{ __('Dashboard') }}</div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup>    {{ __('Dashboard') }}</div>
     </a>
 
     <!-- Divider -->
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{url('admin/dashboard')}}">
+        <a class="nav-link" href="/admin/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -36,17 +36,24 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Product:</h6>
+<<<<<<< Updated upstream
+                <a class="collapse-item" href="{{route('admin.products.create')}}">Add Product</a>
+                <a class="collapse-item" href="">Edit Product</a>
+                <a class="collapse-item" href="{{route('categories.create')}}">Add Category</a>
+=======
                 <a class="collapse-item" href="{{route('admin.products.index')}}">Add Product</a>
-                <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a> 
+                <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a>
+>>>>>>> Stashed changes
                 {{-- <form action="{{route('kategori')}}" method="POST">
                     @csrf
                 <button type="submit"> add category</button>
                 </form> --}}
-                <a class="collapse-item" href="{{route('admin.subcategories.index')}}">View SubCategory</a>
+                <a class="collapse-item" href="{{route('categories.index')}}">View Category</a>
+                <a class="collapse-item" href="{{route('subcategories.index')}}">View Sub Category</a>
             </div>
         </div>
     </li>
-    
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -97,7 +104,7 @@
             </div>
         </div>
     </li>
-   
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -107,5 +114,5 @@
     </div>
 
     <!-- Sidebar Message -->
-   
+
 </ul>

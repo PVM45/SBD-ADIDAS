@@ -5,7 +5,7 @@
                 <h4 class="card-title">Edit Sub Kategori</h4>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.subcategories.update', $subCategory) }}">
+                <form method="POST" action="{{ route('subcategories.update', $subCategory) }}">
                     @csrf
                     @method('PUT')
 
@@ -14,7 +14,16 @@
                         <input type="text" name="name" class="form-control" value="{{ $subCategory->name }}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit sublategori ini?')">Simpan</button>
+                    <div class="form-group">
+                        <label for="category_id">Kategori</label>
+                        <select name="category_id" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $subCategory->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

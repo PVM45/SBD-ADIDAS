@@ -85,10 +85,10 @@
                 <td>{{ $product->id_kategori }}</td>
                 <td>{{ $product->id_subkategori }}</td>
                 <td>{{ $product->deskripsi_produk }}</td>
-             
+
                 <td>{{ $product->varian_warna }}</td>
                 <td>{{ $product->ukuran }}</td>
-            
+
                 <td>{{ $product->harga_produk }}</td>
 
                 <td>{{ $product->status_produk }}</td>
@@ -101,7 +101,7 @@
                     <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus Produk ini?')">Delete</button>
+                        <button type="submit">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -176,9 +176,9 @@
 
 </body>
 
-</html>       
+</html>
 {{-- @foreach ($collection as $item)
-    
+
 @if ($item->status_pesanan == 'belum dibayar')
     <button class="btn btn-danger">belum Dibaya</button>
     @else
