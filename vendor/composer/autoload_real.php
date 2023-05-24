@@ -40,7 +40,7 @@ class ComposerAutoloaderInit965ff011991b3e0be19485f5635cc0ad
 
                 require $file;
             }
-        }, null, null), null, null);
+        }, null, null);
         foreach ($filesToLoad as $fileIdentifier => $file) {
             $requireFile($fileIdentifier, $file);
         }

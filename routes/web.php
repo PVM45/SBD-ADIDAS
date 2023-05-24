@@ -29,26 +29,10 @@ use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 */
 require __DIR__ . '/auth.php';
 
-<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories', [CategoryController::class, 'indexx'])->name('categories.index');
-    Route::get('/dashboard', [CategoryController::class, 'index']);
-    Route::get('/subcategories/create', [SubCategoryController::class, 'create'])->name('subcategories.create');
-    Route::post('/subcategories', [SubCategoryController::class, 'store'])->name('subcategories.store');
-Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('subcategories.index');
-Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::delete('/subcategories/{subcategory}', [SubCategoryController::class, 'destroy'])->name('subcategories.destroy');
-Route::get('/subcategories/{subcategory}/edit', [SubCategoryController::class, 'edit'])->name('subcategories.edit');
-Route::put('/subcategories/{subcategory}', [SubCategoryController::class, 'update'])->name('subcategories.update');
-Route::get('products/create', [ProductController::class,'create'])->name('admin.products.create');
-Route::post('products',[ProductController::class,'store'] )->name('admin.products.store');
-=======
-//admin
+
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/generate-report', [DashboardController::class,'generate'])->name('generate.report');
@@ -83,25 +67,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
 Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
 });
 
-    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-    Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/subcategories/{subcategory}', [SubbCategoryController::class, 'destroy'])->name('subcategories.destroy');
-    Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
-    Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
-    Route::get('/products/create', [ProdukController::class, 'create'])->name('products.create');
-    Route::post('/products', [ProdukController::class, 'store'])->name('products.store');
-    Route::get('/product', [ProdukController::class, 'index'])->name('products.index');
-    Route::get('/produk/edit/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
-    Route::put('/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
-    Route::delete('/produk/delete/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
-    Route::delete('/subcategories/{subcategory}', [SubbCategoryController::class, 'destroy'])->name('subcategories.destroy');
-    Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
-    Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
-    Route::get('/stok', [ProdukController::class, 'show'])->name('stok.index');
-    Route::get('/monitor', [ProdukController::class,'monitor'])->name('product.monitor');
-Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
-});
-
+  
 
 //user
 Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 'author']], function () {
