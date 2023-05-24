@@ -188,6 +188,10 @@ public function monitor()
         ->where('product_logs.type', 'in')
         ->select('produks.id','produks.nama_produk', 'product_logs.quantity', 'product_logs.created_at')
         ->paginate(10);
-        return view('layouts.admin.monitor', compact('products'));
+        $produks = produk::join('product_logs', 'produks.id', '=', 'product_logs.product_id')
+        ->where('product_logs.type', 'out')
+        ->select('produks.id','produks.nama_produk', 'product_logs.quantity', 'product_logs.created_at')
+        ->paginate(10);
+        return view('layouts.admin.monitor', compact('products','produks'));
     }
 }

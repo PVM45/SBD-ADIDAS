@@ -14,7 +14,7 @@
                         <input type="text" name="name" class="form-control" value="{{ $subCategory->name }}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit sublategori ini?')">Simpan</button>
                 </form>
             </div>
         </div>
