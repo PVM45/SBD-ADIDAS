@@ -19,4 +19,5 @@
         <li>{{ $item->produk->ukuran }}</li>
         <li>{{ $item->produk->status_produk}}</li>
     @endforeach
+   <form action="{{route('author.checkout')}}" method="get">@csrf <button type="submit">aaa</button></form>
 </ul>

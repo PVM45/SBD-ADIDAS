@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembayarans', function (Blueprint $table) {
-            $table->string('kode_pembayaran')->primary();
-            $table->float('jumlah_pembayaran');
+            $table->id();
+        
+        
             $table->string('metode_pembayaran');
-            $table->enum('status', ['belum_dibayar', 'sudah_dibayar'])->default('belum_dibayar');
+         
             $table->timestamps();
         });
     }

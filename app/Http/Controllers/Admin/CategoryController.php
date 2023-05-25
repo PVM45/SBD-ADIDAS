@@ -22,12 +22,12 @@ public function create()
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'name' => 'required|max:255',
+        'nama_kategori' => 'required|max:255',
         'id' => 'required|unique:kategoris|integer',
     ]);
 
     $category = new Kategori();
-    $category->nama_kategori = $validated['name'];
+    $category->nama_kategori = $validated['nama_kategori'];
     $category->id = $validated['id'];
     $category->save();
 
