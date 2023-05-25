@@ -51,7 +51,9 @@
             <h2>Add New Sub Category</h2>
         </div>
         <div class="pull-right">
+
             <a class="btn btn-primary" href="{{ route('admin.categories') }}"> Back</a>
+
         </div>
     </div>
 </div>
@@ -94,7 +96,7 @@
 
 </form>
 
-       
+
     </div>
 </div>
     </div></div>

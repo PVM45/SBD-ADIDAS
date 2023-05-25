@@ -463,15 +463,6 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'league/flysystem-local' => array(
-            'pretty_version' => '3.15.0',
-            'version' => '3.15.0.0',
-            'reference' => '543f64c397fefdf9cfeac443ffb6beff602796b3',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../league/flysystem-local',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'league/mime-type-detection' => array(
             'pretty_version' => '1.11.0',
             'version' => '1.11.0.0',
@@ -1249,15 +1240,6 @@
             'install_path' => __DIR__ . '/../symfony/yaml',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'tecnickcom/tcpdf' => array(
-            'pretty_version' => '6.6.2',
-            'version' => '6.6.2.0',
-            'reference' => 'e3cffc9bcbc76e89e167e9eb0bbda0cab7518459',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'tecnickcom/tcpdf' => array(
             'pretty_version' => '6.6.2',

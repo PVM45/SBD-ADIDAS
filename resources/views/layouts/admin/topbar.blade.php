@@ -6,7 +6,7 @@
     </button>
 
     <!-- Topbar Search -->
-
+   
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
@@ -34,7 +34,7 @@
             </div>
         </li>
 
-
+        
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
@@ -45,7 +45,7 @@
                 <img class="img-profile rounded-circle"
                     src="/img/undraw_profile.svg">
             </a>
-
+        
              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
                 <div class="dropdown-divider"></div>
@@ -56,8 +56,8 @@
             <button type="submit" >{{ __('Log Out') }}</button>
             </form>
                 </a>
-            </div>
-
+            </div> 
+          
         </li>
 
     </ul>

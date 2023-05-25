@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/css/admin.css" rel="stylesheet">
@@ -28,7 +26,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts/admin/side')
+       @include('layouts/admin/side')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,64 +36,104 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('layouts/admin/topbar')
+               @include('layouts/admin/topbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header"></div>
+<div class="row" >
+    <div class="col-md-12">
+<div class="card">
+    <div class="card-header"></div>
 
-                            </div>
-                            <div class="card">
 
-                                <div class="container">
-                                    <h1>Monitor Barang</h1>
-
-                                    <h2>Barang Masuk</h2>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Id Produk</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah</th>
-                                                <th>Tanggal Masuk</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($products as $product)
-                                                <tr>
-                                                    <td>{{ $product->id }}</td>
-                                                    <td>{{ $product->nama_produk }}</td>
-                                                    <td>{{ $product->quantity }}</td>
-                                                    <td>{{ $product->created_at }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    {{ $products->links() }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+<div class="card">
+    <div class="container">
+        <h1>Monitor Barang</h1>
+    
+        <div class="filter">
+            <label for="filter_type">Filter:</label>
+            <select id="filter_type" onchange="filterTable()">
+                <option value="all">Semua</option>
+                <option value="masuk">Barang Masuk</option>
+                <option value="keluar">Barang Keluar</option>
+            </select>
         </div>
-        <!-- /.container-fluid -->
-
+    
+      
+        <table class="table" id="table_masuk">
+            <thead>
+                <h2 id="judul_masuk">Barang Masuk</h2>
+                <tr>
+                    <th>Id Produk</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal Masuk</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->nama_produk }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div id="pagination_masuk">
+            {{ $products->links() }}
+        </div>
+    
+        <table class="table" id="table_keluar">
+         
+        
+            <thead>
+                <h2 id="judul_keluar">Barang Keluar</h2>
+                <tr>
+                    <th>Id Produk</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal Masuk</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($produks as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->nama_produk }}</td>
+                    <td>{{ $product->quantity }}</td>
+                    <td>{{ $product->created_at }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div id="pagination_keluar">
+            {{ $produks->links() }}
+        </div>
     </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-    @include('layouts/admin/footer')
-    <!-- End of Footer -->
-
+    
+</div>
+        </div>
     </div>
-    <!-- End of Content Wrapper -->
+</div>
+
+</div>
+    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            @include('layouts/admin/footer')
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -144,4 +182,33 @@
 
 </body>
 
-</html>
+</html>  
+<script>
+    // Fungsi untuk menampilkan tabel sesuai dengan filter yang dipilih
+    function filterTable() {
+        var filterType = document.getElementById("filter_type").value;
+
+        if (filterType === "masuk") {
+            document.getElementById("table_masuk").style.display = "table";
+            document.getElementById("pagination_masuk").style.display = "block";
+            document.getElementById("table_keluar").style.display = "none";
+            document.getElementById("pagination_keluar").style.display = "none";
+            document.getElementById("judul_masuk").style.display = "block";
+            document.getElementById("judul_keluar").style.display = "none";
+        } else if (filterType === "keluar") {
+            document.getElementById("table_masuk").style.display = "none";
+            document.getElementById("pagination_masuk").style.display = "none";
+            document.getElementById("table_keluar").style.display = "table";
+            document.getElementById("pagination_keluar").style.display = "block";
+            document.getElementById("judul_masuk").style.display = "none";
+            document.getElementById("judul_keluar").style.display = "block";
+        } else {
+            document.getElementById("table_masuk").style.display = "table";
+            document.getElementById("pagination_masuk").style.display = "block";
+            document.getElementById("table_keluar").style.display = "table";
+            document.getElementById("pagination_keluar").style.display = "block";
+            document.getElementById("judul_masuk").style.display = "block";
+            document.getElementById("judul_keluar").style.display = "block";
+        }
+    }
+</script>

@@ -99,7 +99,7 @@
         <textarea name="deskripsi_produk" id="deskripsi_produk" rows="5" required>{{ $product->deskripsi_produk }}</textarea>
     </div>
 
-
+   
 
     <div>
         <label for="varian_warna">Warna</label>
@@ -111,7 +111,7 @@
         <input type="text" name="ukuran" id="ukuran" value="{{ $product->ukuran }}" required>
     </div>
 
-
+    
 
     <div>
         <label for="harga_produk">Harga</label>
@@ -133,7 +133,7 @@
         <input type="file" name="gambar_produk_3" id="product_image_2" >
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit produk ini?')">Submit</button>
     </div></form>
     </div>
 </div>
