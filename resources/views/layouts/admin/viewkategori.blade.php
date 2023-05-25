@@ -46,13 +46,10 @@
     <div class="col-md-12">
 <div class="card">
     <div class="card-header"></div>
-<h4>Category
-    <a href="{{url('categories/create')}} " class="btn btn-primary btn-sm float-end">Add Category</a>
-</h4>
-</div>
-<div class="card">
-    <div class="card-header"></div>
-    <a href="{{url('subcategories/create')}} " class="btn btn-primary btn-sm float-end">Add Sub Category</a>
+<h4>Category</h4>
+    <a href="{{url('admin/categories/create')}} " class="btn btn-primary btn-sm float-end">Add Category</a>
+    <a href="{{url('admin/subcategories/create')}} " class="btn btn-primary btn-sm float-end">Add SubCategory</a>
+
 </div>
 <div class="card">
     <div class="card-header">
@@ -64,26 +61,27 @@
                 <tr>
                     <th>ID</th>
                     <th>Nama Kategori</th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->nama_kategori }}</td>
                         <td>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Delete</button>
                             </form>
                         </td>
                         <td>
-                            <form action="{{ route('category.update', $category->id) }}" method="POST">
+                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" name="name" value="{{ $category->name }}">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <input type="text" name="name" value="{{ $category->nama_kategori }}">
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit nama kategori ini?')">Update</button>
                             </form>
                         </td>
                     </tr>
@@ -154,6 +152,6 @@
 
 </body>
 
-</html>
+</html>        
 
 
