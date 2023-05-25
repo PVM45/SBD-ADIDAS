@@ -1562,7 +1562,7 @@ class Mailable implements MailableContract, Renderable
      *
      * @return void
      */
-    protected function prepareMailableForDelivery()
+    private function prepareMailableForDelivery()
     {
         if (method_exists($this, 'build')) {
             Container::getInstance()->call([$this, 'build']);

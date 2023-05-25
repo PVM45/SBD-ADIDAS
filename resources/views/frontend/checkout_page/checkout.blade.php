@@ -26,6 +26,41 @@
                 <div class="clearfix"></div>
                 <a class="order" href="#">Place Order</a>
             </div>
+
+        <form action="{{ route('author.checkout.process') }}" method="post">
+        @csrf
+        @foreach ($alamat as $alamat1)
+        <input type="radio" name="PilihanAlamat" id="existingAlamat{{ $loop->index }}" value="existing">
+        <label for="existingAlamat{{ $loop->index }}">{{ $alamat1->alamat }}</label>
+        <input type="hidden" value="{{ $alamat1->id }}" name="existingAlamat">
+        <br>
+        @endforeach
+        <input type="radio" name="PilihanAlamat" id="newAlamat" value="new">
+        <label for="newAlamat">Alamat Baru</label>
+        <input type="text" id="alamat_baru" style="display: none;" name="newAlamat">
+
+
+        <br>
+        <br>
+
+        {{-- <form method="POST" action="{{ route('author.checkout.proses.pembayaran') }}">
+            @csrf --}}
+
+            <label>Pilih metode pembayaran:</label>
+            <br>
+
+            @foreach ($pembayarans as $pembayaran)
+                <label>
+                    <input type="radio" name="metode_pembayaran" value="{{ $pembayaran->id }}">
+
+                    {{ $pembayaran->metode_pembayaran }}
+                </label>
+                <br>
+            @endforeach
+            <button type="submit">Place Order</button>
+        </form>
+
+
             <div class="col-md-9 cart-items">
                 <h1>My Shopping Bag (2)</h1>
                 <script>

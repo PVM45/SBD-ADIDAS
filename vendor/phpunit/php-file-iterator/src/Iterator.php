@@ -22,6 +22,7 @@ use FilterIterator;
 class Iterator extends FilterIterator
 {
     public const PREFIX = 0;
+
     public const SUFFIX = 1;
 
     /**

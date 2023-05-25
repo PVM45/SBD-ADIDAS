@@ -62,7 +62,6 @@ class Command extends SymfonyCommand
     protected $hidden = false;
 
     /**
->>>>>>> b789f4fb6c8db3a2d4b649c90ffc4e1626f270d0
      * Create a new console command instance.
      *
      * @return void
@@ -130,7 +129,7 @@ class Command extends SymfonyCommand
             null,
             InputOption::VALUE_OPTIONAL,
             'Do not run the command if another instance of the command is already running',
-            $this->isolated
+            false
         ));
     }
 
@@ -175,7 +174,7 @@ class Command extends SymfonyCommand
 
             return (int) (is_numeric($this->option('isolated'))
                         ? $this->option('isolated')
-                        : $this->isolatedExitCode);
+                        : self::SUCCESS);
         }
 
         $method = method_exists($this, 'handle') ? 'handle' : '__invoke';

@@ -29,7 +29,6 @@ use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 */
 require __DIR__ . '/auth.php';
 
-<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,7 +46,6 @@ Route::get('/subcategories/{subcategory}/edit', [SubCategoryController::class, '
 Route::put('/subcategories/{subcategory}', [SubCategoryController::class, 'update'])->name('subcategories.update');
 Route::get('products/create', [ProductController::class,'create'])->name('admin.products.create');
 Route::post('products',[ProductController::class,'store'] )->name('admin.products.store');
-=======
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
@@ -110,9 +108,26 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
     Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
     Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile.update');
     Route::post('/password/update', [FrontendUserProfileController::class, 'userpasswordupdate'])->name('user.update.password');
+    // Route::post('profile/alamat',[FrontUserProfileController::class, ''])
 
     // user order history
     Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
+
+    //checkout
+    Route::get('/checkout', [CartController::class, 'ShowCheckout'])->name('checkout');
+    Route::post('/checkout/proses', [CartController::class, 'processCheckout'])->name('checkout.process');
+    Route::get('/checkout/receipt', [CartController::class, 'receipt'])->name('checkout.receipt');
+
+
+
+
+
+    //coba
+    Route::post('/checkout/step1', [CartController::class, 'step1'])->name('checkout.step1');
+    Route::post('/checkout/step2', [CartController::class, 'step2'])->name('checkout.step2');
+    Route::post('/checkout/step3', [CartController::class, 'step1'])->name('checkout.step3');
+
+
 
 });
 
@@ -153,4 +168,5 @@ Route::get('/term_policy', function () {
 Route::post('/cart/add', [CartController::class,'addToCart']);
 Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class,'updateCart'])->name('cart.update');
-Route::get('/cart', [CartController::class,'showCart']);
+Route::get('/cart', [CartController::class,'showCart'])->name('cart');
+

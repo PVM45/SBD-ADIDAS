@@ -67,6 +67,6 @@ class Timebox
      */
     protected function usleep(int $microseconds)
     {
-        Sleep::usleep($microseconds);
+        usleep($microseconds);
     }
 }
