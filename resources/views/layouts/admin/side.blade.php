@@ -91,8 +91,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Order Reports:</h6>
-                <a class="collapse-item" href="login.html">Pesanan</a>
-               <a class="collapse-item" href="login.html">Payment</a>
+                <a class="collapse-item" href="{{route('admin.pesanan.konfirmasi')}}">Pesanan</a>
+                <a class="collapse-item" href="{{route('admin.metode_pembayaran.index')}}">Tambah Metode Bayar</a>
             </div>
         </div>
     </li>

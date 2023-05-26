@@ -16,7 +16,7 @@ return new class extends Migration
         
         
             $table->string('metode_pembayaran');
-         
+            $table->integer('nomor');
             $table->timestamps();
         });
     }
