@@ -17,7 +17,7 @@ class SubbCategoryController extends Controller
     }
     public function index()
     {
-        $subcategories = subkategori::join('kategoris', 'subkategoris.id_kategori', '=', 'kategoris.id')
+        $subcategories = subkategori::join('kategoris', 'subkategoris.kategori_id', '=', 'kategoris.id')
         ->select('subkategoris.id', 'subkategoris.nama_subkategori', 'kategoris.nama_kategori')
         ->get();
         $kategori=kategori::all();
@@ -34,7 +34,7 @@ class SubbCategoryController extends Controller
     $subcategory = new subkategori();
     $subcategory->nama_subkategori = $validated['nama_subkategori'];
     $subcategory->id = $validated['id'];
-    $subcategory->id_kategori = $validated['category_id'];
+    $subcategory->kategori_id = $validated['category_id'];
     $subcategory->save();
 
     return redirect('/admin/subcategories')->with('success', 'Sub Kategori berhasil ditambahkan!');
@@ -49,7 +49,7 @@ public function update(Request $request, $id)
 {
     $subcategory = subkategori::findOrFail($id);
     $subcategory->nama_subkategori = $request->name;
-    $subcategory->id_kategori = $request->input('kategori_id');
+    $subcategory->kategori_id= $request->input('kategori_id');
     $subcategory->save();
     return redirect()->back()->with('success', 'Category updated successfully');
 }
