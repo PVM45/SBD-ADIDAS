@@ -38,7 +38,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
-    Route::get('/produk', [FrontendPageController::class, 'index'])->name('produk');
+    // Route::get('/produk', [FrontendPageController::class, 'index'])->name('produk');
 });
 
 Route::middleware('auth')->group(function () {
@@ -69,7 +69,5 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     // Rute untuk menyimpan review
-Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
-
-  
+    Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
 });
