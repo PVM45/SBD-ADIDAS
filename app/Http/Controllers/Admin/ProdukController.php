@@ -54,8 +54,8 @@ return view('layouts.admin.viewproduk', compact('products'));
         $product = new produk;
         $product->id = $request->input('product_id');
         $product->nama_produk = $request->input('product_name');
-        $product->id_kategori = $request->input('id_kategori');
-        $product->id_subkategori = $request->input('id_sub_kategori');
+        $product->kategori_id = $request->input('id_kategori');
+        $product->subkategori_id = $request->input('id_sub_kategori');
         $product->deskripsi_produk = $request->input('product_description');
 
         $product->varian_warna = $request->input('product_color');
@@ -110,8 +110,8 @@ public function update(Request $request, $id)
     ]);
 
     $product->nama_produk = $request->input('nama_produk');
-    $product->id_kategori = $request->input('id_kategori');
-    $product->id_subkategori = $request->input('id_subkategori');
+    $product->kategori_id = $request->input('id_kategori');
+    $product->subkategori_id = $request->input('id_subkategori');
     $product->deskripsi_produk = $request->input('deskripsi_produk');
 
     $product->varian_warna = $request->input('varian_warna');
@@ -141,6 +141,10 @@ public function update(Request $request, $id)
     }
 
     $product->save();
+    $kategori_subkategori = kategoris_subkategoris::find($id);
+      $kategori_subkategori->kategori_id = $request->input('id_kategori');
+      $kategori_subkategori->subkategori_id = $request->input('id_sub_kategori');
+      $kategori_subkategori->save();
     return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diubah.');
 }
 
@@ -157,7 +161,6 @@ public function destroy($id)
     }
 
     Storage::delete([$product->gambar_produk, $product->gambar_produk_2, $product->gambar_produk_3]);
-
     $product->delete();
     $kategori_subkategori->delete();
 

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\produk;
 use App\Models\User;
 use TCPDF;
+use App\Models\omset;
+use App\Models\pesanan;
 use Illuminate\Support\Facades\Redirect;
 class DashboardController extends Controller
 {
@@ -14,7 +16,10 @@ class DashboardController extends Controller
         $jumlahProduk = produk::count();
         $users = User::where('id', '!=', 1)->get();
         $jumlahUser = $users->count();
-        return view('layouts.admin.dashboard',compact('jumlahProduk','jumlahUser'));
+        $pesanan=pesanan::count();
+        $omset = omset::first(); 
+        $total = $omset->total; 
+        return view('layouts.admin.dashboard',compact('jumlahProduk','jumlahUser','pesanan','total'));
     }
 
     public function run() {
@@ -26,8 +31,12 @@ class DashboardController extends Controller
               $jumlahProduk = produk::count();
               $users = User::where('id', '!=', 1)->get();
               $jumlahUser = $users->count();
-              $jumlahPesanan = 200;
-              $omset = 215000;
+              $Pesanan = pesanan::where('status_pesanan', 'terkonfirmasi')->get();
+              $jumlahPesanan=$Pesanan->count();
+              $Pesanans = pesanan::where('status_pesanan', 'belum_terkonfirmasi')->get();
+              $pesananpending=$Pesanans->count();
+              $omset = omset::all(); 
+              $total = $omset->total; 
       
               // Buat objek TCPDF
               $pdf = new TCPDF();
@@ -35,8 +44,8 @@ class DashboardController extends Controller
               // Set dokumen informasi dan header
               $pdf->SetCreator('ADIDAS');
               $pdf->SetAuthor('Kelompok 2');
-              $pdf->SetTitle('Laporan Dashboard Adidas');
-              $pdf->SetHeaderData('', 0, 'Laporan Dashboard Adidas', '');
+              $pdf->SetTitle('Laporan Dashboard Admin Adidas');
+              $pdf->SetHeaderData('', 0, 'Laporan Dashboard Admin Adidas', '');
       
               // Buat halaman
               $pdf->AddPage();
@@ -51,8 +60,9 @@ class DashboardController extends Controller
                   <h1>Laporan</h1>
                   <p>Jumlah Produk: ' . $jumlahProduk . '</p>
                   <p>Jumlah User: ' . $jumlahUser . '</p>
-                  <p>Jumlah Pesanan: ' . $jumlahPesanan . '</p>
-                  <p>Omset: Rp' . number_format($omset, 2) . '</p>
+                  <p>Jumlah Pesanan Sukses: ' . $jumlahPesanan . '</p>
+                  <p>Jumlah Pesanan Pending: ' . $pesananpending . '</p>
+                  <p>Omset: Rp' . number_format($total, 2) . '</p>
               ';
               $pdf->writeHTML($html, true, false, true, false, '');
       

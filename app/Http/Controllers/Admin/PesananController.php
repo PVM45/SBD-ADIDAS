@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\pesanan;
-use App\Models\User;
-use App\Models\alamat;
 use App\Models\pembayaran;
 use App\Models\produk_pesanan;
 use App\Models\Productlog;
+use App\Models\omset;
+use App\Models\produk;
 class PesananController extends Controller
 {
     public function konfirmasi()
@@ -27,20 +26,38 @@ class PesananController extends Controller
     public function prosesKonfirmasi(Request $request, $id)
     {
         $pesanan = pesanan::findOrFail($id);
-
+    
+        // Memeriksa stok produk sebelum mengonfirmasi pesanan
+        $produkPesanan = produk_pesanan::where('pesanan_id', $pesanan->id)->get();
+        foreach ($produkPesanan as $produk) {
+            $produkItem = Produk::findOrFail($produk->produk_id);
+            if ($produk->kuantitas > $produkItem->stok) {
+                return redirect()->route('admin.pesanan.konfirmasi', $pesanan->id)->with('error', 'Stok barang tidak mencukupi!');
+            }
+        }
+    
+        // Mengonfirmasi pesanan
         $pesanan->status_pesanan = 'terkonfirmasi';
         $pesanan->save();
-        $produkPesanan = produk_pesanan::where('pesanan_id', $pesanan->id)->get();
-
-        // Memasukkan data ke dalam tabel product_logs
+    
+        // Menambahkan total pembayaran ke dalam omset
+        $omset = Omset::firstOrNew([]);
+        $omset->total += $pesanan->total_pembayaran;
+        $omset->save();
+    
+        // Memasukkan data ke dalam tabel product_logs dan mengurangi stok produk
         foreach ($produkPesanan as $produk) {
             ProductLog::create([
                 'product_id' => $produk->produk_id,
                 'quantity' => $produk->kuantitas,
                 'type' => 'out'
             ]);
+    
+            $produkItem = Produk::findOrFail($produk->produk_id);
+            $produkItem->stok -= $produk->kuantitas;
+            $produkItem->save();
         }
-
+    
         return redirect()->route('admin.pesanan.konfirmasi', $pesanan->id)->with('success', 'Pesanan berhasil dikonfirmasi!');
     }
     public function batalkan(Request $request, $id)
@@ -49,12 +66,18 @@ class PesananController extends Controller
 
         $pesanan->status_pesanan = 'belum_terkonfirmasi';
         $pesanan->save();
+        $omset = omset::firstOrNew([]);
+        $omset->total -= $pesanan->total_pembayaran;
+     $omset->save();
         $produkPesanan = produk_pesanan::where('pesanan_id', $pesanan->id)->get();
         foreach ($produkPesanan as $produk) {
             ProductLog::where('product_id', $produk->produk_id)
                 ->where('type', 'out')
                 ->where('quantity', $produk->kuantitas)
                 ->delete();
+                $produkItem = produk::findOrFail($produk->produk_id);
+                $produkItem->stok += $produk->kuantitas;
+                $produkItem->save();
         }
       
         return redirect()->route('admin.pesanan.konfirmasi', $pesanan->id)->with('success', 'Pesanan berhasil dikonfirmasi!');
@@ -90,11 +113,13 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'metode_pembayaran' => 'required|string',
+        'nomor_pembayaran' => 'required|integer',
     ]);
 
     $metode = pembayaran::findOrFail($id);
     $metode->update([
         'metode_pembayaran' => $request->metode_pembayaran,
+        'nomor' => $request->nomor_pembayaran,
     ]);
 
     return redirect()->route('admin.metode_pembayaran.index')->with('success', 'Metode Pembayaran berhasil diperbarui!');

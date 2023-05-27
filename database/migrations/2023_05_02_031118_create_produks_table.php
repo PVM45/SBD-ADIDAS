@@ -15,8 +15,8 @@ return new class extends Migration
 
             $table->id();
             $table->string('nama_produk');
-            $table->unsignedBigInteger('id_kategori');
-            $table->unsignedBigInteger('id_subkategori');
+            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('subkategori_id');
             $table->text('deskripsi_produk');
             $table->string('gambar_produk');
             $table->string('gambar_produk_2');
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->float('harga_produk');
   ///
             $table->timestamps();
-            $table->foreign('id_kategori')->references('id')->on('subkategoris')->onDelete('cascade');
-            $table->foreign('id_subkategori')->references('id')->on('subkategoris')->onDelete('cascade');
+            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
+            $table->foreign('subkategori_id')->references('id')->on('subkategoris')->onDelete('cascade');
 
         });
     }

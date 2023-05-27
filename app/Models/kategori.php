@@ -11,10 +11,7 @@ class kategori extends Model
     protected $table = 'kategoris';
     protected $fillable = ['name', 'id'];
     public function subkategori()
-    {   
-        return $this->belongsToMany(subkategori::class);
+    {
+        return $this->hasMany(subkategori::class);
     }
-
-
-
 }
