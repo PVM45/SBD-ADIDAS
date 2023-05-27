@@ -6,8 +6,9 @@ use App\Models\rating;
 use App\Models\komentar;
 use App\Models\produk;
 use App\Models\kategori;
-use App\Models\subkategori;
+use App\Models\kategoris_subkategori;
 use App\Models\kategoris_subkategoris;
+use App\Models\subkategori;
 
 
 use Illuminate\Http\Request;
@@ -48,23 +49,20 @@ class productController extends Controller
 
     public function filter(Request $request)
     {
-
         $kategoris = Kategori::all();
-        $subkategoris = subkategori::all();
+        $subkategoris = Subkategori::all();
         $kategoriId = $request->input('kategori');
         $subkategoriId = $request->input('subkategori');
 
-        // Dapatkan objek kategori berdasarkan ID
+        // Dapatkan objek kategori dan subkategori berdasarkan ID
         $kategori = Kategori::findOrFail($kategoriId);
-
-        // Dapatkan subkategoris berdasarkan kategori yang dipilih
-        $subkategoriss = $kategori->subkategoris;
+        $subkategori = Subkategori::findOrFail($subkategoriId);
 
         // Lakukan filter berdasarkan kategori dan subkategori yang dipilih
         $produks = Produk::whereHas('subkategoris', function ($query) use ($subkategoriId) {
             $query->where('subkategori_id', $subkategoriId);
-        })->get();
+        })->where('kategori_id', $kategoriId)->get();
 
-        return view('produk.filterproduk', compact('produks', 'kategoris', 'subkategoris', 'subkategoriss'));
+        return view('produk.filterproduk', compact('produks', 'kategoris', 'subkategoris'));
     }
 }

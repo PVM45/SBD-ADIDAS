@@ -13,12 +13,12 @@ class subkategori extends Model
     protected $fillable = ['nama_subkategori,id,id_kategori'];
     public function kategori()
     {
-        return $this->belongsToMany(kategori::class);
+        return $this->belongsTo(Kategori::class);
     }
 
-    public function produk()
+    public function produks()
     {
-        return $this->hasMany(produk::class);
+        return $this->belongsToMany(Produk::class, 'kategori_subkategori', 'subkategori_id', 'produk_id')
+            ->using(KategorisSubkategoris::class);
     }
-
 }

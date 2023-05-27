@@ -14,15 +14,17 @@ class kategoris_subkategoris extends Model
     protected $fillable = ['produk,kategori,subkategori'];
     public function kategori()
     {
-        return $this->BelongsTo(kategori::class);
+        return $this->belongsTo(Kategori::class);
     }
+    
     public function subkategori()
     {
-        return $this->BelongsTo(subkategori::class);
+        return $this->belongsTo(Subkategori::class);
     }
+    
 
-    public function produk()
-    {
-        return $this->BelongsTo(produk::class);
-    }
+    // public function produk()
+    // {
+    //     return $this->hasMany(Produk::class);
+    // }
 }
