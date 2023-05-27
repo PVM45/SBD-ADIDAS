@@ -12,14 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('review_produks', function (Blueprint $table) {
+<<<<<<<< HEAD:database/salah_1/2023_05_02_034023_create_review_produks_table.php
 
+========
+>>>>>>>> 281930cec3f88ea3e13adc762cdd77d3715aff02:database/migrations/2023_05_02_034023_create_review_produks_table.php
             $table->unsignedBigInteger('id_produk');
             $table->unsignedBigInteger('id_user');
             $table->text('isi_ulasan');
             $table->datetime('tanggal');
             $table->timestamps('');
 
+<<<<<<<< HEAD:database/salah_1/2023_05_02_034023_create_review_produks_table.php
 
+========
+>>>>>>>> 281930cec3f88ea3e13adc762cdd77d3715aff02:database/migrations/2023_05_02_034023_create_review_produks_table.php
             $table->foreign('id_produk')->references('id')->on('produks')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
