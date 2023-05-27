@@ -30,9 +30,10 @@ class produk extends Model
         return $this->belongsToMany(Subkategori::class, 'kategoris_subkategoris', 'produk_id', 'subkategori_id');
     }
 
+
     public function kategori()
     {
-        return $this->hasMany(kategori::class);
+        return $this->belongsTo(Kategori::class);
     }
     public function rating()
     {
