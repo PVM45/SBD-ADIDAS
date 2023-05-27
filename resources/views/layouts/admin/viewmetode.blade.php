@@ -87,6 +87,7 @@
                                 @csrf
                                 @method('PUT')
                                 <input type="text" name="metode_pembayaran" value="{{ $metode->metode_pembayaran }}">
+                                <input type="text" name="nomor_pembayaran" value="{{ $metode->nomor}}">
                                 <button type="submit">Simpan</button>
                             </form>
                         </td>

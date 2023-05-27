@@ -113,11 +113,13 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'metode_pembayaran' => 'required|string',
+        'nomor_pembayaran' => 'required|integer',
     ]);
 
     $metode = pembayaran::findOrFail($id);
     $metode->update([
         'metode_pembayaran' => $request->metode_pembayaran,
+        'nomor' => $request->nomor_pembayaran,
     ]);
 
     return redirect()->route('admin.metode_pembayaran.index')->with('success', 'Metode Pembayaran berhasil diperbarui!');
