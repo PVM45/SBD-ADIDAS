@@ -6,7 +6,6 @@ use App\Models\rating;
 use App\Models\komentar;
 use App\Models\produk;
 use App\Models\kategori;
-use App\Models\kategoris_subkategori;
 use App\Models\kategoris_subkategoris;
 use App\Models\subkategori;
 
@@ -18,28 +17,28 @@ class productController extends Controller
 
     public function index()
     {
+//cek
+      $produks = produk::all();
+        return view('layouts.author.produk', compact('produks'));
+
         $produks = Produk::all();
-        $kategoris = kategori::all();
-        $subkategoris = subkategori::all();
-        return view('frontend.frontend_layout.product_page.products', compact('produks', 'kategoris', 'subkategoris'));
+        return view('frontend.frontend_layout.product_page.products', compact('produks'));
     }
 
     public function show($id)
-    {
-        $kategoris = kategori::all();
-        $subkategoris = subkategori::all();
-        $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
-        $produks = Komentar::where('produk_id', $id)->get();
-        $produksr = Rating::where('produk_id', $id)->take(1)->get();
-        $limit =  Produk::where('id', '!=', $id)->latest()->take(3)->get();
-        return view('frontend.frontend_layout.product_page.single_product', compact('produk', 'produks', 'limit', 'produks', 'produksr', 'kategoris', 'subkategoris'));
-    }
+{
+    $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
+    $produks = Komentar::where('produk_id', $id)->get();
+    $produksr = Rating::where('produk_id', $id)->take(1)->get();
+    $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
+    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produks','produksr'));
 
-    public function search(Request $request)
-    {
+}
+
+  public function search(Request $request)
+    {  $kategoris = Kategori::all();
+        $subkategoris = Subkategori::all();
         $keyword = $request->input('keyword');
-        $kategoris = kategori::all();
-        $subkategoris = subkategori::all();
         $products = Produk::where('nama_produk',  'LIKE', "%$keyword%")->get();
         if ($products->isEmpty()) {
             return view('produk.not-found');
@@ -65,4 +64,5 @@ class productController extends Controller
 
         return view('produk.filterproduk', compact('produks', 'kategoris', 'subkategoris'));
     }
+
 }

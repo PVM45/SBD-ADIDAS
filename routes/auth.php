@@ -69,7 +69,5 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 
     // Rute untuk menyimpan review
-Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
-
-  
+    Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
 });

@@ -28,6 +28,7 @@ use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__ . '/auth.php';
 
 require __DIR__ . '/auth.php';
 

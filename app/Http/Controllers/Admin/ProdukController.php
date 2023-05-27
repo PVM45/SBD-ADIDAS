@@ -157,6 +157,7 @@ public function destroy($id)
     }
 
     Storage::delete([$product->gambar_produk, $product->gambar_produk_2, $product->gambar_produk_3]);
+
     $product->delete();
     $kategori_subkategori->delete();
 

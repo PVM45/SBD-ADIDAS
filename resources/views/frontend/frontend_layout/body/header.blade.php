@@ -10,20 +10,21 @@
             <div class="login-bars ">
                 @auth
 
-                <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-address-card"></i></a>
-                <a class="btn btn-default " href="{{ route('cart') }}"><i class="icon fa fa-shopping-cart"></i></a>
-                <a class="btn btn-danger " href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i></a>
-                <a class="btn btn-dark href=" {{ route('logout') }} onclick="event.preventDefault();
+                    <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-address-card"></i></a>
+                    <a class="btn btn-default " href="{{ route('cart') }}"><i class="icon fa fa-shopping-cart"></i></a>
+                    <a class="btn btn-danger " href="{{ route('listWishlist') }}"><i class="icon fa fa-heart"></i></a>
+                    <a class="btn btn-dark href=" {{ route('logout') }}
+                        onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                    <i class="icon fa fa-sign-out"></i>
-                </a>
+                        <i class="icon fa fa-sign-out"></i>
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 @else
-                <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
-                        class="icon fa fa-lock"></i>Login/Register</a>
+                    <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
+                            class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth
                 <!-- ini kolom searching -->
                 {{-- <form action="{{ route('produk.search') }}" method="GET">
@@ -76,30 +77,29 @@
                                     @csrf
                                     <button type="submit">shop</button>
                                 </form> --}}
-                                <a href="{{route('produk')}}">produk</a>
+                                <a href="{{ route('produk') }}">produk</a>
                             </li>
                             @foreach ($kategoris as $kategori)
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{$kategori->nama_kategori}}
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="row">
-                                        <div class="col-sm-4 menu-img-pad">
-                                            @foreach ($subkategoris as $subkategori)
-                                            <ul class="multi-column-dropdown">
-                                                <li><a
-                                                        href="{{ route('produk.filter', ['kategori' => $kategori->id, 'subkategori' => $subkategori->id]) }}">{{$subkategori->nama_subkategori}}</a>
-                                                </li>
-                                            </ul>
-                                            @endforeach
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        {{ $kategori->nama_kategori }}
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-4 menu-img-pad">
+                                                @foreach ($subkategoris as $subkategori)
+                                                    <ul class="multi-column-dropdown">
+                                                        <li><a
+                                                                href="{{ route('produk.filter', ['kategori' => $kategori->id, 'subkategori' => $subkategori->id]) }}">{{ $subkategori->nama_subkategori }}</a>
+                                                        </li>
+                                                    </ul>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                    </div>
-                                </ul>
-                            </li>
-                            </li>
+                                    </ul>
+                                </li>
+                                </li>
                             @endforeach
                     </div>
                     </ul>
