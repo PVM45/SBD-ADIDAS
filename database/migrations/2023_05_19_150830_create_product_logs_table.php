@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subkategoris', function (Blueprint $table) {
+        Schema::create('product_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_subkategori');
-            $table->unsignedBigInteger('kategori_id');
+            $table->foreignId('product_id')->constrained('produks');
+            $table->string('type');
+            $table->integer('quantity');
             $table->timestamps();
-            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subkategoris');
+        Schema::dropIfExists('product_logs');
     }
 };

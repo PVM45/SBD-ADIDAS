@@ -8,25 +8,28 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('wishlists', function (Blueprint $table) {
-
+        Schema::create('alamats', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('produk_id');
+            $table->string('alamat');
             $table->timestamps();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('wishlists');
+        Schema::dropIfExists('alamats');
     }
 };
