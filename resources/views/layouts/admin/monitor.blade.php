@@ -96,7 +96,7 @@
                     <th>Id Produk</th>
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
-                    <th>Tanggal Masuk</th>
+                    <th>Tanggal Keluar</th>
                 </tr>
             </thead>
             <tbody>

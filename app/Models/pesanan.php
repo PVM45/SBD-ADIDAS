@@ -35,4 +35,9 @@ class pesanan extends Model
     {
         return $this->belongsTo(Pembayaran::class);
     }
+    public function produkPesanan()
+    {
+        return $this->hasMany(produk_pesanan::class, 'id');
+    }
+
 }

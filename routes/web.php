@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\OrderHistoryController;
 use App\Http\Controllers\Admin\SubbCategoryController;
+use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
@@ -66,6 +67,13 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('/stok', [ProdukController::class, 'show'])->name('stok.index');
     Route::get('/monitor', [ProdukController::class,'monitor'])->name('product.monitor');
 Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
+Route::get('/pesanan/konfirmasi', [PesananController::class, 'konfirmasi'])->name('pesanan.konfirmasi');
+Route::post('/pesanan/{id}/konfirmasi', [PesananController::class, 'prosesKonfirmasi'])->name('pesanan.prosesKonfirmasi');
+Route::post('/pesanan/{id}/batalkan', [PesananController::class, 'batalkan'])->name('pesanan.batalkanKonfirmasi');
+Route::get('metode_pembayaran', [PesananController::class, 'index'])->name('metode_pembayaran.index');
+Route::post('metode_pembayaran', [PesananController::class, 'store'])->name('metode_pembayaran.store');
+Route::put('metode_pembayaran/{id}', [PesananController::class, 'update'])->name('metode_pembayaran.update');
+Route::delete('metode_pembayaran/{id}', [PesananController::class, 'destroy'])->name('metode_pembayaran.destroy');
 });
 
    
@@ -92,12 +100,7 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
 
 
 
-    //coba
-    Route::post('/checkout/step1', [CartController::class, 'step1'])->name('checkout.step1');
-    Route::post('/checkout/step2', [CartController::class, 'step2'])->name('checkout.step2');
-    Route::post('/checkout/step3', [CartController::class, 'step1'])->name('checkout.step3');
-
-
+    
 
 });
 
@@ -117,8 +120,6 @@ Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
 
 
-
-//tes contact
 Route::get('/contact', function () {
     return view('frontend.frontend_layout.contact_page.contact');
 })->name('contact');

@@ -14,4 +14,5 @@ class Productlog extends Model
     {
         return $this->belongsTo(produk::class, 'product_id');
     }
+  
 }

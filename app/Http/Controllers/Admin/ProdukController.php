@@ -147,10 +147,23 @@ public function update(Request $request, $id)
 public function destroy($id)
 {
     $product = produk::find($id);
+    if (!$product) {
+        return redirect()->route('admin.products.index')->with('error', 'Produk tidak ditemukan.');
+    }
+
+    $kategori_subkategori = kategoris_subkategoris::where('produk_id', $id)->first();
+    if (!$kategori_subkategori) {
+        return redirect()->route('admin.products.index')->with('error', 'Data kategori dan subkategori tidak ditemukan.');
+    }
+
     Storage::delete([$product->gambar_produk, $product->gambar_produk_2, $product->gambar_produk_3]);
+
     $product->delete();
+    $kategori_subkategori->delete();
+
     return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
 }
+
 
 public function updatestok(Request $request, $id)
 {
