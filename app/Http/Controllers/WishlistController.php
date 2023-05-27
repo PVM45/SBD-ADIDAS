@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\produk;
 use App\Models\wishlist;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ class WishlistController extends Controller
 {
     public function addProduct(Request $request, $produkId)
     {
+        $produkId = $request->input('produk_id');
+
         $user = Auth::user();
         $wishlist = Wishlist::where('user_id', $user->id)
             ->where('produk_id', $produkId)
@@ -22,7 +25,7 @@ class WishlistController extends Controller
 
         $wishlist = new Wishlist();
         $wishlist->user_id = $user->id;
-        $wishlist->product_id = $produkId;
+        $wishlist->produk_id = $produkId;
         $wishlist->save();
 
         return redirect()->back()->with('success', 'Product added to wishlist.');
@@ -32,7 +35,7 @@ class WishlistController extends Controller
     {
         $user = Auth::user();
         $wishlist = Wishlist::where('user_id', $user->id)
-            ->where('product_id', $produkId)
+            ->where('produk_id', $produkId)
             ->first();
 
         if (!$wishlist) {
@@ -42,5 +45,15 @@ class WishlistController extends Controller
         $wishlist->delete();
 
         return redirect()->back()->with('success', 'Product removed from wishlist.');
+    }
+    public function listWishList()
+    {
+        if(Auth::check()){
+            $wishlists = Wishlist::with(['produk'])->where('user_id', Auth::id())->latest()->paginate(5);
+        }else{
+            $wishlists = [];
+        }
+        //return $wishlists;
+        return view('frontend.frontend_layout.wishlist_page.wishlist_list', compact('wishlists'));
     }
 }

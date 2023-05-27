@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup>    {{ __('Dashboard') }}</div>
+        <div class="sidebar-brand-text mx-3">Adidas Admin    {{ __('Dashboard') }}</div>
     </a>
 
     <!-- Divider -->
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="/admin/dashboard">
+        <a class="nav-link" href="{{url('admin/dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -36,18 +36,16 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Product:</h6>
-                <a class="collapse-item" href="addproduct">Add Product</a>
-                <a class="collapse-item" href="">Edit Product</a>
-                <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a> 
-                {{-- <form action="{{route('kategori')}}" method="POST">
-                    @csrf
-                <button type="submit"> add category</button>
-                </form> --}}
-                <a class="collapse-item" href="cards.html">View Category</a>
+
+
+                <a class="collapse-item" href="{{route('admin.products.index')}}">Add Product</a>
+                <a class="collapse-item" href="{{url('admin/categories')}}">Add Category</a>
+
+                <a class="collapse-item" href="{{route('admin.subcategories.index')}}">View SubCategory</a>
             </div>
         </div>
     </li>
-    
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -65,6 +63,18 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.stok.index')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Edit Stock</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.product.monitor')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Monitor Barang</span></a>
+    </li>
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -81,8 +91,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Order Reports:</h6>
-                <a class="collapse-item" href="login.html">Orders & Payment</a>
-              
+                <a class="collapse-item" href="{{route('admin.pesanan.konfirmasi')}}">Pesanan</a>
+                <a class="collapse-item" href="{{route('admin.metode_pembayaran.index')}}">Tambah Metode Bayar</a>
             </div>
         </div>
     </li>
@@ -96,5 +106,5 @@
     </div>
 
     <!-- Sidebar Message -->
-   
+
 </ul>

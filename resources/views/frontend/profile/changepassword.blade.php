@@ -2,7 +2,7 @@
 
 @section('userdashboard_content')
     <div class="card-body">
-        <form action="{{ route('user.update.password') }}" method="post">
+        <form action="{{ route('author.user.update.password') }}" method="post">
             @csrf
             <div class="form-group">
                 <h5>Current Password Field <span class="text-danger">*</span></h5>
@@ -41,5 +41,5 @@
                 <button type="submit" class="btn btn-rounded btn-primary mb-5">Update</button>
             </div>
         </form>
-    </div>
+    </div><br>
 @endsection

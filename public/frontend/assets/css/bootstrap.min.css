@@ -3362,6 +3362,13 @@ fieldset[disabled] .btn-warning:hover {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
+
+}
+.btn-dark {
+    color: white;
+    background-color: #100b0b;
+    border-color: #100b0b;
+
 }
 .btn-danger.active,
 .btn-danger.focus,
@@ -3407,6 +3414,11 @@ fieldset[disabled] .btn-danger:hover {
     font-weight: 400;
     color: #337ab7;
     border-radius: 0;
+}
+.btn-light {
+    font-weight: 400;
+    border-radius: 0;
+    background-color: white;
 }
 .btn-link,
 .btn-link.active,

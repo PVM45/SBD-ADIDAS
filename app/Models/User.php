@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+
+    // protected $table = 'penggunas';
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,12 +20,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+
         'role_id',
         'name',
         'nomor_telepon',
         'alamat',
         'email',
         'password',
+        'nama_user',
+        'nomor_telepon',
+        'alamat',
     ];
 
     /**
@@ -47,5 +53,9 @@ class User extends Authenticatable
 
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
     }
 }

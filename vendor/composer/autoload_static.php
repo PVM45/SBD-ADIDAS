@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
+class ComposerStaticInit965ff011991b3e0be19485f5635cc0ad
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -526,6 +526,9 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
+        'App\\Http\\Controllers\\Admin\\PesananController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PesananController.php',
+        'App\\Http\\Controllers\\Admin\\ProdukController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProdukController.php',
+        'App\\Http\\Controllers\\Admin\\SubbCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubbCategoryController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
         'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
@@ -535,27 +538,55 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Author\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Author/DashboardController.php',
+        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
+        'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
+        'App\\Http\\Controllers\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Frontend\\FrontendPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/FrontendPageController.php',
+        'App\\Http\\Controllers\\Frontend\\FrontendUserProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/FrontendUserProfileController.php',
+        'App\\Http\\Controllers\\RatingController' => __DIR__ . '/../..' . '/app/Http/Controllers/RatingController.php',
+        'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
+        'App\\Http\\Controllers\\SubCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubCategoryController.php',
+        'App\\Http\\Controllers\\SubscribeController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubscribeController.php',
+        'App\\Http\\Controllers\\User\\OrderDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/OrderDetailsController.php',
+        'App\\Http\\Controllers\\User\\OrderHistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/OrderHistoryController.php',
+        'App\\Http\\Controllers\\User\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WishlistController.php',
+        'App\\Http\\Controllers\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/WishlistController.php',
+        'App\\Http\\Controllers\\productController' => __DIR__ . '/../..' . '/app/Http/Controllers/productController.php',
+        'App\\Http\\Controllers\\sessionproduk' => __DIR__ . '/../..' . '/app/Http/Controllers/sessionproduk.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\AuthorMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthorMiddleware.php',
+        'App\\Http\\Middleware\\CekRole' => __DIR__ . '/../..' . '/app/Http/Middleware/CekRole.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
+        'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
+        'App\\Mail\\EmailSubscription' => __DIR__ . '/../..' . '/app/Mail/EmailSubscription.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Productlog' => __DIR__ . '/../..' . '/app/Models/Productlog.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
+        'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/app/Models/SubCategory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\alamat' => __DIR__ . '/../..' . '/app/Models/alamat.php',
         'App\\Models\\kategori' => __DIR__ . '/../..' . '/app/Models/kategori.php',
+        'App\\Models\\kategori_produk' => __DIR__ . '/../..' . '/app/Models/kategori_produk.php',
+        'App\\Models\\kategoris_subkategoris' => __DIR__ . '/../..' . '/app/Models/kategoris_subkategoris.php',
         'App\\Models\\keranjang_belanja' => __DIR__ . '/../..' . '/app/Models/keranjang_belanja.php',
+        'App\\Models\\komentar' => __DIR__ . '/../..' . '/app/Models/komentar.php',
+        'App\\Models\\omset' => __DIR__ . '/../..' . '/app/Models/omset.php',
         'App\\Models\\pembayaran' => __DIR__ . '/../..' . '/app/Models/pembayaran.php',
+        'App\\Models\\pengguna' => __DIR__ . '/../..' . '/app/Models/pengguna.php',
         'App\\Models\\pesanan' => __DIR__ . '/../..' . '/app/Models/pesanan.php',
         'App\\Models\\produk' => __DIR__ . '/../..' . '/app/Models/produk.php',
+        'App\\Models\\produk_pesanan' => __DIR__ . '/../..' . '/app/Models/produk_pesanan.php',
+        'App\\Models\\rating' => __DIR__ . '/../..' . '/app/Models/rating.php',
         'App\\Models\\review_produk' => __DIR__ . '/../..' . '/app/Models/review_produk.php',
         'App\\Models\\subkategori' => __DIR__ . '/../..' . '/app/Models/subkategori.php',
         'App\\Models\\wishlist' => __DIR__ . '/../..' . '/app/Models/wishlist.php',
@@ -684,7 +715,9 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
         'Database\\Seeders\\SubKategori' => __DIR__ . '/../..' . '/database/seeders/SubKategori.php',
         'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
+        'Database\\Seeders\\UserTableSeeders' => __DIR__ . '/../..' . '/database/seeders/UserTableSeeders.php',
         'Database\\Seeders\\pivot_kategori_subkategori' => __DIR__ . '/../..' . '/database/seeders/pivot_kategori_subkategori.php',
+        'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -3534,6 +3567,7 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'NunoMaduro\\Collision\\Provider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Provider.php',
         'NunoMaduro\\Collision\\SolutionsRepositories\\NullSolutionsRepository' => __DIR__ . '/..' . '/nunomaduro/collision/src/SolutionsRepositories/NullSolutionsRepository.php',
         'NunoMaduro\\Collision\\Writer' => __DIR__ . '/..' . '/nunomaduro/collision/src/Writer.php',
+        'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
@@ -3688,7 +3722,7 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'PHPUnit\\Framework\\MockObject\\Verifiable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/MockObject/Verifiable.php',
         'PHPUnit\\Framework\\NoChildTestSuiteException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/NoChildTestSuiteException.php',
         'PHPUnit\\Framework\\OutputError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/OutputError.php',
-        'PHPUnit\\Framework\\PHPTAssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/PHPTAssertionFailedError.php',
+        'PHPUnit\\Framework\\PHPTAssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/PhptAssertionFailedError.php',
         'PHPUnit\\Framework\\Reorderable' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Reorderable.php',
         'PHPUnit\\Framework\\RiskyTestError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/RiskyTestError.php',
         'PHPUnit\\Framework\\SelfDescribing' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/SelfDescribing.php',
@@ -4447,6 +4481,7 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Psy\\VersionUpdater\\SelfUpdate' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/SelfUpdate.php',
+        'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',
@@ -5850,6 +5885,17 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/PhpToken.php',
         'Symfony\\Polyfill\\Uuid\\Uuid' => __DIR__ . '/..' . '/symfony/polyfill-uuid/Uuid.php',
+        'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
+        'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
+        'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
+        'TCPDF_COLORS' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_colors.php',
+        'TCPDF_FILTERS' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_filters.php',
+        'TCPDF_FONTS' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_fonts.php',
+        'TCPDF_FONT_DATA' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_font_data.php',
+        'TCPDF_IMAGES' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_images.php',
+        'TCPDF_IMPORT' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_import.php',
+        'TCPDF_PARSER' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_parser.php',
+        'TCPDF_STATIC' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_static.php',
         'Termwind\\Actions\\StyleToMethod' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Actions/StyleToMethod.php',
         'Termwind\\Components\\Anchor' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Components/Anchor.php',
         'Termwind\\Components\\BreakLine' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Components/BreakLine.php',
@@ -5940,10 +5986,10 @@ class ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit9f3fa892f7f17323eeaa47e2cd5442da::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit965ff011991b3e0be19485f5635cc0ad::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit965ff011991b3e0be19485f5635cc0ad::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit965ff011991b3e0be19485f5635cc0ad::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit965ff011991b3e0be19485f5635cc0ad::$classMap;
 
         }, null, ClassLoader::class);
     }

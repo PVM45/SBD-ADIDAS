@@ -68,7 +68,7 @@
             @csrf
             <div class="form-group">
                 <label for="name">Nama Kategori</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="nama_kategori" required>
             </div>
             <div class="form-group">
                 <label for="id">ID Kategori</label>

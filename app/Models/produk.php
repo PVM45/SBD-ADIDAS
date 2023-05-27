@@ -9,6 +9,7 @@ class produk extends Model
 {
     use HasFactory;
 
+    protected $table = 'produks';
     protected $fillable = [
         'id_produk',
         'nama_produk',
@@ -24,10 +25,29 @@ class produk extends Model
         'harga_produk'
     ];
 
-    public function subkategoris() {
-        return $this->hasMany(subkategori::class);
+    public function subkategoris()
+    {
+        return $this->belongsToMany(Subkategori::class, 'kategoris_subkategoris', 'produk_id', 'subkategori_id');
     }
-    public function kategori_produks() {
-        return $this->hasMany(kategori_produk::class);
+
+    public function kategori()
+    {
+        return $this->hasMany(kategori::class);
+    }
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class);
+    }
+    public function logs()
+    {
+        return $this->hasMany(ProductLog::class);
+    }
+    public function produk_pesanan()
+    {
+        return $this->hasMany(produk_pesanan::class);
     }
 }

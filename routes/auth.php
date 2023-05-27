@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Frontend\FrontendUserProfileController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -34,7 +38,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
-    Route::get('/produk', [FrontendPageController::class, 'index'])->name('produk');
+    // Route::get('/produk', [FrontendPageController::class, 'index'])->name('produk');
 });
 
 Route::middleware('auth')->group(function () {
@@ -57,12 +61,15 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
 
-    Route::post('/wishlist/{productId}', [WishlistController::class, 'addProduct'])->name('wishlist.add');
-    Route::delete('/wishlist/{productId}', [WishlistController::class, 'removeProduct'])->name('wishlist.remove');
+    Route::post('/wishlist/{produkId}}', [WishlistController::class, 'addProduct'])->name('wishlist.add');
+    Route::delete('/wishlist/{produkId}', [WishlistController::class, 'removeProduct'])->name('wishlist.remove');
+
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
+    // Rute untuk menyimpan review
+Route::post('/single_produk/{produkId}/review', [ReviewController::class, 'store'])->name('Review.store');
 
   
 });
