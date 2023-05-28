@@ -22,9 +22,8 @@ class kategoris_subkategoris extends Model
         return $this->belongsTo(Subkategori::class);
     }
     
-
-    // public function produk()
-    // {
-    //     return $this->hasMany(Produk::class);
-    // }
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
 }

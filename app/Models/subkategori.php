@@ -16,7 +16,18 @@ class subkategori extends Model
         return $this->belongsTo(Kategori::class);
     }
 
+    public function kategoris()
+    {
+        return $this->belongsToMany(Kategori::class);
+    }
+
     public function produks()
+    {
+        return $this->belongsToMany(Produk::class, 'kategori_subkategori', 'subkategori_id', 'produk_id')
+            ->using(KategorisSubkategoris::class);
+    }
+
+    public function produk()
     {
         return $this->belongsToMany(Produk::class, 'kategori_subkategori', 'subkategori_id', 'produk_id')
             ->using(KategorisSubkategoris::class);

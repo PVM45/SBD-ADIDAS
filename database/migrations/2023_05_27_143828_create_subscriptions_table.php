@@ -8,23 +8,26 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('pembayarans', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-        
-        
-            $table->string('metode_pembayaran');
-            $table->integer('nomor')->nullable();
+            $table->string('email')->unique();
             $table->timestamps();
+    
         });
     }
+
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('pembayarans');
+        Schema::dropIfExists('subscriptions');
     }
 };

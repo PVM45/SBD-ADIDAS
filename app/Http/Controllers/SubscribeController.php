@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class SubscribeController extends Controller
 {
-    public function kirimEmail(Request $request)
+    public function subscribe(Request $request)
     {
-        $email = $request->input('email'); // Mendapatkan email dari input pengguna
-
-        // Kirim email menggunakan fungsi Mail::to()
-        Mail::to($email)->send(new \App\Mail\EmailSubscription());
-
-        return redirect()->back()->with('success', 'Email telah terkirim!');
+        $email = $request->input('email');
+    
+        // Simpan email ke database
+        subscription::create(['email' => $email]);
+    
+        // Kirim email terima kasih
+        subscription::KirimEmail($email);
+    
+        return redirect()->back()->with('success', 'Terima kasih telah subscribe!');
     }
 }
