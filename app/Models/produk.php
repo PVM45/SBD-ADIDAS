@@ -25,10 +25,21 @@ class produk extends Model
         'harga_produk'
     ];
 
-    public function subkategori() {
-        return $this->hasMany(subkategori::class);
+    public function subkategoris()
+    {
+        return $this->belongsToMany(Subkategori::class, 'kategoris_subkategoris', 'produk_id', 'subkategori_id');
     }
-    public function kategori() {
+    public function subkategoris2()
+    {
+        return $this->hasMany(Subkategori::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+    public function kategoris()
+    {
         return $this->hasMany(kategori_produk::class);
     }
     public function rating()
@@ -47,6 +58,4 @@ class produk extends Model
     {
         return $this->hasMany(produk_pesanan::class);
     }
-
-  
 }

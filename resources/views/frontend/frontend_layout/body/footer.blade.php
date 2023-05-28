@@ -1,11 +1,11 @@
 
 <div class="sub-news">
     <div class="container">
-        <form>
+        <form action=" {{ route('subscribe') }} " method="POST">
+            @csrf
             <h3>DAFTARKAN EMAIL ANDA UNTUK MENDAPATKAN INFO DAN PENAWARAN SPESIAL</h3>
-            <input type="text" class="sub-email" value="Email" onfocus="this.value = '';"
-                onblur="if (this.value == '') {this.value = 'Email';}">
-            <a class="btn btn-default subs-btn" href="#" role="button" >SUBSCRIBE</a>
+            <input type="email" name="email" class="sub-email">
+            <button> SUBSCRIBE </button>
         </form>
     </div>
 </div>
@@ -25,7 +25,7 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Short links</h3>
             <ul class="shot-links">
-                <li><a href="/contact">Contact us</a></li>
+                <li><a href="{{ route('contact') }}">Contact us</a></li>
                 <li><a href="#">Support</a></li>
                 <li><a href="#">Delivery</a></li>
 

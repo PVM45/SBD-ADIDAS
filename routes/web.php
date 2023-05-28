@@ -12,9 +12,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\OrderHistoryController;
 use App\Http\Controllers\Admin\SubbCategoryController;
 use App\Http\Controllers\Admin\PesananController;
+use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
+use App\Http\Controllers\SubscribeController;
 
 
 
@@ -30,14 +33,22 @@ use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 */
 require __DIR__ . '/auth.php';
 
-Route::get('/', function () {
-    return view('welcome');
-});
+require __DIR__ . '/auth.php';
+
+
 
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/generate-report', [DashboardController::class,'generate'])->name('generate.report');
+
+    //useradmin
+    Route::get('/useradmin', [UserAdminController::class, 'index'])->name('useradmin');
+    Route::get('/useradmin/create', [UserAdminController::class, 'create'])->name('useradmin.create');
+    Route::post('/useradmin', [UserAdminController::class, 'store'])->name('useradmin.store');
+    Route::put('/useradmin/{id}', [UserAdminController::class, 'update'])->name('useradmin.update');
+    Route::delete('/useradmin/{id}', [UserAdminController::class, 'destroy'])->name('useradmin.destroy');
+
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
@@ -65,23 +76,23 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('/subcategories/{subcategory}/edit', [SubbCategoryController::class, 'edit'])->name('subcategories.edit');
     Route::put('/subcategories/{subcategory}', [SubbCategoryController::class, 'update'])->name('subcategories.update');
     Route::get('/stok', [ProdukController::class, 'show'])->name('stok.index');
-    Route::get('/monitor', [ProdukController::class,'monitor'])->name('product.monitor');
-Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
-Route::get('/pesanan/konfirmasi', [PesananController::class, 'konfirmasi'])->name('pesanan.konfirmasi');
-Route::post('/pesanan/{id}/konfirmasi', [PesananController::class, 'prosesKonfirmasi'])->name('pesanan.prosesKonfirmasi');
-Route::post('/pesanan/{id}/batalkan', [PesananController::class, 'batalkan'])->name('pesanan.batalkanKonfirmasi');
-Route::get('metode_pembayaran', [PesananController::class, 'index'])->name('metode_pembayaran.index');
-Route::post('metode_pembayaran', [PesananController::class, 'store'])->name('metode_pembayaran.store');
-Route::put('metode_pembayaran/{id}', [PesananController::class, 'update'])->name('metode_pembayaran.update');
-Route::delete('metode_pembayaran/{id}', [PesananController::class, 'destroy'])->name('metode_pembayaran.destroy');
+    Route::get('/monitor', [ProdukController::class, 'monitor'])->name('product.monitor');
+    Route::put('/stok/{id}/update', [ProdukController::class, 'updatestok'])->name('stok.update');
+    Route::get('/pesanan/konfirmasi', [PesananController::class, 'konfirmasi'])->name('pesanan.konfirmasi');
+    Route::post('/pesanan/{id}/konfirmasi', [PesananController::class, 'prosesKonfirmasi'])->name('pesanan.prosesKonfirmasi');
+    Route::post('/pesanan/{id}/batalkan', [PesananController::class, 'batalkan'])->name('pesanan.batalkanKonfirmasi');
+    Route::get('metode_pembayaran', [PesananController::class, 'index'])->name('metode_pembayaran.index');
+    Route::post('metode_pembayaran', [PesananController::class, 'store'])->name('metode_pembayaran.store');
+    Route::put('metode_pembayaran/{id}', [PesananController::class, 'update'])->name('metode_pembayaran.update');
+    Route::delete('metode_pembayaran/{id}', [PesananController::class, 'destroy'])->name('metode_pembayaran.destroy');
 });
 
-   
+
 
 
 //user
 Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 'author']], function () {
-    Route::get('/dashboard',[FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
+    Route::get('/dashboard', [FrontendUserProfileController::class, 'userdashboard'])->name('dashboard');
     Route::get('/password/change', [FrontendUserProfileController::class, 'userpasswordchange'])->name('user.change.password');
     Route::get('/profile', [FrontendUserProfileController::class, 'userprofile'])->name('user.profile');
     Route::post('/profile', [FrontendUserProfileController::class, 'userprofileupdate'])->name('user.profile.update');
@@ -91,50 +102,48 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
     // user order history
     Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
 
+    //user address
+    Route::get('/address', [AddressController::class, 'ShowAddress'])->name('user.address');
+    Route::post('/address/process', [AddressController::class, 'AddressProcess'])->name('user.address.process');
+
     //checkout
     Route::get('/checkout', [CartController::class, 'ShowCheckout'])->name('checkout');
     Route::post('/checkout/proses', [CartController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/checkout/receipt', [CartController::class, 'receipt'])->name('checkout.receipt');
-
-
-
-
-
-    
-
 });
 
 
 // Frontend Pages routes
 Route::get('/', [FrontendPageController::class, 'home'])->name('home');
-Route::get('/search', [ProductController::class,'search'])->name('produk.search');
-Route::get('/list/wishlists', [WishlistController::class,'listWishList'])->name('listWishlist');
-Route::post('/produk/{id}', [productController::class,'show'])->name('produk.show');
-Route::get('/produk/{id}', [productController::class,'show'])->name('produk.show');
-Route::get('/produk_more', [productController::class,'Showmore'])->name('produk.more');
-
-
+Route::get('/search', [ProductController::class, 'search'])->name('produk.search');
+Route::get('/list/wishlists', [WishlistController::class, 'listWishList'])->name('listWishlist');
+Route::get('/produk', [productController::class, 'index'])->name('produk');
+Route::post('/produk/{id}', [productController::class, 'show'])->name('produk.show');
+Route::get('/produk/{id}', [productController::class, 'show'])->name('produk.show');
+Route::get('/produk_more', [productController::class, 'Showmore'])->name('produk.more');
+Route::get('/produk_filter', [productController::class, 'filter'])->name('produk.filter');
 
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-
-
-Route::get('/contact', function () {
-    return view('frontend.frontend_layout.contact_page.contact');
-})->name('contact');
-
-
+//contact
+// Route::get('/contact', function () {
+//     return view('frontend.frontend_layout.contact_page.contact');
+// })->name('contact');
+Route::get('contact/process', [ContactController::class, 'ShowContact'])->name('contact');
+Route::post('contact/process', [ContactController::class, 'contact'])->name('contact.process');
 
 //tes policy term
 Route::get('/term_policy', function () {
     return view('term_policy');
 })->name('term_policy');
 
-
 // untuk cart
-Route::post('/cart/add', [CartController::class,'addToCart']);
-Route::post('/cart/remove', [CartController::class,'removeFromCart'])->name('cart.remove');
-Route::post('/cart/update', [CartController::class,'updateCart'])->name('cart.update');
-Route::get('/cart', [CartController::class,'showCart'])->name('cart');
+Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+
+//subscription
+Route::post('/subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
 

@@ -20,35 +20,25 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($orders as $order)
+                @forelse ($pesanans as $pesanan)
                 <tr>
                     <td scope="row">{{ $loop->index+1 }}</td>
-                    <td>{{ $order->created_at->diffForHumans() }}</td>
-                    <td>{{ $order->invoice_number }}</td>
-                    <td>{{ $order->amount }}</td>
-                    <td>{{ $order->payment_method }}</td>
+                    <td>{{ $pesanan->tanggal_transaksi }}</td>
+                    <td>{{ $pesanan->kode_pembayaran }}</td>
+                    <td>{{ $pesanan->total_pembayaran }}</td>
+                    <td>{{ $pesanan->pembayaran->metode_pembayaran }}</td>
                     <td>
-                        @if ($order->status == 'pending')
-                        <span class="badge badge-primary">{{ $order->status }}</span>
-                        @elseif ($order->status == 'confirmed')
-                        <span class="badge badge-secondary">{{ $order->status }}</span>
-                        @elseif ($order->status == 'processing')
-                        <span class="badge badge-info">{{ $order->status }}</span>
-                        @elseif ($order->status == 'picked')
-                        <span class="badge badge-warning">{{ $order->status }}</span>
-                        @elseif ($order->status == 'shipped')
-                        <span class="badge badge-light">{{ $order->status }}</span>
-                        @elseif ($order->status == 'delivered')
-                        <span class="badge badge-success">{{ $order->status }}</span>
+                        @if ($pesanan->status_pesanan == 'belum_terkonfirmasi')
+                        <span class="badge badge-primary">{{ $pesanan->status_pesanan }}</span>
                         @else
-                        <span class="badge badge-danger">{{ $order->status }}</span>
+                        <span class="badge badge-danger">{{ $pesanan->status_pesanan }}</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('order-deatils', $order->id) }}" class="btn btn-sm btn-primary">
+                        {{-- <a href="{{ route('order-deatils', $pesanan->id) }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-eye"></i>View
                         </a>
-                        <a href="{{ route('invoice-download', $order->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-download"></i>Invoice</a>
+                        <a href="{{ route('invoice-download', $pesanan->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-download"></i>Invoice</a> --}}
                     </td>
                 </tr>
                 @empty
