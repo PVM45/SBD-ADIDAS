@@ -33,5 +33,8 @@ class UserSeeder extends Seeder
             'email' => 'author@gmail.com',
             'password' => Hash::make('rootauthor'),
         ]);
+        DB::table('omset')->insert([
+          'total'=> 0,
+        ]);
     }
 }

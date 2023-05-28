@@ -44,10 +44,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
 
     //useradmin
     Route::get('/useradmin', [UserAdminController::class, 'index'])->name('useradmin');
-    Route::get('/useradmin/create', [UserAdminController::class, 'create'])->name('useradmin.create');
-    Route::post('/useradmin', [UserAdminController::class, 'store'])->name('useradmin.store');
     Route::put('/useradmin/{id}', [UserAdminController::class, 'update'])->name('useradmin.update');
-    Route::delete('/useradmin/{id}', [UserAdminController::class, 'destroy'])->name('useradmin.destroy');
 
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
