@@ -12,10 +12,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\OrderHistoryController;
 use App\Http\Controllers\Admin\SubbCategoryController;
 use App\Http\Controllers\Admin\PesananController;
+use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
+use App\Http\Controllers\SubscribeController;
 
 
 
@@ -100,6 +102,10 @@ Route::group(['as' => 'author.', 'prefix' => 'author', 'middleware' => ['auth', 
     // user order history
     Route::get('/orders/history', [OrderHistoryController::class, 'orderHistory'])->name('user.orders');
 
+    //user address
+    Route::get('/address', [AddressController::class, 'ShowAddress'])->name('user.address');
+    Route::post('/address/process', [AddressController::class, 'AddressProcess'])->name('user.address.process');
+
     //checkout
     Route::get('/checkout', [CartController::class, 'ShowCheckout'])->name('checkout');
     Route::post('/checkout/proses', [CartController::class, 'processCheckout'])->name('checkout.process');
@@ -117,28 +123,27 @@ Route::get('/produk/{id}', [productController::class, 'show'])->name('produk.sho
 Route::get('/produk_more', [productController::class, 'Showmore'])->name('produk.more');
 Route::get('/produk_filter', [productController::class, 'filter'])->name('produk.filter');
 
-
-
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-
-
-Route::get('/contact', function () {
-    return view('frontend.frontend_layout.contact_page.contact');
-})->name('contact');
-
-
+//contact
+// Route::get('/contact', function () {
+//     return view('frontend.frontend_layout.contact_page.contact');
+// })->name('contact');
+Route::get('contact/process', [ContactController::class, 'ShowContact'])->name('contact');
+Route::post('contact/process', [ContactController::class, 'contact'])->name('contact.process');
 
 //tes policy term
 Route::get('/term_policy', function () {
     return view('term_policy');
 })->name('term_policy');
 
-
 // untuk cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+
+//subscription
+Route::post('/subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
 

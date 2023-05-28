@@ -14,4 +14,9 @@ class kategori extends Model
     {
         return $this->hasMany(subkategori::class);
     }
+    public function subkategori2()
+    {   
+        return $this->belongsToMany(subkategori::class);
+
+    }
 }

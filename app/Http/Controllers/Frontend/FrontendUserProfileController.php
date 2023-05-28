@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\kategori;
+use App\Models\subkategori;
 
 class FrontendUserProfileController extends Controller
 {
@@ -18,7 +20,12 @@ class FrontendUserProfileController extends Controller
 
 
     public function userdashboard() {
-        return view('layouts.author.dashboard');
+
+        $kategoris = kategori::all();
+
+        $subkategoris = subkategori::all();
+
+        return view('layouts.author.dashboard', compact('kategoris','subkategoris'));
     }
 
 

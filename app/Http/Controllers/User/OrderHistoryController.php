@@ -3,15 +3,22 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use App\Models\pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\kategori;
+use App\Models\subkategori;
 
 class OrderHistoryController extends Controller
 {
     public function orderHistory()
-    {
-        // $orders = Order::where('user_id', Auth::id())->orderBy('id', 'DESC')->get();
-        return view('frontend.order.order-history', compact('orders'));
+    {   
+        $kategoris = kategori::all();
+
+        $subkategoris = subkategori::all();
+
+        $pesanans = pesanan::where('user_id', Auth::id())->orderBy('id')->get();
+        
+        return view('frontend.order.order-history', compact('pesanans','kategoris','subkategoris'));
     }
 }
