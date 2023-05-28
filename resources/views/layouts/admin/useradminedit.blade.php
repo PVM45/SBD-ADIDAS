@@ -42,74 +42,43 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-
-</div>
-<div class="card">
-  
-    <div class="container">
-        <div class="row">
-            <h1>Daftar Metode Pembayaran</h1>
-
-            <div class="col-md-12">
-             
-                <button id="btnTambahMetode">Tambah Metode Pembayaran</button>
-
-                <form id="formTambahMetode" action="{{ route('admin.metode_pembayaran.store') }}" method="POST" style="display: none;">
-                    @csrf
-                    <div>
-                        <label for="metode_pembayaran">Metode Pembayaran:</label>
-                        <input type="text" name="metode_pembayaran" id="metode_pembayaran" required>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Edit User</h1>
                     </div>
-                    <div>
-                        <label for="pembayaran">Nomor Pembayaran:</label>
-                        <input type="text" name="nomor_pembayaran" id="pembayaran" required>
-                    </div>
-                    <button type="submit">Tambah</button>
-                </form>
-                
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Metode Pembayaran</th>
-                        <th>Nomor Rekening</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @foreach ($metodePembayaran as $metode)
-                    <tr>
-                        <td>{{ $metode->id }}</td>
-                        <td>{{ $metode->metode_pembayaran }}</td>
-                        <td>{{ $metode->nomor }}</td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.update', $metode->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="metode_pembayaran" value="{{ $metode->metode_pembayaran }}">
-                                <input type="text" name="nomor_pembayaran" value="{{ $metode->nomor}}">
-                                <button type="submit">Simpan</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.destroy', $metode->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus metode pembayaran ini?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
 
-</div>
-    </div>
+                    <!-- Content Row -->
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('admin.useradmin.update', $users->id) }}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="name"  name="name" value="{{ $users->name }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email"  name="email" value="{{ $users->email }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">No Telepon</label>
+                                        <input type="text" class="form-control" id="nomor_telepon"  name="nomor_telepon" value="{{ $users->nomor_telepon }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat"  name="alamat" value="{{ $users->alamat }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password"  name="password" value="{{ $users->password }}">
+                                    </div>
+                                    <button class="btn btn-primary btn-sm float-right" type="submit">Simpan Perubahan</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    <!-- Content Row -->
+                   
                 </div>
                 <!-- /.container-fluid -->
 
@@ -170,11 +139,6 @@
 
 </body>
 
-</html>       
-<script>
-    document.getElementById('btnTambahMetode').addEventListener('click', function() {
-        var form = document.getElementById('formTambahMetode');
-        form.style.display = 'block';
-    });
-</script>
+</html>        
+
 

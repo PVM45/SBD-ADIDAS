@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SubbCategoryController;
 use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\FrontendUserProfileController;
+use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboard;
 
 
@@ -37,7 +38,15 @@ require __DIR__ . '/auth.php';
 //admin
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.admin');
-    Route::get('/generate-report', [DashboardController::class, 'generate'])->name('generate.report');
+    Route::get('/generate-report', [DashboardController::class,'generate'])->name('generate.report');
+
+    //useradmin
+    Route::get('/useradmin', [UserAdminController::class, 'index'])->name('useradmin');
+    Route::get('/useradmin/create', [UserAdminController::class, 'create'])->name('useradmin.create');
+    Route::post('/useradmin', [UserAdminController::class, 'store'])->name('useradmin.store');
+    Route::put('/useradmin/{id}', [UserAdminController::class, 'update'])->name('useradmin.update');
+    Route::delete('/useradmin/{id}', [UserAdminController::class, 'destroy'])->name('useradmin.destroy');
+
     //category
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');

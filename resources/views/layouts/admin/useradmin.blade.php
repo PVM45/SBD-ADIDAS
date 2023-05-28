@@ -42,74 +42,57 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-
-</div>
-<div class="card">
-  
-    <div class="container">
-        <div class="row">
-            <h1>Daftar Metode Pembayaran</h1>
-
-            <div class="col-md-12">
-             
-                <button id="btnTambahMetode">Tambah Metode Pembayaran</button>
-
-                <form id="formTambahMetode" action="{{ route('admin.metode_pembayaran.store') }}" method="POST" style="display: none;">
-                    @csrf
-                    <div>
-                        <label for="metode_pembayaran">Metode Pembayaran:</label>
-                        <input type="text" name="metode_pembayaran" id="metode_pembayaran" required>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Show All User</h1>
                     </div>
-                    <div>
-                        <label for="pembayaran">Nomor Pembayaran:</label>
-                        <input type="text" name="nomor_pembayaran" id="pembayaran" required>
-                    </div>
-                    <button type="submit">Tambah</button>
-                </form>
-                
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Metode Pembayaran</th>
-                        <th>Nomor Rekening</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @foreach ($metodePembayaran as $metode)
-                    <tr>
-                        <td>{{ $metode->id }}</td>
-                        <td>{{ $metode->metode_pembayaran }}</td>
-                        <td>{{ $metode->nomor }}</td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.update', $metode->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="metode_pembayaran" value="{{ $metode->metode_pembayaran }}">
-                                <input type="text" name="nomor_pembayaran" value="{{ $metode->nomor}}">
-                                <button type="submit">Simpan</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.destroy', $metode->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus metode pembayaran ini?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>No Telepon</th>
+                                        <th>Alamat</th>
+                                        <th>Aksi</th>
+                                    </thead>
+                                    <tbody>
+                                        @if ($users->count() > 0)
+                                        @foreach ($users as $item => $user)
+                                        <tr>
+                                            <td>{{ $item + 1 }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->nomor_telepon }}</td>
+                                            <td>{{ $user->alamat }}</td>
+                                            <td>
+                                                <form action="{{ route('admin.useradmin.destroy', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('delete');
+                                                <a href="{{ route('admin.useradmin.update', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="5" align="center">Data Kosong</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-</div>
-    </div>
+                    <!-- Content Row -->
+                   
                 </div>
                 <!-- /.container-fluid -->
 
@@ -170,11 +153,6 @@
 
 </body>
 
-</html>       
-<script>
-    document.getElementById('btnTambahMetode').addEventListener('click', function() {
-        var form = document.getElementById('formTambahMetode');
-        form.style.display = 'block';
-    });
-</script>
+</html>        
+
 
