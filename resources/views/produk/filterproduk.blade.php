@@ -6,14 +6,10 @@
             <div class="col-md-9 grid-gallery">
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     <!-- normal -->
-                    @foreach ($produks as $produk)                        
-
-                   
-
-
+                    @foreach ($produks as $produk)
                         <div class="ih-item square effect3 bottom_to_top">
                             <div class="bottom-2-top">
-                                <div class="img"><img src="{{ url('storage/'.$produk->gambar_produk) }}" alt="/"
+                                <div class="img"><img src="{{ url('storage/' . $produk->gambar_produk) }}" alt="/"
                                         class="img-responsive gri-wid"></div>
                                 <div class="info">
                                     <div class="pull-left styl-hdn">
@@ -45,13 +41,11 @@
                 <div class="col-md-4 grid-stn simpleCart_shelfItem">
                     {{-- @endforeach --}}
                     @endforeach
-                    <!-- Search form -->
-                    <form class="input-group-lg form-inline d-flex justify-content-center md-form form-sm ">
-                        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
-                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                            aria-label="Search">
-                    </form>
-
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 grid-details">
+                <div class="grid-addon">
                     <section class="sky-form">
                         <div class="product_right">
                             <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories
@@ -205,8 +199,8 @@
 
                         }); //]]>
                     </script>
-                    
-                    
+
+
                 </div>
             </div>
             <div class="clearfix"></div>

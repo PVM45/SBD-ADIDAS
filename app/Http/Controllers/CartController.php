@@ -10,6 +10,8 @@ use App\Models\pembayaran;
 use App\Models\produk_pesanan;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\kategori;
+use App\Models\subkategori;
 
 class CartController extends Controller
 {
@@ -36,8 +38,10 @@ class CartController extends Controller
 
 }
 public function showCart(){
+    $kategoris = Kategori::all();
+    $subkategoris = Subkategori::all();
     $cartItems = keranjang_belanja::where('user_id', auth()->user()->id)->get();
-     return view('produk.cart', compact('cartItems'));
+     return view('produk.cart', compact('cartItems', 'kategoris', 'subkategoris'));
 }
 
 public function updateCart(Request $request)
@@ -88,7 +92,8 @@ public function removeFromCart(Request $request)
 public function ShowCheckout() {
 
     $cartItems = keranjang_belanja::where('user_id', auth()->user()->id)->get();
-
+    $kategoris = Kategori::all();
+    $subkategoris = Subkategori::all();
     $user = Auth::user();
     $alamat = Alamat::where('user_id', auth()->user()->id)->get();
     $pembayarans = Pembayaran::all();
@@ -100,7 +105,7 @@ public function ShowCheckout() {
             $totalPrice += $cart->produk->harga_produk * $cart->kuantitas;
         }
 
-    return view('frontend.checkout_page.checkout', compact('cartItems', 'totalPrice', 'alamat','pembayarans'));
+    return view('frontend.checkout_page.checkout', compact('cartItems', 'totalPrice', 'alamat','pembayarans','kategoris','subkategoris'));
 }
 
 public function processCheckout(Request $request)
