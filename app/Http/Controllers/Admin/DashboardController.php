@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function index() {
         $jumlahProduk = produk::count();
-        $users = User::where('id', '!=', 1)->get();
+        $users = User::where('role_id', '!=', 1)->get();
         $jumlahUser = $users->count();
         $pesanan=pesanan::count();
         $omset = omset::first(); 
@@ -29,7 +29,7 @@ class DashboardController extends Controller
           {
               // Ambil data yang dibutuhkan untuk laporan (misalnya dari database atau variabel lainnya)
               $jumlahProduk = produk::count();
-              $users = User::where('id', '!=', 1)->get();
+              $users = User::where('role_id', '!=', 1)->get();
               $jumlahUser = $users->count();
               $Pesanan = pesanan::where('status_pesanan', 'terkonfirmasi')->get();
               $jumlahPesanan=$Pesanan->count();

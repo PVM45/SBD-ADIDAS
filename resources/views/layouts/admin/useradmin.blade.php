@@ -43,6 +43,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Show All User</h1>
                     </div>
@@ -60,24 +61,35 @@
                                         <th>Email</th>
                                         <th>No Telepon</th>
                                         <th>Alamat</th>
+                                        <th>Total Pesanan</th>
                                         <th>Aksi</th>
                                     </thead>
                                     <tbody>
                                         @if ($users->count() > 0)
                                         @foreach ($users as $item => $user)
+                                        <div id="changePasswordForm" style="display: none;">
+                                            <form method="POST" action="{{ route('admin.useradmin.update', $user->id) }}">
+                                                @csrf
+                                                @method('PUT')
+                                        
+                                                <div class="form-group">
+                                                    <label for="password">Password Baru</label>
+                                                    <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Saja Password">
+                                                </div>
+                                        
+                                           
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                            </form>
+                                        </div>
                                         <tr>
                                             <td>{{ $item + 1 }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->nomor_telepon }}</td>
+                                            <td>{{ substr($user->email, 0, 1) . str_repeat('*', 3) . substr($user->email, strpos($user->email, '@')) }}</td>
+                                            <td>{{ substr($user->nomor_telepon, 0, 3) . str_repeat('*', strlen($user->nomor_telepon) - 6) . substr($user->nomor_telepon, -3) }}</td>
                                             <td>{{ $user->alamat }}</td>
+                                            <td>{{ $user->pesanan->count() }}</td>
                                             <td>
-                                                <form action="{{ route('admin.useradmin.destroy', $user->id) }}" method="POST">
-                                                @csrf
-                                                @method('delete');
-                                                <a href="{{ route('admin.useradmin.update', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                                </form>
+                                                <a href="#" class="btn btn-primary btn-sm" id="editPasswordBtn">Edit</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -154,5 +166,22 @@
 </body>
 
 </html>        
+<script>
+    // Ambil referensi tombol "Edit" dan form untuk mengganti password
+    var editPasswordBtn = document.getElementById('editPasswordBtn');
+    var changePasswordForm = document.getElementById('changePasswordForm');
+
+    // Tambahkan event listener untuk menangkap klik pada tombol "Edit"
+    editPasswordBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Toggle tampilan form mengganti password
+        if (changePasswordForm.style.display === 'none') {
+            changePasswordForm.style.display = 'block';
+        } else {
+            changePasswordForm.style.display = 'none';
+        }
+    });
+</script>
 
 
