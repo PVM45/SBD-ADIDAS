@@ -79,7 +79,7 @@
                                 </form> --}}
                                 <a href="{{ route('produk.search') }}">produk</a>
                             </li>
-                            {{-- @foreach ($kategoris as $kategori)
+                            @foreach ($kategoris as $kategori)
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         {{ $kategori->nama_kategori }}
@@ -100,7 +100,7 @@
                                     </ul>
                                 </li>
                                 </li>
-                            @endforeach --}}
+                            @endforeach
                     </div>
                     </ul>
                     </li>
