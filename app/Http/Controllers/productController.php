@@ -27,13 +27,11 @@ class productController extends Controller
 
     public function show($id)
 {
-    $kategoris = Kategori::all();
-    $subkategoris = Subkategori::all();
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
     $produks = Komentar::where('produk_id', $id)->get();
     $produksr = Rating::where('produk_id', $id)->take(1)->get();
     $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
-    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produks','produksr','kategoris', 'subkategoris'));
+    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produks','produksr'));
 
 }
 
@@ -60,10 +58,10 @@ public function filter(Request $request)
     $subkategori = Subkategori::findOrFail($subkategoriId);
 
     // Lakukan filter berdasarkan kategori dan subkategori yang dipilih
-    $produks = Produk::whereHas('subkategoris', function ($query) use ($subkategoriId) {
+    $produk = Produk::whereHas('subkategoris', function ($query) use ($subkategoriId) {
         $query->where('subkategori_id', $subkategoriId);
     })->where('kategori_id', $kategoriId)->get();
 
-    return view('produk.filterproduk', compact('produks', 'kategoris', 'subkategoris'));
+    return view('produk.filterproduk', compact('produk', 'kategoris', 'subkategoris'));
 }
 }
