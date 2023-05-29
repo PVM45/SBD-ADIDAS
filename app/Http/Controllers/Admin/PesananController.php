@@ -27,7 +27,7 @@ class PesananController extends Controller
     {
         $pesanan = pesanan::findOrFail($id);
     
-        // Memeriksa stok produk sebelum mengonfirmasi pesanan
+
         $produkPesanan = produk_pesanan::where('pesanan_id', $pesanan->id)->get();
         foreach ($produkPesanan as $produk) {
             $produkItem = Produk::findOrFail($produk->produk_id);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserAdminController extends Controller
 {
@@ -15,7 +16,7 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $users = User::where('id', '!=', 1)->get();
+        $users = User::where('role_id', '!=', 1)->get();
         return view('layouts.admin.useradmin', compact('users'));
     }
 
@@ -23,11 +24,7 @@ class UserAdminController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('layouts.admin.useradmincreate');
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -35,28 +32,7 @@ class UserAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'nomor_telepon' => 'required',
-            'alamat' => 'required',
-            'password' => 'required'
-        ]);
-
-        $users = new User;
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->nomor_telepon = $request->nomor_telepon;
-        $users->alamat = $request->alamat;
-        $users->password = $request->password;
-        $users->save();
-
-        return redirect()->route('admin.useradmin')->with('success', 'Data Berhasil Ditambah.');
-
-    }
-
+   
     /**
      * Display the specified resource.
      *
@@ -91,19 +67,12 @@ class UserAdminController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'nomor_telepon' => 'required',
-            'alamat' => 'required',
+           
             'password' => 'required'
         ]);
 
         $users = User::find($id);
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->nomor_telepon = $request->nomor_telepon;
-        $users->alamat = $request->alamat;
-        $users->password = $request->password;
+        $users->password = Hash::make($request->password);
         $users->save();
 
         return redirect()->route('admin.useradmin')->with('success', 'Data Berhasil Diedit.');
@@ -115,11 +84,5 @@ class UserAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $users = User::find($id);
-        $users->delete();
-
-        return back()->with('success', 'Data Berhasil Dihapus!');
-    }
+  
 }

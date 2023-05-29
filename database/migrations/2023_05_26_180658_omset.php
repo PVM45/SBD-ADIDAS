@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('omset', function (Blueprint $table) {
             $table->id();
-            $table->integer('total');
+            $table->integer('total')->default(0);
          
             $table->timestamps();
         

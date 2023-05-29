@@ -58,7 +58,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">User Settings:</h6>
                 <a class="collapse-item" href="{{ route('admin.useradmin') }}">Show User</a>
-                <a class="collapse-item" href="{{ route('admin.useradmin.create') }}">Add User</a>
             </div>
         </div>
     </li>

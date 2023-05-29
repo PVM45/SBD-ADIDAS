@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/admin.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body id="page-top">
@@ -129,7 +129,7 @@
                     <!-- Content Row -->
 
                     <div class="row">
-
+                        <canvas id="omsetChart"></canvas>
                         <!-- Area Chart -->
                        
 
@@ -200,5 +200,6 @@
 </body>
 
 </html>        
+
 
 
