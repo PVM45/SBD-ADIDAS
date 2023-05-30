@@ -12,31 +12,41 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\kategori;
 use App\Models\subkategori;
-
+use App\Models\produk;
 class CartController extends Controller
 {
     public function addToCart(Request $request)
-{
-    // Validasi data yang diterima dari formulir
-    $validatedData = $request->validate([
-        'product_id' => 'required|exists:produks,id',
-        'quantity' => 'required|integer|min:1',
-    ]);
+    {
+        // Validasi data yang diterima dari formulir
+        if (Auth::check()) {
+            $validatedData = $request->validate([
+                'product_id' => 'required|exists:produks,id',
+                'quantity' => 'required|integer|min:1',
+            ]);
+    
+            $product = Produk::find($validatedData['product_id']);
+    
+            // Periksa stok produk sebelum menambahkannya ke keranjang
+            if ($product->stok > 0) {
+                // Buat entri baru dalam tabel keranjang
+                $cart = new keranjang_belanja;
+                $cart->produk_id = $validatedData['product_id'];
+                $cart->kuantitas = $validatedData['quantity'];
+                $cart->user_id = auth()->user()->id;
+                $cart->save();
+        
+                // Redirect atau tampilkan pesan sukses
+                return redirect()->route('cart')->with('success', 'Produk berhasil ditambahkan ke keranjang belanja.');
+            } else {
+                return redirect()->back()->with('error', 'Maaf, stok produk habis.');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+    }
+    
 
-    // Buat entri baru dalam tabel keranjang
-    $cart = new keranjang_belanja;
-    $cart->produk_id = $validatedData['product_id'];
-    $cart->kuantitas = $validatedData['quantity'];
-    // Jika terkait dengan pengguna, set juga 'user_id'
-    $cart->user_id = auth()->user()->id;
-    $cart->save();
 
-
-
-    // Redirect atau tampilkan pesan sukses
-     return redirect()->back()->with('success', 'Komentar berhasil disimpan.');
-
-}
 public function showCart(){
     $kategoris = Kategori::all();
     $subkategoris = Subkategori::all();
@@ -88,10 +98,15 @@ public function removeFromCart(Request $request)
     $cart->delete();
 
     // Redirect atau tampilkan pesan sukses
+    return redirect()->route('cart')->with('success', 'Komentar berhasil disimpan.');
 }
 public function ShowCheckout() {
 
     $cartItems = keranjang_belanja::where('user_id', auth()->user()->id)->get();
+    if ($cartItems->isEmpty()) {
+        return redirect()->route('cart')->with('error', 'Keranjang belanja kosong.');
+    }
+
     $kategoris = Kategori::all();
     $subkategoris = Subkategori::all();
     $user = Auth::user();
@@ -103,6 +118,7 @@ public function ShowCheckout() {
 
         foreach ($cartItems as $cart) {
             $totalPrice += $cart->produk->harga_produk * $cart->kuantitas;
+            $cart->count = $cart->kuantitas;
         }
 
     return view('frontend.checkout_page.checkout', compact('cartItems', 'totalPrice', 'alamat','pembayarans','kategoris','subkategoris'));
@@ -184,7 +200,7 @@ public function processCheckout(Request $request)
         keranjang_belanja::where('user_id', auth()->user()->id)->delete();
     // return redirect()->route('author.checkout.pembayaran', compact('cartItems','alamat'));
 
-    return redirect()->route('author.checkout.receipt');
+return redirect()->route('author.checkout.receipt');
     //return redirect('frontend.checkout_page.receipt','com');
 
     //Hapus item-item keranjang belanja

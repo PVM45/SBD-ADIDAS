@@ -1,37 +1,43 @@
 @extends('frontend.frontend_master')
 
 @section('frontend_content')
+@foreach ($produk as $produk1)
     <div class="showcase-grid">
-        <div class="container">
+    <div class="container">
             <div class="col-md-8 showcase">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="{{ asset('frontend') }}/assets/images/show.jpg">
-                            <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show.jpg"
+                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk) }}">
+                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk) }}"
+                            alt="produk1"
                                     data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{ asset('frontend') }}/assets/images/show1.jpg">
-                            <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show1.jpg"
+                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk_2) }}">
+                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk_2) }}"
                                     data-imagezoom="true" class="img-responsive"> </div>
                         </li>
-                        <li data-thumb="{{ asset('frontend') }}/assets/images/show2.jpg">
-                            <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show2.jpg"
-                                    data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                        <li data-thumb="{{ asset('frontend') }}/assets/images/show3.jpg">
-                            <div class="thumb-image"> <img src="{{ asset('frontend') }}/assets/images/show3.jpg"
+                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk_3) }}">
+                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk_3) }}"
                                     data-imagezoom="true" class="img-responsive"> </div>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            @foreach ($produk as $produk1)
+          
                 <div class="col-md-4 showcase">
                     <div class="showcase-rt-top">
                         <div class="pull-left shoe-name">
                             <h3>{{ $produk1->produk->nama_produk }}</h3>
                             <p>{{ $produk1->kategori->nama_kategori }},{{ $produk1->subkategori->nama_subkategori }}</p>
+                            <p>
+                            @if ($produk1->produk->stok > 0)
+                            Stok: {{ $produk1->produk->stok }}
+                                @else
+                        Stok: Stok Habis
+                            @endif
+                            </p>        
+                        
                             <h4>Rp.{{ $produk1->produk->harga_produk }}</h4>
                         </div>
                         <div class="pull-left rating-stars">
@@ -140,29 +146,10 @@
                                     </div>
                                 </div>
                                 </div> --}}
-
+                    
                                 <li class="qty">
                                     <h3>Size Chart</h3>
-                                    <select class="form-control siz-chrt">
-                                        <option>6 US</option>
-                                        <option>7 US</option>
-                                        <option>8 US</option>
-                                        <option>9 US</option>
-                                        <option>10 US</option>
-                                        <option>11 US</option>
-                                    </select>
-                                </li>
-                                <li class="qty">
-                                    <h4>QTY</h4>
-                                    <select class="form-control qnty-chrt">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                    </select>
+                                  {{$produk1->produk->ukuran}}
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -254,7 +241,9 @@
                             <div class="reviews">
                                 <div class="review">
                                     @foreach ($produks as $komen)
-                                        <div class="text">{{ $komen->komentar }}</div><br>
+                                    <div class="text">{{ $komen->user->name }}</div><br>  
+                                        <div class="text">{{ $komen->komentar }}</div><br>    
+                                        <div class="text">{{ $komen->created_at }}</div><br>    
                                         <ul>
                                     @endforeach
                                 </div>
@@ -347,7 +336,7 @@
                     <!-- normal -->
                     <div class="ih-item square effect3 bottom_to_top">
                         <div class="bottom-2-top">
-                            <div class="img"><img src="{{ asset('frontend') }}/assets/images/grid4.jpg"
+                            <div class="img"><img src="{{ url('storage/'.$produk3->gambar_produk) }}"
                                     alt="/" class="img-responsive gri-wid"></div>
                             <div class="info">
                                 <div class="pull-left styl-hdn">
@@ -380,7 +369,7 @@
         </div>
     </div>
 
-
+    
     <script>
         function AlertCart() {
             Swal.fire({

@@ -42,63 +42,108 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<div class="row" >
-    <div class="col-md-12">
-
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Sub Category</h2>
-        </div>
-        <div class="pull-right">
-
-            <a class="btn btn-primary" href="{{ route('admin.categories') }}"> Back</a>
-
-        </div>
-    </div>
-</div>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<form action="{{ route('admin.subcategories.store') }}" method="POST">
-    @csrf
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="name">Nama SubKategori</label>
-                <input type="text" class="form-control" id="name" name="nama_subkategori" required>
-            </div>
-            <div class="form-group">
-                <label for="id">ID SubKategori</label>
-                <input type="number" class="form-control" id="id" name="id" required>
-            </div>
-            <label for="category_id">Kategori</label>
-    <select name="category_id" id="category_id">
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
-        @endforeach
-    </select>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-
-</form>
-
-
-    </div>
-</div>
+                    <style>
+                        .container {
+                          margin-top: 20px;
+                        }
+                      
+                        h2 {
+                          margin-bottom: 20px;
+                          font-size: 24px;
+                        }
+                      
+                        .btn-primary {
+                          margin-bottom: 20px;
+                        }
+                      
+                        .alert {
+                          margin-bottom: 20px;
+                        }
+                      
+                        form .form-group {
+                          margin-bottom: 20px;
+                        }
+                      
+                        form label {
+                          font-weight: bold;
+                        }
+                      
+                        form input[type="text"],
+                        form input[type="number"],
+                        form select {
+                          width: 100%;
+                          padding: 8px;
+                          border: 1px solid #ccc;
+                          border-radius: 4px;
+                        }
+                      
+                        form button[type="submit"] {
+                          padding: 8px 16px;
+                          background-color: #007bff;
+                          color: #fff;
+                          border: none;
+                          border-radius: 4px;
+                        }
+                      
+                        form button[type="submit"]:hover {
+                          background-color: #0069d9;
+                        }
+                      </style>
+                      
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-lg-12 margin-tb">
+                              <div class="pull-left">
+                                <h2>Add New Sub Category</h2>
+                              </div>
+                              <div class="pull-right">
+                                <a class="btn btn-primary" href="{{ route('admin.categories') }}"> Back</a>
+                              </div>
+                            </div>
+                          </div>
+                      
+                          @if ($errors->any())
+                          <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                              @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                              @endforeach
+                            </ul>
+                          </div>
+                          @endif
+                      
+                          <form action="{{ route('admin.subcategories.store') }}" method="POST">
+                            @csrf
+                      
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                  <label for="name">Nama SubKategori</label>
+                                  <input type="text" class="form-control" id="name" name="nama_subkategori" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="id">ID SubKategori</label>
+                                  <input type="number" class="form-control" id="id" name="id" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="category_id">Kategori</label>
+                                  <select name="category_id" id="category_id" class="form-control">
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      
     </div></div>
                 </div>
                 <!-- /.container-fluid -->

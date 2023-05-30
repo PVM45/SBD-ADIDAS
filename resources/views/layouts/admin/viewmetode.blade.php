@@ -19,7 +19,64 @@
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
-
+<style>
+    .container {
+      margin-top: 20px;
+    }
+  
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    .action-buttons {
+      display: flex;
+    }
+  
+    .action-buttons form {
+      margin-right: 5px;
+    }
+  
+    .action-buttons button {
+      padding: 5px 10px;
+    }
+  
+    #formTambahMetode {
+      margin-top: 20px;
+    }
+  
+    #formTambahMetode div {
+      margin-bottom: 10px;
+    }
+  
+    #btnTambahMetode {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+  </style>
+  
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -41,75 +98,80 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-
-</div>
-<div class="card">
-  
-    <div class="container">
-        <div class="row">
-            <h1>Daftar Metode Pembayaran</h1>
-
-            <div class="col-md-12">
-             
-                <button id="btnTambahMetode">Tambah Metode Pembayaran</button>
-
-                <form id="formTambahMetode" action="{{ route('admin.metode_pembayaran.store') }}" method="POST" style="display: none;">
-                    @csrf
-                    <div>
-                        <label for="metode_pembayaran">Metode Pembayaran:</label>
-                        <input type="text" name="metode_pembayaran" id="metode_pembayaran" required>
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
-                    <div>
-                        <label for="pembayaran">Nomor Pembayaran:</label>
-                        <input type="text" name="nomor_pembayaran" id="pembayaran" required>
+                @endif
+                
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
                     </div>
-                    <button type="submit">Tambah</button>
-                </form>
-                
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Metode Pembayaran</th>
-                        <th>Nomor Rekening</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @foreach ($metodePembayaran as $metode)
-                    <tr>
-                        <td>{{ $metode->id }}</td>
-                        <td>{{ $metode->metode_pembayaran }}</td>
-                        <td>{{ $metode->nomor }}</td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.update', $metode->id) }}" method="POST">
+                @endif
+               
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                      </div>
+                      <div class="card">
+                        <div class="container">
+                          <div class="row">
+                            <h1>Daftar Metode Pembayaran</h1>
+                  
+                            <div class="col-md-12">
+                              <button id="btnTambahMetode">Tambah Metode Pembayaran</button>
+                  
+                              <form id="formTambahMetode" action="{{ route('admin.metode_pembayaran.store') }}" method="POST" style="display: none;">
                                 @csrf
-                                @method('PUT')
-                                <input type="text" name="metode_pembayaran" value="{{ $metode->metode_pembayaran }}">
-                                <input type="text" name="nomor_pembayaran" value="{{ $metode->nomor}}">
-                                <button type="submit">Simpan</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.metode_pembayaran.destroy', $metode->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus metode pembayaran ini?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-</div>
-    </div>
+                                <div>
+                                  <label for="metode_pembayaran">Metode Pembayaran:</label>
+                                  <input type="text" name="metode_pembayaran" id="metode_pembayaran" required>
+                                </div>
+                                <div>
+                                  <label for="pembayaran">Nomor Pembayaran:</label>
+                                  <input type="text" name="nomor_pembayaran" id="pembayaran" required>
+                                </div>
+                                <button type="submit">Tambah</button>
+                              </form>
+                  
+                              <table>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Metode Pembayaran</th>
+                                  <th>Nomor Rekening</th>
+                                  <th>Aksi</th>
+                                </tr>
+                                @foreach ($metodePembayaran as $metode)
+                                <tr>
+                                  <td>{{ $metode->id }}</td>
+                                  <td>{{ $metode->metode_pembayaran }}</td>
+                                  <td>{{ $metode->nomor }}</td>
+                                  <td class="action-buttons">
+                                    <form action="{{ route('admin.metode_pembayaran.update', $metode->id) }}" method="POST">
+                                      @csrf
+                                      @method('PUT')
+                                      <input type="text" name="metode_pembayaran" value="{{ $metode->metode_pembayaran }}">
+                                      <input type="text" name="nomor_pembayaran" value="{{ $metode->nomor }}">
+                                      <button type="submit">Simpan</button>
+                                    </form>
+                  
+                                    <form action="{{ route('admin.metode_pembayaran.destroy', $metode->id) }}" method="POST">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus metode pembayaran ini?')">Hapus</button>
+                                    </form>
+                                  </td>
+                                </tr>
+                                @endforeach
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                 </div>
                 <!-- /.container-fluid -->
 

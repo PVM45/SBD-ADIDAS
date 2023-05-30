@@ -19,7 +19,54 @@
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
-
+               
+<style>
+    .container {
+      margin-top: 20px;
+    }
+  
+    h4 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    form {
+      display: flex;
+      align-items: center;
+    }
+  
+    input[type="number"] {
+      width: 60px;
+      margin-right: 10px;
+    }
+  
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+  
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -41,52 +88,56 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-    <div class="card-header">
-        <h4>Daftar Produk</h4>
-    </div>
-    <div class="container">
-    <table>
-        <thead>
-            <tr>
-                <th>ID Produk</th>
-                <th>Nama Produk</th>
-                <th>Stok</th>
-                <th></th>
-                <th></th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->nama_produk }}</td>
-                    <td>{{ $product->stok}}</td>
-                    <td>
-                        <form action="{{ route('admin.stok.update', $product->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="number" name="stok" value="{{ $product->stok }}">
-                            <button type="submit">Tambah Stok</button>
-                        </form>
-                    </td>
-                    <td></td>
-                    
-                    <td>{{ $product->status_produk}}</td>
-                   
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    </div>
-{{ $products->links() }}
-            </div>
-        </div>
-    </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4>Daftar Produk</h4>
+                        </div>
+                        <div class="container">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>ID Produk</th>
+                                <th>Nama Produk</th>
+                                <th>Stok</th>
+                                <th></th>
+                                <th></th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @foreach($products as $product)
+                              <tr>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->nama_produk }}</td>
+                                <td>{{ $product->stok}}</td>
+                                <td>
+                                  <form action="{{ route('admin.stok.update', $product->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="number" name="stok" value="{{ $product->stok }}">
+                                    <button type="submit">Tambah Stok</button>
+                                  </form>
+                                </td>
+                                <td></td>
+                                <td>{{ $product->status_produk}}</td>
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                        {{ $products->links() }}
+                      </div>
+                    </div>
+                  </div>
+                  
 </div>
 
 </div>

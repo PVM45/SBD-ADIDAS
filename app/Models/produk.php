@@ -58,4 +58,8 @@ class produk extends Model
     {
         return $this->hasMany(produk_pesanan::class);
     }
+    public function keranjangbelanja()
+    {
+        return $this->hasMany(KeranjangBelanja::class);
+    }
 }
