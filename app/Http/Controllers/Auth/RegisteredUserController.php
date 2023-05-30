@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\kategori;
+use App\Models\subkategori;
+use App\Models\alamat;
+
 
 class RegisteredUserController extends Controller
 {
@@ -19,8 +23,13 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
-        return view('auth.register');
+    {   
+        $kategoris = kategori::all();
+
+        $subkategoris = subkategori::all();
+
+
+        return view('auth.register', compact('kategoris','subkategoris'));
     }
 
     /**
@@ -37,17 +46,27 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'nomor_telepon' => ['required', 'string', 'string', 'max:255'],
-            'alamat' => ['required', 'string', 'string', 'max:255'],
+
+            'Alamat' => 'required',
+            'kode_pos' => 'required',
+            'nomor_telepon' => 'required',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'nomor_telepon' => $request->nomor_telepon,
-            'alamat' => $request->alamat,
+        ]);
 
+        $alamat = Alamat::create([
+            'user_id' =>  $user->id,
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'alamat' => $request->Alamat,
+            'kode_pos' => $request->kode_pos,
+            'nomor_telepon' => $request->nomor_telepon,
         ]);
 
         event(new Registered($user));

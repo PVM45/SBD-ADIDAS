@@ -30,6 +30,7 @@ $kategoris = Kategori::all();
 
     public function show($id)
 {
+
         $kategoris = Kategori::all();
     $subkategoris = Subkategori::all();
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
