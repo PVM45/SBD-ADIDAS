@@ -22,23 +22,20 @@ class productController extends Controller
     $subkategoris = Subkategori::all();
       $produks = produk::all();
         return view('layouts.author.produk', compact('produks', 'kategoris', 'subkategoris'));
-$kategoris = Kategori::all();
-    $subkategoris = Subkategori::all();
-        $produks = Produk::all();
-        return view('frontend.frontend_layout.product_page.products', compact('produks', 'kategoris', 'subkategoris'));
+;
+      
     }
 
     public function show($id)
 {
-    $count = produk::findOrfail($id);
-    $stoks = $count->stok > 0 ? $count->stok : 'Stok Habis';
+
         $kategoris = Kategori::all();
     $subkategoris = Subkategori::all();
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
     $produks = Komentar::where('produk_id', $id)->get();
     $produksr = Rating::where('produk_id', $id)->take(1)->get();
     $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
-    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produksr', 'kategoris', 'subkategoris','stoks','count'));
+    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produksr', 'kategoris', 'subkategoris'));
 
 }
 
