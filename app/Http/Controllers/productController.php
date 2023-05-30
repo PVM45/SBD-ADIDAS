@@ -30,15 +30,14 @@ $kategoris = Kategori::all();
 
     public function show($id)
 {
+
         $kategoris = Kategori::all();
-    $subkategoris = Subkategori::all();
-    $kategoris = Kategori::all();
     $subkategoris = Subkategori::all();
     $produk =  kategoris_subkategoris::where('produk_id', $id)->get();
     $produks = Komentar::where('produk_id', $id)->get();
     $produksr = Rating::where('produk_id', $id)->take(1)->get();
     $limit =  Produk::where('id','!=',$id)->latest()->take(3)->get();
-    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produksr', 'kategoris', 'subkategoris','kategoris','subkategoris'));
+    return view('frontend.frontend_layout.product_page.single_product', compact('produk','produks','limit','produksr', 'kategoris', 'subkategoris'));
 
 }
 
