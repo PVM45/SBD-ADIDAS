@@ -73,13 +73,9 @@
                     <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav nav-font">
                             <li class="">
-                                {{-- <form action="{{route('produk')}}" method="GET">
-                                    @csrf
-                                    <button type="submit">shop</button>
-                                </form> --}}
                                 <a href="{{ route('produk.search') }}">produk</a>
                             </li>
-                            {{-- @foreach ($kategoris as $kategori)
+                            @foreach ($kategoris as $kategori)
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         {{ $kategori->nama_kategori }}
@@ -99,14 +95,9 @@
                                         </div>
                                     </ul>
                                 </li>
-                                </li>
-                            @endforeach --}}
+                            @endforeach
+                        </ul>
                     </div>
-                    </ul>
-                    </li>
-                    <div class="clearfix"></div>
-                    </ul>
-                    <div class="clearfix"></div>
             </div>
             <!--/.navbar-collapse-->
             <div class="clearfix"></div>

@@ -5,7 +5,7 @@
     line-height: 20px;
     margin: 0 0 10px;
     font-family: 'Open Sans', sans-serif;
-  
+
   }
   .product-tabs .tab-content .tab-pane .product-reviews .reviews .review {
     margin-bottom: 20px;
@@ -23,7 +23,7 @@
     font-weight: normal;
     margin-right: 10px;
     font-style:italic
-  
+
   }
 
 .logoAdidas {
@@ -70,7 +70,7 @@ body{
     padding: 10px 60px;
     font-weight: bold;
     font-size: 50px;
-    color: #fff;  
+    color: #fff;
 }
 a.log-bar {
     background-color: #100B0B;
@@ -198,7 +198,7 @@ a.log-bar:hover,a.log-bar:focus{
 .collapse-pdng {
     padding: 0px 0px;
     margin: 0 auto;
-    width: 34%;
+    width: 30%;
 }
 ul.nav-font>li>a{
     font-size: 17px;
@@ -243,7 +243,7 @@ a.left.carousel-control,a.right.carousel-control {
     bottom: 35%;
     padding: 0%;
     margin: 0%;
-    z-index: 99;    
+    z-index: 99;
     left: 55%;
     right: 0%;
 }
@@ -266,20 +266,20 @@ a.left.carousel-control,a.right.carousel-control {
     text-shadow: none;
 }
 
-@media only screen 
-  and (min-device-width: 768px) 
+@media only screen
+  and (min-device-width: 768px)
   and (max-device-width: 1024px) {
   /* Tambahkan styling untuk iPad disini */
 }
 
 /* Styling untuk laptop */
-@media only screen 
+@media only screen
   and (min-width: 1025px) {
   /* Tambahkan styling untuk laptop disini */
 }
 
 /* Styling untuk iPhone */
-@media only screen 
+@media only screen
   and (max-device-width: 767px) {
   /* Tambahkan styling untuk iPhone disini */
 }
@@ -393,7 +393,7 @@ span.fel-fal-bar2{
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
-    z-index: 999;   
+    z-index: 999;
 }
 .styl-hdn h3 {
     font-family: 'Pathway Gothic One';
@@ -785,7 +785,7 @@ h3.you-might{
     font-size: 27px;
     font-family: 'Pathway Gothic One';
     color: #100B0B;
-    margin:15px 0px; 
+    margin:15px 0px;
 }
 .showcase-last ul{
     list-style-type: none;
@@ -838,7 +838,7 @@ ol.carousel-indicators {
 }
 /*--checkout--*/
 .check {
-    padding: 3em 0;
+    padding:  0;
 }
 a.continue,a.order {
     background: #100b0b;
@@ -904,7 +904,7 @@ li.last_price span {
 .cart-item-info {
     width: 75%;
     float: left;
-    margin-top: 3em;
+    /* margin-top: 3em; */
 }
 ul.qty {
     list-style-type: none;
@@ -926,7 +926,7 @@ ul.qty li {
     color: #aaa;
     font-size: 1em;
     font-weight: 400;
-    float: right; 
+    float: right;
 }
 .cart-header,.cart-header2 {
     position: relative;
@@ -1172,7 +1172,7 @@ div textarea {
     color: #100b0b;
     font-weight: 600;
     font-size: 25px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 .cont-btn {
     background: #100b0b;
@@ -1200,7 +1200,7 @@ div textarea {
 @media screen and (max-width: 1024px){
     .collapse-pdng {
         margin: 0 auto;
-        width: 41%;
+        width: 35%;
     }
     span.fel-fal-bar{
         margin-left: 117px;
@@ -1232,7 +1232,7 @@ div textarea {
 @media screen and (max-width: 966px){
     .collapse-pdng {
         margin: 0 auto;
-        width: 54%;
+        width: 47%;
     }
     .car-re-posn {
         bottom: 33%;
@@ -1246,7 +1246,7 @@ div textarea {
 @media screen and (max-width: 800px){
     .collapse-pdng {
         margin: 0 auto;
-        width: 54%;
+        width: 35%;
     }
     .quick-view {
         position: absolute;
@@ -1278,7 +1278,7 @@ div textarea {
 @media screen and (max-width: 853px){
     .collapse-pdng {
         margin: 0 auto;
-        width: 54%;
+        width: 47%;
     }
     .car-re-posn {
         bottom: 32%;
@@ -1306,7 +1306,7 @@ div textarea {
 @media screen and (max-width: 768px){
     .collapse-pdng {
         margin: 0 auto;
-        width: 54%;
+        width: 48%;
     }
     .car-re-posn {
         bottom: 33%;
@@ -1346,7 +1346,7 @@ div textarea {
         font-size: 11px;
     }
     .styl-hdn h3 {
-        font-size: 20px;    
+        font-size: 20px;
     }
     .styl-price p {
         font-size: 17px;
@@ -1384,7 +1384,7 @@ div textarea {
         margin-left: 93px;
     }
     span.color-bar{
-        margin-left: 82px; 
+        margin-left: 82px;
     }
 }
 @media screen and (max-width:736px){
@@ -1543,7 +1543,7 @@ div textarea {
         right: 0%;
     }
     span.color-bar{
-        margin-left: 54px; 
+        margin-left: 54px;
     }
 }
 @media screen and (max-width: 667px){
@@ -1570,7 +1570,7 @@ div textarea {
         right: 0%;
     }
     span.color-bar{
-        margin-left: 54px; 
+        margin-left: 54px;
     }
 }
 @media screen and (max-width: 568px){

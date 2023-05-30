@@ -25,7 +25,7 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Short links</h3>
             <ul class="shot-links">
-                <li><a href="{{ route('contact') }}">Contact us</a></li>
+                {{-- <li><a href="{{ route('contact') }}">Contact us</a></li> --}}
                 <li><a href="#">Support</a></li>
                 <li><a href="#">Delivery</a></li>
 
