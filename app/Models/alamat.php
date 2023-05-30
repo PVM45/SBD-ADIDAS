@@ -10,7 +10,13 @@ class alamat extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'provinsi',
+        'kabupaten',
+        'kecamatan',
+        'kelurahan',
         'alamat',
+        'kode_pos',
+        'nomor_telepon',
     ];
     public function user()
     {

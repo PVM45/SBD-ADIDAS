@@ -145,7 +145,13 @@ public function processCheckout(Request $request)
     } else {
         $alamat = new Alamat;
         $alamat->user_id = auth()->user()->id;
+        $alamat->provinsi = $request->provinsi;
+        $alamat->kabupaten = $request->kota;
+        $alamat->kecamatan = $request->kecamatan;
+        $alamat->kelurahan = $request->kelurahan;
         $alamat->alamat = $request->newAlamat;
+        $alamat->kode_pos = $request->kode_pos;
+        $alamat->nomor_telepon = $request->nomor_telepon;
         $alamat->save();
 
     }
