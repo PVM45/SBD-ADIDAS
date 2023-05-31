@@ -33,7 +33,6 @@ use App\Http\Controllers\SubscribeController;
 */
 require __DIR__ . '/auth.php';
 
-require __DIR__ . '/auth.php';
 
 
 

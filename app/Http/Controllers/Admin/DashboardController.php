@@ -16,26 +16,27 @@ class DashboardController extends Controller
         $jumlahProduk = produk::count();
         $users = User::where('role_id', '!=', 1)->get();
         $jumlahUser = $users->count();
-        $pesanan=pesanan::count();
+        $pesanans=pesanan::where('status_pesanan','=','terkonfirmasi');
+        $pesanan=$pesanans->count();
+        $pesanann=pesanan::where('status_pesanan','=','belum_terkonfirmasi');
+        $pending=$pesanann->count();
         $omset = omset::first(); 
         $total = $omset->total; 
-        return view('layouts.admin.dashboard',compact('jumlahProduk','jumlahUser','pesanan','total'));
+        return view('layouts.admin.dashboard',compact('jumlahProduk','jumlahUser','pesanan','total','pending'));
     }
 
-    public function run() {
-        return view ('layouts.admin.addkategori');
-          }
+   
           public function generate()
           {
               // Ambil data yang dibutuhkan untuk laporan (misalnya dari database atau variabel lainnya)
               $jumlahProduk = produk::count();
               $users = User::where('role_id', '!=', 1)->get();
               $jumlahUser = $users->count();
-              $Pesanan = pesanan::where('status_pesanan', 'terkonfirmasi')->get();
+              $Pesanan = pesanan::where('status_pesanan', '=','terkonfirmasi')->get();
               $jumlahPesanan=$Pesanan->count();
-              $Pesanans = pesanan::where('status_pesanan', 'belum_terkonfirmasi')->get();
+              $Pesanans = pesanan::where('status_pesanan','=', 'belum_terkonfirmasi')->get();
               $pesananpending=$Pesanans->count();
-              $omset = omset::all(); 
+              $omset = omset::first(); 
               $total = $omset->total; 
       
               // Buat objek TCPDF

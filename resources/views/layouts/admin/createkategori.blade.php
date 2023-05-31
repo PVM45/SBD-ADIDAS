@@ -41,44 +41,93 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-    <div class="card-header"></div>
-<h4>Add Category
-<a href="{{url('admin/categories')}}" class="btn btn-primary btn-sm text-white float-end">Back</a>
-</h4>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h4>Tambah Kategori</h4>
-    </div>
-    <div class="card-body">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form method="POST" action="{{ route('admin.categories.store') }}">
-            @csrf
-            <div class="form-group">
-                <label for="name">Nama Kategori</label>
-                <input type="text" class="form-control" id="name" name="nama_kategori" required>
-            </div>
-            <div class="form-group">
-                <label for="id">ID Kategori</label>
-                <input type="number" class="form-control" id="id" name="id" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Tambah Kategori</button>
-        </form>
-    </div>
-</div>
-    </div></div>
+                    <style>
+                        .container {
+                          margin-top: 20px;
+                        }
+                      
+                        h4 {
+                          margin-bottom: 20px;
+                          font-size: 24px;
+                        }
+                      
+                        .btn-primary {
+                          margin-bottom: 20px;
+                        }
+                      
+                        .alert {
+                          margin-bottom: 20px;
+                        }
+                      
+                        form .form-group {
+                          margin-bottom: 20px;
+                        }
+                      
+                        form label {
+                          font-weight: bold;
+                        }
+                      
+                        form input[type="text"],
+                        form input[type="number"] {
+                          width: 100%;
+                          padding: 8px;
+                          border: 1px solid #ccc;
+                          border-radius: 4px;
+                        }
+                      
+                        form button[type="submit"] {
+                          padding: 8px 16px;
+                          background-color: #007bff;
+                          color: #fff;
+                          border: none;
+                          border-radius: 4px;
+                        }
+                      
+                        form button[type="submit"]:hover {
+                          background-color: #0069d9;
+                        }
+                      </style>
+                      
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div class="card-header"></div>
+                            <h4>
+                              Add Category
+                              <a href="{{url('admin/categories')}}" class="btn btn-primary btn-sm text-white float-end">Back</a>
+                            </h4>
+                          </div>
+                          <div class="card">
+                            <div class="card-header">
+                              <h4>Tambah Kategori</h4>
+                            </div>
+                            <div class="card-body">
+                              @if ($errors->any())
+                              <div class="alert alert-danger">
+                                <ul>
+                                  @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                                  @endforeach
+                                </ul>
+                              </div>
+                              @endif
+                              <form method="POST" action="{{ route('admin.categories.store') }}">
+                                @csrf
+                                <div class="form-group">
+                                  <label for="name">Nama Kategori</label>
+                                  <input type="text" class="form-control" id="name" name="nama_kategori" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="id">ID Kategori</label>
+                                  <input type="number" class="form-control" id="id" name="id" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Tambah Kategori</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
                 </div>
                 <!-- /.container-fluid -->
 

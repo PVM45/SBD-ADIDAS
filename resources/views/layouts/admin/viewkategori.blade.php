@@ -41,61 +41,170 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-    <div class="card-header"></div>
-<h4>Category</h4>
-    <a href="{{url('admin/categories/create')}} " class="btn btn-primary btn-sm float-end">Add Category</a>
-    <a href="{{url('admin/subcategories/create')}} " class="btn btn-primary btn-sm float-end">Add SubCategory</a>
-
-</div>
-<div class="card">
-    <div class="card-header">
-        <h4>Daftar Kategori</h4>
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nama Kategori</th>
-                    <th> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->nama_kategori }}</td>
-                        <td>
-                            <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Delete</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" value="{{ $category->nama_kategori }}">
-                                <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit nama kategori ini?')">Update</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-</div>
-    </div>
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                <style>
+                    .container {
+                      margin-top: 20px;
+                    }
+                  
+                    h4 {
+                      margin-bottom: 20px;
+                      font-size: 24px;
+                    }
+                  
+                    .float-end {
+                      float: right;
+                    }
+                  
+                    .btn {
+                      margin-right: 10px;
+                    }
+                  
+                    .table {
+                      margin-top: 20px;
+                    }
+                  
+                    .card {
+                      border: 1px solid #ccc;
+                      border-radius: 5px;
+                      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                      margin-bottom: 20px;
+                    }
+                  
+                    .card-header {
+                      background-color: #f8f9fa;
+                      padding: 10px 20px;
+                      border-bottom: 1px solid #ccc;
+                      border-radius: 5px 5px 0 0;
+                    }
+                  
+                    .card-body {
+                      padding: 20px;
+                    }
+                  
+                    .btn-primary {
+                      background-color: #007bff;
+                      color: #fff;
+                      border: none;
+                    }
+                  
+                    .btn-primary:hover {
+                      background-color: #0069d9;
+                    }
+                  
+                    .btn-danger {
+                      background-color: #dc3545;
+                      color: #fff;
+                      border: none;
+                    }
+                  
+                    .btn-danger:hover {
+                      background-color: #c82333;
+                    }
+                  
+                    .btn-warning {
+                      background-color: #ffc107;
+                      color: #000;
+                      border: none;
+                    }
+                  
+                    .btn-warning:hover {
+                      background-color: #e0a800;
+                    }
+                  
+                    .btn-primary.btn-sm,
+                    .btn-danger.btn-sm,
+                    .btn-warning.btn-sm {
+                      font-size: 14px;
+                      padding: 6px 12px;
+                    }
+                  
+                    .table {
+                      width: 100%;
+                      border-collapse: collapse;
+                    }
+                  
+                    .table th,
+                    .table td {
+                      padding: 8px;
+                      border-bottom: 1px solid #ccc;
+                    }
+                  
+                    .table th {
+                      background-color: #f8f9fa;
+                      text-align: left;
+                      font-weight: bold;
+                    }
+                  </style>
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4>Category</h4>
+                        </div>
+                        <div class="card-body">
+                          <div class="float-end">
+                            <a href="{{url('admin/categories/create')}}" class="btn btn-primary btn-sm">Add Category</a>
+                            <a href="{{url('admin/subcategories/create')}}" class="btn btn-primary btn-sm">Add SubCategory</a>
+                          </div>
+                          <div class="card">
+                            <div class="card-header">
+                              <h4>Daftar Kategori</h4>
+                            </div>
+                            <div class="card-body">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>Nama Kategori</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($categories as $category)
+                                  <tr>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->nama_kategori }}</td>
+                                    <td>
+                                      <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Delete</button>
+                                      </form>
+                                    </td>
+                                    <td>
+                                      <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="input-group">
+                                          <input type="text" class="form-control" name="name" value="{{ $category->nama_kategori }}">
+                                          <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin mengedit nama kategori ini?')">Update</button>
+                                        </div>
+                                      </form>
+                                    </td>
+                                  </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                
             <!-- End of Main Content -->
 
             <!-- Footer -->

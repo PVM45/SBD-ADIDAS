@@ -19,7 +19,66 @@
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
-
+<style>
+    .container {
+      margin-top: 20px;
+    }
+  
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+  
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  
+    .btn-warning {
+      background-color: #ffc107;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -41,75 +100,83 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-    <div class="card-header"></div>
-
-</h4>
-</div>
-<div class="card">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Konfirmasi Pesanan</h1>
-
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nama User</th>
-                        <th>Alamat</th>
-                        <th>Metode Pembayaran</th>
-                        <th>Total Bayar</th>
-                        <th>Kode Bayar</th>
-                        <th>Status Pesanan</th>
-                        <th>Tanggal Transaksi</th>
-                        <th>Aksi</th>
-                    </tr>
-                    
-                    @foreach ($pesanan as $data)
-                        <tr>
-                            <td>{{ $data->id }}</td>
-                            <td>{{ $data->nama }}</td>
-                            <td>{{ $data->alamat }}</td>
-                            <td>{{ $data->metode_pembayaran }}</td>
-                            <td>{{ $data->total_pembayaran }}</td>
-                            <td>{{ $data->kode_pembayaran }}</td>
-                            <td>
-                                @if ($data->status_pesanan == 'terkonfirmasi')
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header"></div>
+                      </div>
+                      <div class="card">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h1>Konfirmasi Pesanan</h1>
+                  
+                              <table>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Nama User</th>
+                                  <th>Alamat</th>
+                                  <th>Metode Pembayaran</th>
+                                  <th>Total Bayar</th>
+                                  <th>Kode Bayar</th>
+                                  <th>Status Pesanan</th>
+                                  <th>Tanggal Transaksi</th>
+                                  <th>Aksi</th>
+                                </tr>
+                  
+                                @foreach ($pesanan as $data)
+                                <tr>
+                                  <td>{{ $data->id }}</td>
+                                  <td>{{ $data->nama }}</td>
+                                  <td>{{ $data->alamat }}</td>
+                                  <td>{{ $data->metode_pembayaran }}</td>
+                                  <td>{{ $data->total_pembayaran }}</td>
+                                  <td>{{ $data->kode_pembayaran }}</td>
+                                  <td>
+                                    @if ($data->status_pesanan == 'terkonfirmasi')
                                     <button class="btn btn-success">Terkonfirmasi</button>
-                                @else
+                                    @else
                                     <button class="btn btn-danger">Belum Dikonfirmasi</button>
-                                @endif
-                            </td>
-                            <td>{{ $data->tanggal_transaksi }}</td>
-                            <td>
-                                @if ($data->status_pesanan == 'terkonfirmasi')
+                                    @endif
+                                  </td>
+                                  <td>{{ $data->tanggal_transaksi }}</td>
+                                  <td>
+                                    @if ($data->status_pesanan == 'terkonfirmasi')
                                     <form action="{{ route('admin.pesanan.batalkanKonfirmasi', $data->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning">Batalkan</button>
+                                      @csrf
+                                      <button type="submit" class="btn btn-warning">Batalkan</button>
                                     </form>
-                                @else
+                                    @else
                                     <form action="{{ route('admin.pesanan.prosesKonfirmasi', $data->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                                      @csrf
+                                      <button type="submit" class="btn btn-primary">Konfirmasi</button>
                                     </form>
-                                @endif
-                            </td>
-                            
-                        </tr>
-                    @endforeach
-                </table>
-                {{ $pesanan->links() }}
-            </div>
-        </div>
-    </div>
-</div>
-
-</div>
-    </div>
+                                    @endif
+                                  </td>
+                                </tr>
+                                @endforeach
+                              </table>
+                              {{ $pesanan->links() }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                 </div>
                 <!-- /.container-fluid -->
 

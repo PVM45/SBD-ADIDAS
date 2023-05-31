@@ -8,7 +8,9 @@
                 <a href="{{ route('home') }}">ADIDAS</a>
             </div>
             <div class="login-bars ">
-                @auth
+
+           
+            @auth
 
                     <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-address-card"></i></a>
                     <a class="btn btn-default " href="{{ route('cart') }}"><i class="icon fa fa-shopping-cart"></i></a>
