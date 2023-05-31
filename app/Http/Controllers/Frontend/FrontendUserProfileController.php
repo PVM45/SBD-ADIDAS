@@ -36,12 +36,15 @@ class FrontendUserProfileController extends Controller
 
     public function userprofile()
     {
-        return view('frontend.profile.index');
+        $kategoris=kategori::all();
+    $subkategoris=subkategori::all();
+        return view('frontend.profile.index',compact('kategoris','subkategoris'));
     }
 
 
     public function userpasswordupdate(Request $request)
     {
+
         $current_password = $request->input('current_password');
         $new_password = $request->input('password');
 
@@ -91,8 +94,10 @@ class FrontendUserProfileController extends Controller
 
 public function userpasswordchange()
 {
+    $kategoris=kategori::all();
+    $subkategoris=subkategori::all();
     $user = Auth::user();
-    return view('frontend.profile.changepassword', compact('user'));
+    return view('frontend.profile.changepassword', compact('user','kategoris','subkategoris'));
 
 
 

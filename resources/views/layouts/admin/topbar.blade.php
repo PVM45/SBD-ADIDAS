@@ -50,10 +50,9 @@
                 aria-labelledby="userDropdown">
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <form action="{{ route('logout') }}" method="POST">
                 @csrf
-            <button type="submit" >{{ __('Log Out') }}</button>
+            <button class="btn btn-danger" type="submit" >{{ __('Log Out') }}</button>
             </form>
                 </a>
             </div> 

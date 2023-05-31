@@ -122,17 +122,14 @@ Route::get('/produk_filter', [productController::class, 'filter'])->name('produk
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-//contact
-// Route::get('/contact', function () {
-//     return view('frontend.frontend_layout.contact_page.contact');
-// })->name('contact');
-// Route::get('contact/process', [ContactController::class, 'ShowContact'])->name('contact');
+Route::get('/contact', function () {
+    return view('frontend.frontend_layout.contact_page.contact');
+})->name('contact');
+Route::get('contact/process', [ContactController::class, 'ShowContact'])->name('contact');
 Route::post('contact/process', [ContactController::class, 'contact'])->name('contact.process');
 
 //tes policy term
-Route::get('/term_policy', function () {
-    return view('term_policy');
-})->name('term_policy');
+Route::get('term', [AuthorDashboard::class, 'leo'])->name('term.policy');
 
 // untuk cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);

@@ -13,7 +13,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/css/admin.css" rel="stylesheet">
@@ -59,7 +61,8 @@
         border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
         padding: 8px;
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -116,7 +119,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       @include('layouts/admin/side')
+        @include('layouts/admin/side')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -126,7 +129,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-               @include('layouts/admin/topbar')
+                @include('layouts/admin/topbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -135,27 +138,24 @@
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
-                @endif
-                
-                @if (session()->has('error'))
+                    @endif
+
+                    @if (session()->has('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
                     </div>
-                @endif
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Product
-                                        <a href="{{url('admin/products/create')}}" class="btn btn-primary btn-sm float-end">Add Products</a>
+                                        <a href="{{url('admin/products/create')}}"
+                                            class="btn btn-primary btn-sm float-end">Add Products</a>
                                     </h4>
                                 </div>
                             </div>
                             <div class="card">
-                           
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
                                             <h1>Daftar Produk</h1>
                                             <table>
                                                 <thead>
@@ -178,43 +178,48 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($products as $product)
-                                                        <tr>
-                                                            <td>{{ $product->id }}</td>
-                                                            <td>{{ $product->nama_produk }}</td>
-                                                            <td>{{ $product->kategori_id }}</td>
-                                                            <td>{{ $product->subkategori_id }}</td>
-                                                            <td>{{ Str::limit($product->deskripsi_produk, 100, '...') }}</td>
-                                                            <td>{{ $product->varian_warna }}</td>
-                                                            <td>{{ $product->ukuran }}</td>
-                                                            <td>{{ $product->harga_produk }}</td>
-                                                            <td>{{ $product->status_produk }}</td>
-                                                            <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt="gambar1" class="thumbnail"></td>
-                                                            <td><img src="{{ url('storage/'.$product->gambar_produk_2) }}" alt="gambar1" class="thumbnail"></td>
-                                                            <td><img src="{{ url('storage/'.$product->gambar_produk_3) }}" alt="gambar1" class="thumbnail"></td>
-                                                            <td>
-                                                                <div class="action-buttons">
-                                                                    <a href="{{ route('admin.produk.edit', $product->id) }}">
-                                                                        <button>Edit</button>
-                                                                    </a>
-                                                                    <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus Produk ini?')">Delete</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>{{ $product->id }}</td>
+                                                        <td>{{ $product->nama_produk }}</td>
+                                                        <td>{{ $product->kategori_id }}</td>
+                                                        <td>{{ $product->subkategori_id }}</td>
+                                                        <td>{{ Str::limit($product->deskripsi_produk, 100, '...') }}
+                                                        </td>
+                                                        <td>{{ $product->varian_warna }}</td>
+                                                        <td>{{ $product->ukuran }}</td>
+                                                        <td>{{ $product->harga_produk }}</td>
+                                                        <td>{{ $product->status_produk }}</td>
+                                                        <td><img src="{{ url('storage/'.$product->gambar_produk) }}"
+                                                                alt="gambar1" class="thumbnail"></td>
+                                                        <td><img src="{{ url('storage/'.$product->gambar_produk_2) }}"
+                                                                alt="gambar1" class="thumbnail"></td>
+                                                        <td><img src="{{ url('storage/'.$product->gambar_produk_3) }}"
+                                                                alt="gambar1" class="thumbnail"></td>
+                                                        <td>
+                                                            <div class="action-buttons">
+                                                                <a
+                                                                    href="{{ route('admin.produk.edit', $product->id) }}">
+                                                                    <button>Edit</button>
+                                                                </a>
+                                                                <form
+                                                                    action="{{ route('admin.produk.destroy', $product->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus Produk ini?')">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                             {{ $products->links() }}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -275,16 +280,16 @@
 
 </body>
 
-</html>       
+</html>
 {{-- @foreach ($collection as $item)
-    
+
 @if ($item->status_pesanan == 'belum dibayar')
-    <button class="btn btn-danger">belum Dibaya</button>
-    @else
-    <button class="btn btn-succes"></button>
+<button class="btn btn-danger">belum Dibaya</button>
+@else
+<button class="btn btn-succes"></button>
 @endif
 @if ($item->status_pesanan == 'belum dibayar')
-   <form action="" method="post"></form>
-    <button class="btn btn-succes"></button>
+<form action="" method="post"></form>
+<button class="btn btn-succes"></button>
 @endif
 @endforeach --}}
