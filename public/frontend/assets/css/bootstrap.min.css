@@ -3417,8 +3417,12 @@ fieldset[disabled] .btn-danger:hover {
 }
 .btn-light {
     font-weight: 400;
-    border-radius: 0;
+    border-radius: 100%;
     background-color: white;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 .btn-link,
 .btn-link.active,
