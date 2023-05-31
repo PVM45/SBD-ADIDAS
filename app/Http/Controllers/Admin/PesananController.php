@@ -113,7 +113,7 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'metode_pembayaran' => 'required|string',
-        'nomor_pembayaran' => 'required|integer',
+        'nomor_pembayaran' => 'required',
     ]);
 
     $metode = pembayaran::findOrFail($id);

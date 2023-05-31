@@ -11,8 +11,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $wishlist->produk->nama_produk }}</h5>
-                                <p class="card-text">{{ $wishlist->produk->deskripsi_produk }}</p>
-                                <p class="card-text">Price: ${{ $wishlist->produk->harga_produk }}</p>
+                                <p class="card-text"><img src="{{ url('storage/'. $wishlist->produk->gambar_produk) }}" alt="/"
+                                    class="img-responsive gri-wid"></p>
+                                <p class="card-text">{{ Str::limit($wishlist->produk->deskripsi_produk, 50, '...') }}</p>
+                                <p class="card-text">Price: Rp.{{ $wishlist->produk->harga_produk }}</p>
                                 <form action="{{ route('wishlist.remove', $wishlist->produk->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

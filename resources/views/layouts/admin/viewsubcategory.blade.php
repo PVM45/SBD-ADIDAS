@@ -41,7 +41,17 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
 <div class="row" >
     <div class="col-md-12">
 <div class="card">
@@ -95,6 +105,7 @@
 </div>
     </div>
                 </div>
+                
                 <!-- /.container-fluid -->
 
             </div>

@@ -116,7 +116,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                               Jumlah Pesanan</div>
+                                               Jumlah Pesanan Sukses</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pesanan }}</div>
                                         </div>
                                         <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -125,13 +125,51 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    
                     <!-- Content Row -->
 
                     <div class="row">
-                        <canvas id="omsetChart"></canvas>
                         <!-- Area Chart -->
-                       
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Omset Progress</div>
+                                            <div class="progress">
+                                                <?php
+                                                    $target = 1000000;
+                                                    $percentage = ($total / $target) * 100;
+                                                ?>
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $percentage }}%;" aria-valuenow="{{ $total }}" aria-valuemin="0" aria-valuemax="{{ $target }}"></div>
+                                            </div>
+                                            <p>{{ $total }} / {{ $target }}</p>
+                                            <p>{{ $percentage }}% achieved</p> <!-- Added line to display the percentage achieved -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Jumlah Pesanan Tertunda</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pending }}</div>
+                                        </div>
+                                        <i class="fas fa-exclamation-circle fa-2x text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
 
                         <!-- Pie Chart -->
                        

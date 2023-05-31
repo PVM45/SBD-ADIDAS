@@ -42,140 +42,195 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<div class="row" >
-    <div class="col-md-12">
-
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Product</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
-    @csrf
-    <table>
-        <tr>
-            <td>
-                <label for="product_id">ID Produk</label>
-            </td>
-            <td>
-                <input type="text" name="product_id" id="product_id" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_name">Nama Produk</label>
-            </td>
-            <td>
-                <input type="text" name="product_name" id="product_name" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="id_kategori">Id Kategori:</label>
-            </td>
-            <td>
-                <select class="form-control" id="id_kategori" name="id_kategori">
-                    @foreach($categories as $kategori)
-                        <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                    @endforeach
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="id_sub_kategori">Sub Kategori:</label>
-            </td>
-            <td>
-                <select class="form-control" id="id_sub_kategori" name="id_sub_kategori">
-                    @foreach($subcategories as $sub_kategori)
-                        <option value="{{ $sub_kategori->id }}">{{ $sub_kategori->nama_subkategori }}</option>
-                    @endforeach
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_description">Deskripsi Produk</label>
-            </td>
-            <td>
-                <textarea name="product_description" id="product_description" rows="5" required></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_color">Warna</label>
-            </td>
-            <td>
-                <input type="text" name="product_color" id="product_color" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_size">Ukuran</label>
-            </td>
-            <td>
-                <input type="text" name="product_size" id="product_size" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_price">Harga</label>
-            </td>
-            <td>
-                <input type="number" name="product_price" id="product_price" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_image_1">Gambar 1</label>
-            </td>
-            <td>
-                <input type="file" name="product_image_1" id="product_image_1" enctype="multipart/form-data" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_image_2">Gambar 2</label>
-            </td>
-            <td>
-                <input type="file" name="product_image_2" id="product_image_2" enctype="multipart/form-data" required>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="product_image_3">Gambar 3</label>
-            </td>
-            <td>
-                <input type="file" name="product_image_3" id="product_image_3" required>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">Tambah Produk</button>
-            </td>
-        </tr>
-    </table>
-</form>
-
-    </div>
-</div>
+                    <style>
+                        .container {
+                          margin-top: 20px;
+                        }
+                      
+                        h2 {
+                          margin-bottom: 20px;
+                          font-size: 24px;
+                        }
+                      
+                        .btn-primary {
+                          margin-bottom: 20px;
+                        }
+                      
+                        .alert {
+                          margin-bottom: 20px;
+                        }
+                      
+                        form table {
+                          margin-bottom: 20px;
+                          width: 100%;
+                        }
+                      
+                        form table td {
+                          padding: 8px;
+                          vertical-align: top;
+                        }
+                      
+                        form table label {
+                          font-weight: bold;
+                        }
+                      
+                        form table input[type="text"],
+                        form table input[type="number"],
+                        form table textarea,
+                        form table select {
+                          width: 100%;
+                          padding: 8px;
+                          border: 1px solid #ccc;
+                          border-radius: 4px;
+                          resize: vertical;
+                        }
+                      
+                        form table button[type="submit"] {
+                          padding: 8px 16px;
+                          background-color: #007bff;
+                          color: #fff;
+                          border: none;
+                          border-radius: 4px;
+                        }
+                      
+                        form table button[type="submit"]:hover {
+                          background-color: #0069d9;
+                        }
+                      </style>
+                      
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-lg-12 margin-tb">
+                              <div class="pull-left">
+                                <h2>Add New Product</h2>
+                              </div>
+                              <div class="pull-right">
+                                <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
+                              </div>
+                            </div>
+                          </div>
+                      
+                          @if ($errors->any())
+                          <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                              @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                              @endforeach
+                            </ul>
+                          </div>
+                          @endif
+                      
+                          <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <table>
+                              <tr>
+                                <td>
+                                  <label for="product_id">ID Produk</label>
+                                </td>
+                                <td>
+                                  <input type="text" name="product_id" id="product_id" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_name">Nama Produk</label>
+                                </td>
+                                <td>
+                                  <input type="text" name="product_name" id="product_name" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="id_kategori">Id Kategori:</label>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="id_kategori" name="id_kategori">
+                                    @foreach($categories as $kategori)
+                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                                    @endforeach
+                                  </select>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="id_sub_kategori">Sub Kategori:</label>
+                                </td>
+                                <td>
+                                  <select class="form-control" id="id_sub_kategori" name="id_sub_kategori">
+                                    @foreach($subcategories as $sub_kategori)
+                                    <option value="{{ $sub_kategori->id }}">{{ $sub_kategori->nama_subkategori }}</option>
+                                    @endforeach
+                                  </select>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_description">Deskripsi Produk</label>
+                                </td>
+                                <td>
+                                  <textarea name="product_description" id="product_description" rows="5" required></textarea>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_color">Warna</label>
+                                </td>
+                                <td>
+                                  <input type="text" name="product_color" id="product_color" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_size">Ukuran</label>
+                                </td>
+                                <td>
+                                  <input type="text" name="product_size" id="product_size" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_price">Harga</label>
+                                </td>
+                                <td>
+                                  <input type="number" name="product_price" id="product_price" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_image_1">Gambar 1</label>
+                                </td>
+                                <td>
+                                  <input type="file" name="product_image_1" id="product_image_1" enctype="multipart/form-data" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_image_2">Gambar 2</label>
+                                </td>
+                                <td>
+                                  <input type="file" name="product_image_2" id="product_image_2" enctype="multipart/form-data" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <label for="product_image_3">Gambar 3</label>
+                                </td>
+                                <td>
+                                  <input type="file" name="product_image_3" id="product_image_3" required>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                  <button type="submit">Tambah Produk</button>
+                                </td>
+                              </tr>
+                            </table>
+                          </form>
+                        </div>
+                      </div>
+                      
     </div></div>
                 </div>
                 <!-- /.container-fluid -->

@@ -19,6 +19,96 @@
     <link href="/css/admin.css" rel="stylesheet">
 
 </head>
+<style>
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #f2f2f2;
+        padding: 12px;
+    }
+
+    .card-header h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+    .float-end {
+        float: right;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .action-buttons button {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .action-buttons button:hover {
+        background-color: #45a049;
+    }
+
+    .action-buttons form {
+        display: inline-block;
+    }
+
+    .action-buttons form button {
+        background-color: #f44336;
+    }
+
+    .action-buttons form button:hover {
+        background-color: #c62828;
+    }
+</style>
 
 <body id="page-top">
 
@@ -41,81 +131,90 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-<div class="row" >
-    <div class="col-md-12">
-<div class="card">
-    <div class="card-header"></div>
-<h4>Product
-    <a href="{{url('admin/products/create')}} " class="btn btn-primary btn-sm float-end">Add Products</a>
-</h4>
-</div>
-<div class="card">
-    <div class="card-header">
-        <h4>Daftar Produk</h4>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Daftar Produk</h1>
-<table>
-    <thead>
-        <tr>
-            <th>ID Produk</th>
-            <th>Nama Produk</th>
-            <th>ID Kategori</th>
-            <th>ID Sub Kategori</th>
-            <th>Deskripsi</th>
-            <th>Warna</th>
-            <th>Ukuran</th>
-            <th>Harga</th>
-            <th>Status</th>
-            <th>Gambar 1</th>
-            <th>Gambar 2</th>
-            <th>Gambar 3</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($products as $product)
-            <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->nama_produk }}</td>
-                <td>{{ $product->id_kategori }}</td>
-                <td>{{ $product->id_subkategori }}</td>
-                <td>{{ $product->deskripsi_produk }}</td>
-             
-                <td>{{ $product->varian_warna }}</td>
-                <td>{{ $product->ukuran }}</td>
-            
-                <td>{{ $product->harga_produk }}</td>
-
-                <td>{{ $product->status_produk }}</td>
-                <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt="gambar1" height="100" width="100"></td>
-                <td><img src="{{ url('storage/'.$product->gambar_produk_2) }}" alt="gambar1" height="100" width="100"></td>
-                <td><img src="{{ url('storage/'.$product->gambar_produk_3) }}" alt="gambar1" height="100" width="100"></td>
-
-                <td><a href="{{ route('admin.produk.edit', $product->id) }}"><button>Edit</button></a></td>
-                <td>
-                    <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus Produk ini?')">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-{{ $products->links() }}
-            </div>
-        </div>
-    </div>
-</div>
-
-</div>
-    </div>
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Product
+                                        <a href="{{url('admin/products/create')}}" class="btn btn-primary btn-sm float-end">Add Products</a>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="card">
+                           
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1>Daftar Produk</h1>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID Produk</th>
+                                                        <th>Nama Produk</th>
+                                                        <th>ID Kategori</th>
+                                                        <th>ID Sub Kategori</th>
+                                                        <th>Deskripsi</th>
+                                                        <th>Warna</th>
+                                                        <th>Ukuran</th>
+                                                        <th>Harga</th>
+                                                        <th>Status</th>
+                                                        <th>Gambar 1</th>
+                                                        <th>Gambar 2</th>
+                                                        <th>Gambar 3</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($products as $product)
+                                                        <tr>
+                                                            <td>{{ $product->id }}</td>
+                                                            <td>{{ $product->nama_produk }}</td>
+                                                            <td>{{ $product->kategori_id }}</td>
+                                                            <td>{{ $product->subkategori_id }}</td>
+                                                            <td>{{ Str::limit($product->deskripsi_produk, 100, '...') }}</td>
+                                                            <td>{{ $product->varian_warna }}</td>
+                                                            <td>{{ $product->ukuran }}</td>
+                                                            <td>{{ $product->harga_produk }}</td>
+                                                            <td>{{ $product->status_produk }}</td>
+                                                            <td><img src="{{ url('storage/'.$product->gambar_produk) }}" alt="gambar1" class="thumbnail"></td>
+                                                            <td><img src="{{ url('storage/'.$product->gambar_produk_2) }}" alt="gambar1" class="thumbnail"></td>
+                                                            <td><img src="{{ url('storage/'.$product->gambar_produk_3) }}" alt="gambar1" class="thumbnail"></td>
+                                                            <td>
+                                                                <div class="action-buttons">
+                                                                    <a href="{{ route('admin.produk.edit', $product->id) }}">
+                                                                        <button>Edit</button>
+                                                                    </a>
+                                                                    <form action="{{ route('admin.produk.destroy', $product->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus Produk ini?')">Delete</button>
+                                                                    </form>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            {{ $products->links() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 

@@ -37,7 +37,7 @@ class SubbCategoryController extends Controller
     $subcategory->kategori_id = $validated['category_id'];
     $subcategory->save();
 
-    return redirect('/admin/subcategories')->with('success', 'Sub Kategori berhasil ditambahkan!');
+    return redirect('/admin/categories')->with('success', 'Sub Kategori berhasil ditambahkan!');
 }
     public function destroy(subkategori $subcategory)
 {

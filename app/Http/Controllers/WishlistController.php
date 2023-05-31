@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\produk;
 use App\Models\wishlist;
 use Illuminate\Http\Request;
+use App\Models\kategori;
+use App\Models\subkategori;
 use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
@@ -48,12 +50,14 @@ class WishlistController extends Controller
     }
     public function listWishList()
     {
+        $kategoris=kategori::all();
+        $subkategoris=subkategori::all();
         if(Auth::check()){
             $wishlists = Wishlist::with(['produk'])->where('user_id', Auth::id())->latest()->paginate(5);
         }else{
             $wishlists = [];
         }
         //return $wishlists;
-        return view('frontend.frontend_layout.wishlist_page.wishlist_list', compact('wishlists'));
+        return view('frontend.frontend_layout.wishlist_page.wishlist_list', compact('wishlists','kategoris','subkategoris'));
     }
 }

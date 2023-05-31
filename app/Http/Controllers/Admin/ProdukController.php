@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\produk;
 use App\Models\kategori;
 use App\Models\subkategori;
+use Illuminate\Support\Str;
 
 use App\Models\Productlog;
 class ProdukController extends Controller
@@ -178,20 +179,27 @@ public function updatestok(Request $request, $id)
     $product->stok = $newStok;
 
     // Jika stok habis, ubah status_produk menjadi false
-    if ($request->stok >=1) {
+    if ($request->stok >= 1) {
         $product->status_produk = 'Tersedia';
+    } else {
+        $product->status_produk = 'Tidak Tersedia';
     }
-else {
-    $product->status_produk = 'Tidak Tersedia';
-}
     $product->save();
     $log = new ProductLog();
     $log->product_id = $product->id;
     $log->type = 'in';
     $log->quantity = $request->stok;
     $log->save();
-    return redirect()->back()->with('success', 'Stok produk berhasil diperbarui.');
+
+    // Menambahkan flash message
+    if ($product->wasChanged()) {
+        $message = 'Stok produk berhasil diperbarui.';
+        $alertType = 'success';
+    } 
+
+    return redirect()->back()->with($alertType, $message);
 }
+
 public function show()
 {
     $products = produk::paginate(10);;
