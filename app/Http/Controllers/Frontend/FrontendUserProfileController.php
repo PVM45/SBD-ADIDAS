@@ -13,32 +13,36 @@ use App\Models\subkategori;
 
 class FrontendUserProfileController extends Controller
 {
-    //dipakai atau tidak
-    public function register(){
-            return view('auth.register');
-        }
+    public function register()
+    {
+        return view('auth.register');
+    }
 
 
-    public function userdashboard() {
+    public function userdashboard()
+    {
 
         $kategoris = kategori::all();
 
         $subkategoris = subkategori::all();
 
-        return view('layouts.author.dashboard', compact('kategoris','subkategoris'));
+        return view('layouts.author.dashboard', compact('kategoris', 'subkategoris'));
     }
 
 
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
 
 
     public function userprofile()
     {
-        $kategoris=kategori::all();
-    $subkategoris=subkategori::all();
-        return view('frontend.profile.index',compact('kategoris','subkategoris'));
+
+        $kategoris = kategori::all();
+
+        $subkategoris = subkategori::all();
+        return view('frontend.profile.index', compact('kategoris','subkategoris'));
     }
 
 
@@ -49,7 +53,7 @@ class FrontendUserProfileController extends Controller
         $new_password = $request->input('password');
 
         $user = User::findOrFail(Auth::user()->id);
-        if(Hash::check($current_password,$user->password)){
+        if (Hash::check($current_password, $user->password)) {
             $user->password = Hash::make($new_password);
             $user->update([
                 'password' => $user->password,
@@ -61,12 +65,13 @@ class FrontendUserProfileController extends Controller
                 'message' => 'Password Updated Successfully!!!',
                 'alert-type' => 'success'
             ];
-        }else{
+        } else {
             $notification = [
                 'message' => 'Please provide valid password',
                 'alert-type' => 'error'
             ];
-            return redirect()->route('author.user.change.password')->with($notification);}
+            return redirect()->route('author.user.change.password')->with($notification);
+        }
     }
 
     public function userprofileupdate(Request $request)
@@ -108,9 +113,20 @@ public function userpasswordchange()
 
 
 
+        return redirect()->route('author.user.profile')->with($notification);
+    }
 
+    public function userpasswordchange()
+    {
+        $kategoris = kategori::all();
 
-    public function register_proses(Request $request){
+        $subkategoris = subkategori::all();
+        $user = Auth::user();
+        return view('frontend.profile.changepassword', compact('user','kategoris', 'subkategoris'));
+    }
+
+    public function register_proses(Request $request)
+    {
         $request->validate([
             'nama_user' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -130,62 +146,12 @@ public function userpasswordchange()
         User::create($data);
 
         return redirect()->route('login');
+    }
 
-        // $login = [
-        //     'email' => $request->email,
-        //     'password' => $request->password,
-        // ];
-
-        // if(Auth::attempt($data)){
-        //     return redirect()->route('products');
-        // }else{
-        //     return redirect('login')->with('failed','email atau password salah');
-        // }
-
-   
-
-}
-
-
-
-   public function messages()
+    public function messages()
     {
         return [
             'password.required' => 'The password must contain at least 6 character and Uppercase and lowercase and number.',
-
-            // 'price.required' => 'The product price field is required.',
-            // 'price.numeric' => 'The product price must be numeric.',
         ];
     }
-    // public function login_proses (Request $request){
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //     ]);
-
-    //     $data = [
-    //         'email' => $request->email,
-    //         'password' => $request->password,
-    //     ];
-
-    //     if(Auth::attempt($data)){
-    //         return redirect()->route('home');
-    //     }else{
-    //         return redirect('login')->with('failed','email atau password salah');
-    //     }
-    // }
-    // public function userlogout()
-    // {
-    //     Auth::logout();
-    //     $notification = [
-    //         'message' => 'Logout Successful',
-
-    //         'alert-type' => 'success',
-    //     ];
-    //     return redirect()->route('login')->with($notification);
-    // }
 }
-
-
-
-

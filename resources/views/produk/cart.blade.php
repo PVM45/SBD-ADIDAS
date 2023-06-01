@@ -5,26 +5,27 @@
         <div class="container">
             <h1>My Shopping Bag (2)</h1>
             <br>
-            @foreach ($cartItems as $item)
-                <div class="col-md-9 cart-items">
+            <div class="col-md-9 cart-items">
+                @foreach ($cartItems as $item)
                     <div class="cart-header">
-                        <div class="close1"><span class="glyphicon glyphicon-remove" aria-hidden="true">
-                                <form method="POST" action="{{ route('cart.remove') }}">
-                                    @csrf
-                                    <input type="hidden" name="cart_id" value="{{ $item->id }}">
-                                    <button type="submit">Remove</button>
-                                </form>
-                            </span></div>
-
                         <div class="cart-sec simpleCart_shelfItem">
+                            <form method="POST" action="{{ route('cart.remove') }}">
+                                @csrf
+                                <div style="text-align: right;">
+                                    <input type="hidden" name="cart_id" value="{{ $item->id }}">
+                                    <button type="submit " class="btn btn-danger"><span class="glyphicon glyphicon-remove  "
+                                            aria-hidden="true"></span></button>
+                                </div>
+                            </form>
                             <div class="cart-item cyc">
-                                <img src="{{ url('storage/'.$item->produk->gambar_produk) }}" class="img-responsive"
+                                <img src="{{ url('storage/' . $item->produk->gambar_produk) }}" class="img-responsive"
                                     alt="" />
                             </div>
                             <div class="cart-item-info">
-                                <p style="font-size: 20px"><b>{{ $item->produk->nama_produk }} -
+                                <p style="font-size: 20px" class=" inline-block"><b>{{ $item->produk->nama_produk }} -
                                         {{ $item->kuantitas }}</b>
                                 </p>
+
                                 <p>Size : {{ $item->produk->ukuran }}</p>
                                 <p>Color : {{ $item->produk->varian_warna }}</p>
                                 <p>Price each : {{ $item->produk->harga_produk }} </p>
@@ -43,16 +44,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+
+            </div>
+
             <div class="col-md-3 cart-total">
-                <a class="order" href="#">
-                    <form action="{{ route('author.checkout') }}" method="get">@csrf <button
-                            type="submit">checkout</button>
-                    </form>
-                </a>
+                <form action="{{ route('author.checkout') }}" method="get">@csrf
+                    <button type="submit"class=" btn btn-dark btn-block"><a class="order">Checkout</a></button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 @section('frontend_script')
     <!-- FlexSlider -->

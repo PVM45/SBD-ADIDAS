@@ -5,22 +5,24 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\alamat;
+use App\Models\kategori;
+use App\Models\subkategori;
 
 class AddressController extends Controller
 {
     public function ShowAddress()
 {
-    $alamat = Alamat::where('user_id', auth()->user()->id)->get();
+    $kategoris = kategori::all();
 
-    return view('frontend.profile.address', compact('alamat'));
+        $subkategoris = subkategori::all();
+    $alamat = Alamat::where('user_id', auth()->user()->id)->get();
+    $count=$alamat->count();
+    return view('frontend.profile.address', compact('alamat','kategoris','subkategoris','count'));
 }
     public function AddressProcess(Request $request)
     {
         $validatedData = $request->validate([
-            // 'provinsi' => 'required' ,
-            // 'kabupaten' => 'required',
-            // 'kecamatan' => 'required',
-            // 'kelurahan' => 'required',
+
             'Alamat' => 'required',
             'kode_pos' => 'required',
             'nomor_telepon' => 'required',

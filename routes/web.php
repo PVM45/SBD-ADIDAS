@@ -122,10 +122,7 @@ Route::get('/produk_filter', [productController::class, 'filter'])->name('produk
 //category
 Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 
-Route::get('/contact', function () {
-    return view('frontend.frontend_layout.contact_page.contact');
-})->name('contact');
-Route::get('contact/process', [ContactController::class, 'ShowContact'])->name('contact');
+//contact
 Route::post('contact/process', [ContactController::class, 'contact'])->name('contact.process');
 
 //tes policy term

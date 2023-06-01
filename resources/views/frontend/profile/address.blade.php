@@ -1,31 +1,37 @@
-<!-- frontend/profile/address.blade.php -->
+@extends('dashboard')
+@section('userdashboard_content')
+    <div class="col-md-7">
+        <h1><b>Daftar Alamat</b> </h1><br>
 
-<h1>Daftar Alamat</h1>
-
-@if($alamat->isEmpty())
-    <p>Tidak ada alamat yang tersedia.</p>
-@else
-    <ul>
-        @foreach($alamat as $alamats)
-            <li>
-                <p>Alamat </p>
-                <p> {{ $alamats->provinsi }}, {{ $alamats->kabupaten }}, {{ $alamats->kecamatan }}, {{ $alamats->kelurahan }} </p>
-                <strong>Detail Alamat:</strong> {{ $alamats->alamat }} <br>
-                <strong>Kode Pos: </strong> {{ $alamats->kode_pos }}
-                <strong>Nomor Telepon: </strong> {{ $alamats->nomor_telepon }}
-            </li>
-            <br>
-        @endforeach
-        <h2>TAMBAHKAN ALAMAT</h2>
+        @if ($alamat->isEmpty())
+            <p>Tidak ada alamat yang tersedia.</p>
+        @else
+            <ul>
+                @for ($i = 1; $i <= $count; $i++)
+                    @foreach ($alamat as $index => $alamats)
+                        @if ($index == $i - 1)
+                            <li><label>Alamat {{ $i }}</label> </li>
+                            <p>{{ $alamats->provinsi }}, {{ $alamats->kabupaten }}, {{ $alamats->kecamatan }},
+                                {{ $alamats->kelurahan }}</p>
+                            <p>Detail Alamat : {{ $alamats->alamat }}</p>
+                            <p>Kode Pos : {{ $alamats->kode_pos }}</p>
+                            <p>Nomor Telepon : {{ $alamats->nomor_telepon }}</p> <br>
+                        @endif
+                    @endforeach
+                @endfor
+            </ul>
+    </div>
+    <div class="col-md-3">
+        <h2><b>TAMBAHKAN ALAMAT</b> </h2>
         <form action=" {{ route('author.user.address.process') }} " method="post">
             @csrf
             <div class="form-group">
                 <label>Provinsi:</label><br />
-                <select name="provinsi" id="provinsi">
+                <select name="provinsi" id="provinsi" >
                     <option>Pilih</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group ">
                 <label>Kab/Kota:</label><br />
                 <select name="kota" id="kota">
                     <option>Pilih</option>
@@ -55,10 +61,9 @@
                 <label>Nomor Telepon:</label><br />
                 <input type="text" name="nomor_telepon">
             </div>
-            <br />
             <button type="submit">Kirim</button>
         </form>
-    </ul>
+    </div>
     <script>
         fetch(`https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json`)
             .then((response) => response.json())
@@ -66,7 +71,8 @@
                 var data = provinces;
                 var tampung = `<option>Pilih</option>`;
                 data.forEach((element) => {
-                    tampung += `<option data-prov="${element.id}" value="${element.name}" name="provinsi" >${element.name}</option>`;
+                    tampung +=
+                        `<option data-prov="${element.id}" value="${element.name}" name="provinsi" >${element.name}</option>`;
                 });
                 document.getElementById("provinsi").innerHTML = tampung;
             });
@@ -88,7 +94,8 @@
                     document.getElementById('kecamatan').innerHTML = '<option>Pilih</option>';
                     document.getElementById('kelurahan').innerHTML = '<option>Pilih</option>';
                     data.forEach((element) => {
-                        tampung += `<option data-prov="${element.id}" value="${element.name}" name="kota" >${element.name}</option>`;
+                        tampung +=
+                            `<option data-prov="${element.id}" value="${element.name}" name="kota" >${element.name}</option>`;
                     });
                     document.getElementById("kota").innerHTML = tampung;
                 });
@@ -104,7 +111,8 @@
                     document.getElementById('kecamatan').innerHTML = '<option>Pilih</option>';
                     document.getElementById('kelurahan').innerHTML = '<option>Pilih</option>';
                     data.forEach((element) => {
-                        tampung += `<option data-prov="${element.id}" value="${element.name}" name="kecamatan" >${element.name}</option>`;
+                        tampung +=
+                            `<option data-prov="${element.id}" value="${element.name}" name="kecamatan" >${element.name}</option>`;
                     });
                     document.getElementById("kecamatan").innerHTML = tampung;
                 });
@@ -118,10 +126,12 @@
                     var tampung = `<option>Pilih</option>`;
                     document.getElementById('kelurahan').innerHTML = '<option>Pilih</option>';
                     data.forEach((element) => {
-                        tampung += `<option data-prov="${element.id}" value="${element.name}" name="kelurahan" >${element.name}</option>`;
+                        tampung +=
+                            `<option data-prov="${element.id}" value="${element.name}" name="kelurahan" >${element.name}</option>`;
                     });
                     document.getElementById("kelurahan").innerHTML = tampung;
                 });
         });
     </script>
-@endif
+    @endif
+@endsection

@@ -22,8 +22,10 @@ class productController extends Controller
     $subkategoris = Subkategori::all();
       $produks = produk::all();
         return view('layouts.author.produk', compact('produks', 'kategoris', 'subkategoris'));
-;
-      
+$kategoris = Kategori::all();
+    $subkategoris = Subkategori::all();
+        $produks = Produk::all();
+        return view('frontend.frontend_layout.product_page.products', compact('produks', 'kategoris', 'subkategoris'));
     }
 
     public function show($id)
