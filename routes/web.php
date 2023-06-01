@@ -126,9 +126,7 @@ Route::get('/leo', [sessionproduk::class, 'kategori'])->name('tes');
 Route::post('contact/process', [ContactController::class, 'contact'])->name('contact.process');
 
 //tes policy term
-Route::get('/term_policy', function () {
-    return view('term_policy');
-})->name('term_policy');
+Route::get('term', [AuthorDashboard::class, 'leo'])->name('term.policy');
 
 // untuk cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);

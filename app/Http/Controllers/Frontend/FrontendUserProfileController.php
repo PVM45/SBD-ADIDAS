@@ -38,6 +38,7 @@ class FrontendUserProfileController extends Controller
 
     public function userprofile()
     {
+
         $kategoris = kategori::all();
 
         $subkategoris = subkategori::all();
@@ -74,23 +75,43 @@ class FrontendUserProfileController extends Controller
     }
 
     public function userprofileupdate(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-        ]);
-        //dd($user, $request->all());
-        $data = User::findOrFail(Auth::user()->id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->nomor_telepon = $request->phone_number;
-        $data->save();
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'phone_number' => 'required',
+    ]);
+    //dd($user, $request->all());
+    $data = User::findOrFail(Auth::user()->id);
+    $data->name = $request->name;
+    $data->email = $request->email;
+    $data->nomor_telepon = $request->phone_number;
+    $data->save();
 
-        $notification = [
-            'message' => 'Profile Updated Successfully',
-            'alert-type' => 'success'
-        ];
+    $notification = [
+        'message' => 'Profile Updated Successfully',
+        'alert-type' => 'success'
+    ];
+
+    return redirect()->route('author.user.profile')->with($notification);
+
+}
+
+public function userpasswordchange()
+{
+    $kategoris=kategori::all();
+    $subkategoris=subkategori::all();
+    $user = Auth::user();
+    return view('frontend.profile.changepassword', compact('user','kategoris','subkategoris'));
+
+
+
+
+
+
+}
+
+
 
         return redirect()->route('author.user.profile')->with($notification);
     }

@@ -17,13 +17,13 @@
         <div class="col-md-2 re-ft-grd">
             <h3>Short links</h3>
             <ul class="shot-links">
-                {{-- <li><a href="{{ route('contact') }}">Contact us</a></li> --}}
-                <li><a href="#">Support</a></li>
-                <li><a href="#">Delivery</a></li>
+                <li><a href="{{ route('contact') }}">Contact us</a></li>
+                <li><a href="{{route('contact')}}">Support</a></li>
+                <li><a href="{{route('author.user.orders')}}">Delivery</a></li>
 
-                <li><a href="/term_policy">Return Policy</a></li>
-                <li><a href="/term_policy">Terms & conditions</a></li>
-                <li><a href="contact">Sitemap</a></li>
+                <li><a href="{{route('term.policy')}}">Return Policy</a></li>
+                <li><a href="{{route('term.policy')}}">Terms & conditions</a></li>
+                <li><a href="{{route('contact')}}">Sitemap</a></li>
             </ul>
         </div>
         <div class="col-md-2 re-ft-grd">
