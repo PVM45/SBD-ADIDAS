@@ -1,27 +1,19 @@
-
 <div class="sub-news">
+    <img width="200px"
+        src="{{ asset('frontend') }}/assets/images/adidas logo png 3 line - Bing images_files/adidas.png"
+        alt="logo adidas">
     <div class="container">
         <form action=" {{ route('subscribe') }} " method="POST">
             @csrf
             <h3>DAFTARKAN EMAIL ANDA UNTUK MENDAPATKAN INFO DAN PENAWARAN SPESIAL</h3>
-            <input type="email" name="email" class="sub-email">
-            <button> SUBSCRIBE </button>
+            <input type="email" name="email" class="sub-email"> &nbsp;&nbsp;
+            <button class="btn btn-primary"> SUBSCRIBE </button>
         </form>
     </div>
 </div>
 <div class="footer-grid">
     <div class="container">
-        <div class="col-md-2 re-ft-grd">
-            <h3>Categories</h3>
-            <ul class="categories">
-                <li><a href="#">Men</a></li>
-                <li><a href="#">Women</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Formal</a></li>
-                <li><a href="#">Casuals</a></li>
-                <li><a href="#">Sports</a></li>
-            </ul>
-        </div>
+
         <div class="col-md-2 re-ft-grd">
             <h3>Short links</h3>
             <ul class="shot-links">
@@ -33,6 +25,8 @@
                 <li><a href="/term_policy">Terms & conditions</a></li>
                 <li><a href="contact">Sitemap</a></li>
             </ul>
+        </div>
+        <div class="col-md-2 re-ft-grd">
         </div>
         <div class="col-md-6 re-ft-grd">
             <h3>Social</h3>

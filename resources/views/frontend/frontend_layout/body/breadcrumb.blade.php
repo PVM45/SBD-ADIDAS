@@ -6,8 +6,8 @@
                   <li><a>Login</a> </li>
               @elseif (request()->routeIs('register'))
                   <li><a>Register</a> </li>
-              @elseif (request()->routeIs('checkout'))
-                  <li><a>Checkout</a> </li>
+              @elseif (request()->routeIs('cart'))
+                  <li><a>Cart</a> </li>
               @elseif (request()->routeIs('profile'))
                   <li><a>Profile</a> </li>
               @elseif (request()->routeIs('contact'))
@@ -22,10 +22,18 @@
                   <li><a>Wishlist</a> </li>
               @elseif (request()->routeIs('produk.search'))
                   <li><a>Search Results</a> </li>
+              @elseif (request()->routeIs('produk.filter'))
+                  <li><a>Search Results</a> </li>
               @elseif (request()->routeIs('author.user.change.password'))
                   <li><a>Change Password</a> </li>
               @elseif (request()->routeIs('author.user.profile'))
                   <li><a>Profile Update</a> </li>
+              @elseif (request()->routeIs('author.user.orders'))
+                  <li><a>Order History</a> </li>
+              @elseif (request()->routeIs('author.user.address'))
+                  <li><a>Address</a> </li>
+              @elseif (request()->routeIs('author.checkout'))
+                  <li><a>Checkout</a> </li>
               @else
                   {{-- <li class="request()->routeIs('')? 'active': ''">{{ request()->route() }}</li> --}}
               @endif

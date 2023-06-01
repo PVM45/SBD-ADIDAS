@@ -1130,6 +1130,10 @@ img {
 }
 .img-rounded {
     border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 .img-thumbnail {
     display: inline-block;
@@ -1140,18 +1144,24 @@ img {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
+    -webkit-transition:;
+    -o-transition:;
     transition: all 0.2s ease-in-out;
+    -moz-transition:;
+    -ms-transition:;
 }
 .img-circle {
     border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 hr {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 10px solid #eee;
 }
 .sr-only {
     position: absolute;

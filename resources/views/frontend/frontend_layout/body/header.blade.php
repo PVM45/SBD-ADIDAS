@@ -9,8 +9,8 @@
             </div>
             <div class="login-bars ">
 
-           
-            @auth
+
+                @auth
 
                     <a class="btn btn-primary " href="{{ route('login') }}"><i class="icon fa fa-address-card"></i></a>
                     <a class="btn btn-default " href="{{ route('cart') }}"><i class="icon fa fa-shopping-cart"></i></a>
@@ -28,31 +28,10 @@
                     <a class="btn btn-default log-bar" href="{{ route('login') }}"><i
                             class="icon fa fa-lock"></i>Login/Register</a>
                 @endauth
-                <!-- ini kolom searching -->
-                {{-- <form action="{{ route('produk.search') }}" method="GET">
-                    <input type="text" name="keyword" placeholder="Search products">
-                    <button type="submit">Search</button>
-                </form> --}}
-
-                <form action="{{ route('produk.search') }}" method="GET"
-                    class="input-group-sm input-group form-inline d-flex justify-content-center md-form form-sm ">
-                    <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                        aria-label="Search" name="keyword">
-                    <button type="submit" class="btn btn-light"><i class="fa fa-search fa-1x"
-                            aria-hidden="true"></i></button>
+                <form action="{{ route('produk.search') }}" method="GET" class="input-group ">
+                    <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="keyword">
+                    <button type="submit" class="btn btn-light"></button>
                 </form>
-                {{-- <div class="cart box_1">F
-                    <a href="checkout">
-                        <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span>(<span id="simpleCart_quantity"
-                                    class="simpleCart_quantity"></span>)
-                            </div>
-                        </h3>
-                    </a>
-                    <div class="clearfix"> </div>
-                </div> --}}
-
             </div>
             <div class="clearfix"></div>
         </div>
@@ -71,6 +50,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <!--/.navbar-header-->
+                    <hr>
 
                     <div class="collapse navbar-collapse collapse-pdng" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav nav-font">
@@ -83,7 +63,7 @@
                                         {{ $kategori->nama_kategori }}
                                         <b class="caret"></b>
                                     </a>
-                                    <ul class="dropdown-menu multi-column columns-3">
+                                    <ul class="dropdown-menu ">
                                         <div class="row">
                                             <div class="col-sm-4 menu-img-pad">
                                                 @foreach ($subkategoris as $subkategori)

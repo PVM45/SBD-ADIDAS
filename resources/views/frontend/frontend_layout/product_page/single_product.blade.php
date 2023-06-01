@@ -1,43 +1,42 @@
 @extends('frontend.frontend_master')
 
 @section('frontend_content')
-@foreach ($produk as $produk1)
-    <div class="showcase-grid">
-    <div class="container">
-            <div class="col-md-8 showcase">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk) }}">
-                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk) }}"
-                            alt="produk1"
-                                    data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk_2) }}">
-                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk_2) }}"
-                                    data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                        <li data-thumb="{{ url('storage/'.$produk1->produk->gambar_produk_3) }}">
-                            <div class="thumb-image"> <img src="{{ url('storage/'.$produk1->produk->gambar_produk_3) }}"
-                                    data-imagezoom="true" class="img-responsive"> </div>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
+    @foreach ($produk as $produk1)
+        <div class="showcase-grid">
+            <div class="container">
+                <div class="col-md-8 showcase">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="{{ url('storage/' . $produk1->produk->gambar_produk) }}">
+                                <div class="thumb-image"> <img src="{{ url('storage/' . $produk1->produk->gambar_produk) }}"
+                                        alt="produk1" data-imagezoom="true" class="img-responsive"> </div>
+                            </li>
+                            <li data-thumb="{{ url('storage/' . $produk1->produk->gambar_produk_2) }}">
+                                <div class="thumb-image"> <img src="{{ url('storage/' . $produk1->produk->gambar_produk_2) }}"
+                                        data-imagezoom="true" class="img-responsive"> </div>
+                            </li>
+                            <li data-thumb="{{ url('storage/' . $produk1->produk->gambar_produk_3) }}">
+                                <div class="thumb-image"> <img src="{{ url('storage/' . $produk1->produk->gambar_produk_3) }}"
+                                        data-imagezoom="true" class="img-responsive"> </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
-            </div>
-          
+
                 <div class="col-md-4 showcase">
                     <div class="showcase-rt-top">
                         <div class="pull-left shoe-name">
                             <h3>{{ $produk1->produk->nama_produk }}</h3>
                             <p>{{ $produk1->kategori->nama_kategori }},{{ $produk1->subkategori->nama_subkategori }}</p>
                             <p>
-                            @if ($produk1->produk->stok > 0)
-                            Stok: {{ $produk1->produk->stok }}
+                                @if ($produk1->produk->stok > 0)
+                                    Stok: {{ $produk1->produk->stok }}
                                 @else
-                        Stok: Stok Habis
-                            @endif
-                            </p>        
-                        
+                                    Stok: Stok Habis
+                                @endif
+                            </p>
+
                             <h4>Rp.{{ $produk1->produk->harga_produk }}</h4>
                         </div>
                         <div class="pull-left rating-stars">
@@ -49,19 +48,8 @@
                                         class="icon fa fa-heart"></i></button>
                             </form>
 
-                            {{-- <form action="{{ route('wishlist.remove', $produk1->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-light" type="submit"><i class="icon fa fa-trash"></i></button>
-                            </form> --}}
-
                             <ul>
-                                {{-- <h3>Rating</h3>
-                                    @if ($produk->ratings->count() > 0)
-                                        <p>Rata-rata Rating: {{ $produk->ratings->average('rating')}}</p>
-                                    @else
-                                        <p>Belum ada rating untuk artikel ini.</p>
-                                    @endif --}}
+
                                 @foreach ($produksr as $produk2)
                                     @php $rating = $produk2->pluck('rating')->average(); @endphp
                                     @php $roundedRating = round($rating); @endphp
@@ -79,44 +67,6 @@
                                     @endforeach
                                 @endforeach
 
-
-
-
-                                {{-- <h3>Rating</h3>
-                                    <br>
-                                    <p>Rata-rata Rating:</p>
-                                        @foreach ($produksr as $produk2) --}}
-                                {{-- @if ($produk2->count() > 0) --}}
-                                {{-- <p> {{ $produk2->pluck('rating')->average() }}</p> --}}
-                                {{-- @else
-                                        <p>Belum ada rating untuk artikel ini.</p>
-                                    @endif --}}
-                                {{-- @endforeach --}}
-                                {{-- <form action="/single_produk/{{ $produk1->id }}/review" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
-                                        <input type="number" name="rating" min="1" max="5" required>
-
-                                    <h3>Komentar</h3>
-                                        <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
-                                        <textarea name="komentar" required></textarea>
-                                        <button type="submit">Submit</button>
-                                    </form> --}}
-
-
-
-                                {{-- <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
-
-                                            aria-hidden="true"></span></a></li>
-                                <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
-                                            aria-hidden="true"></span></a></li>
-                                <li><a href="#" class="active"><span class="glyphicon glyphicon-star star-stn"
-                                            aria-hidden="true"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star star-stn"
-                                            aria-hidden="true"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star star-stn"
-                                            aria-hidden="true"></span></a></li> --}}
-
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -125,45 +75,19 @@
                     <div class="shocase-rt-bot">
                         <div class="float-qty-chart">
                             <ul>
-
-                                {{-- availability --}}
-
-                                {{-- <div class="stock-container info-container m-t-10">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <div class="stock-box">
-                                            <span class="label">Availability :</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <div class="stock-box">
-                                            @if ($product->product_qty < 1)
-                                            <span class="value">Out of Stock</span>
-                                            @else
-                                            <span class="value">In Stock</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                </div> --}}
-                    
                                 <li class="qty">
                                     <h3>Size Chart</h3>
-                                  {{$produk1->produk->ukuran}}
+                                    {{ $produk1->produk->ukuran }}
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
-                        </div>
-                        <ul>
-                            <li class="ad-2-crt simpleCart_shelfItem">
-                       <form method="POST" action="/cart/add">
-        @csrf
-        <input type="hidden" name="product_id" value="{{ $produk1->id }}">
-        <input type="hidden" name="quantity" value="1">
-        <button type="submit" class="btn item_add">Add To Cart</button>
-    </form>
-                            </li>
-                        </ul>
+                        </div><br>
+                                <form method="POST" action="/cart/add">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $produk1->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class=" btn btn-dark item_add"><a class="order">Add To Cart</a></button>
+                                </form>
                     </div>
                     <div class="showcase-last">
                         <h3>product details</h3>
@@ -180,41 +104,41 @@
                 </div>
 
                 <div class="clearfix"></div>
+            </div>
         </div>
-    </div>
 
-    <div class="specifications">
-        <div class="container">
-            <h3>Item Details</h3>
-            <div class="detai-tabs">
-                <!-- Nav tabs -->
-                <ul class="nav nav-pills tab-nike" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                            data-toggle="tab">Highlights</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
-                            data-toggle="tab">Description</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
-                            data-toggle="tab">Terms & conditiona</a></li>
-                    <li role="presentation"><a href="#review" aria-controls="review" role="tab"
-                            data-toggle="tab">Review</a></li>
-                </ul>
+        <div class="specifications">
+            <div class="container">
+                <h3>Item Details</h3>
+                <div class="detai-tabs">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills tab-nike" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                data-toggle="tab">Highlights</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                data-toggle="tab">Description</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                data-toggle="tab">Terms & conditiona</a></li>
+                        <li role="presentation"><a href="#review" aria-controls="review" role="tab"
+                                data-toggle="tab">Review</a></li>
+                    </ul>
 
-                <!-- Tab panes -->
-                @foreach ($produk as $produk1)
-                    <div class="tab-content">
-                        <div div role="tabpanel" class="tab-pane active" id="profile">
-                            <p>{{ $produk1->produk->deskripsi_produk }}</p>
-                        </div>
-                @endforeach
+                    <!-- Tab panes -->
+                    @foreach ($produk as $produk1)
+                        <div class="tab-content">
+                            <div div role="tabpanel" class="tab-pane active" id="profile">
+                                <p>{{ $produk1->produk->deskripsi_produk }}</p>
+                            </div>
+                    @endforeach
 
-                <div role="tabpanel" class="tab-pane active" id="home">
-                    <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for
-                        smoother
-                        transitions through footstrike.</p>
-                    <p>Dynamic Flywire cables integrate with the laces and wrap your midfoot for a truly adaptive,
-                        supportive fit.</p>
-                </div>
-                {{-- <div div role="tabpanel" class="tab-pane" id="profile">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <p>The full-length Max Air unit delivers excellent cushioning with enhanced flexibility for
+                            smoother
+                            transitions through footstrike.</p>
+                        <p>Dynamic Flywire cables integrate with the laces and wrap your midfoot for a truly adaptive,
+                            supportive fit.</p>
+                    </div>
+                    {{-- <div div role="tabpanel" class="tab-pane" id="profile">
                         <p>Nike is one of the leading manufacturer and supplier of sports equipment, footwear and apparels.
                             Nike is a global brand and it continuously creates products using high technology and design
                             innovation. Nike has a vast collection of sports shoes for men at Snapdeal. You can explore our
@@ -229,172 +153,173 @@
                             online with us at some unbelievable discounts and great prices. So get faster and run farther
                             with your Nike shoes and track how hard you can play.</p>
                     </div> --}}
-                <div role="tabpanel" class="tab-pane" id="messages">
-                    The images represent actual product though color of the image and product may slightly differ.
-                </div>
-                <div id="review" class="tab-pane" role="tabpanel">
-                    <div class="product-tab">
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        The images represent actual product though color of the image and product may slightly differ.
+                    </div>
+                    <div id="review" class="tab-pane" role="tabpanel">
+                        <div class="product-tab">
 
-                        <div class="product-reviews">
-                            <h4 class="title">Customer Reviews</h4><br>
+                            <div class="product-reviews">
+                                <h4 class="title">Customer Reviews</h4><br>
 
-                            <div class="reviews">
-                                <div class="review">
-                                    @foreach ($produks as $komen)
-                                    <div class="text">{{ $komen->user->name }}</div><br>  
-                                        <div class="text">{{ $komen->komentar }}</div><br>    
-                                        <div class="text">{{ $komen->created_at }}</div><br>    
-                                        <ul>
-                                    @endforeach
-                                </div>
+                                <div class="reviews">
+                                    <div class="review">
+                                        @foreach ($produks as $komen)
+                                            <div class="text">{{ $komen->user->name }}</div><br>
+                                            <div class="text">{{ $komen->komentar }}</div><br>
+                                            <div class="text">{{ $komen->created_at }}</div><br>
+                                            <ul>
+                                        @endforeach
+                                    </div>
 
-                            </div><!-- /.reviews -->
-                        </div><!-- /.product-reviews -->
+                                </div><!-- /.reviews -->
+                            </div><!-- /.product-reviews -->
 
 
 
-                        <div class="product-add-review">
-                            <h4 class="title">Write your own review</h4>
-                            <div class="review-table">
-                                <div class="table-responsive">
-                                </div><!-- /.table-responsive -->
-                            </div><!-- /.review-table -->
+                            <div class="product-add-review">
+                                <h4 class="title">Write your own review</h4>
+                                <div class="review-table">
+                                    <div class="table-responsive">
+                                    </div><!-- /.table-responsive -->
+                                </div><!-- /.review-table -->
 
-                            <div class="review-form">
-                                <div class="form-container">
-                                    <form role="form" class="cnt-form"
-                                        action="/single_produk/{{ $produk1->id }}/review" method="POST">
-                                        @csrf
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="cell-label">&nbsp;</th>
-                                                    <th>1 star</th>
-                                                    <th>2 stars</th>
-                                                    <th>3 stars</th>
-                                                    <th>4 stars</th>
-                                                    <th>5 stars</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="cell-label">Quality</td>
-                                                    <input type="hidden" name="produk_id" value="{{ $produk1->id }}">
-                                                    <td><input type="radio" name="rating" class="radio"
-                                                            value="1"></td>
-                                                    <td><input type="radio" name="rating" class="radio"
-                                                            value="2"></td>
-                                                    <td><input type="radio" name="rating" class="radio"
-                                                            value="3"></td>
-                                                    <td><input type="radio" name="rating" class="radio"
-                                                            value="4"></td>
-                                                    <td><input type="radio" name="rating" class="radio"
-                                                            value="5"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputReview">Review <span
-                                                                class="astk">*</span></label>
+                                <div class="review-form">
+                                    <div class="form-container">
+                                        <form role="form" class="cnt-form"
+                                            action="/single_produk/{{ $produk1->id }}/review" method="POST">
+                                            @csrf
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="cell-label">&nbsp;</th>
+                                                        <th>1 star</th>
+                                                        <th>2 stars</th>
+                                                        <th>3 stars</th>
+                                                        <th>4 stars</th>
+                                                        <th>5 stars</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="cell-label">Quality</td>
                                                         <input type="hidden" name="produk_id"
                                                             value="{{ $produk1->id }}">
-                                                        <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder="" name="komentar"
-                                                            required></textarea> <br>
-                                                        <div class="action text-right">
-                                                            <button class="btn btn-primary btn-upper"><i
-                                                                    class="fa fa-send"></i></button>
-                                                        </div><!-- /.form-group -->
-                                                    </div>
-                                                </div><!-- /.row -->
+                                                        <td><input type="radio" name="rating" class="radio"
+                                                                value="1"></td>
+                                                        <td><input type="radio" name="rating" class="radio"
+                                                                value="2"></td>
+                                                        <td><input type="radio" name="rating" class="radio"
+                                                                value="3"></td>
+                                                        <td><input type="radio" name="rating" class="radio"
+                                                                value="4"></td>
+                                                        <td><input type="radio" name="rating" class="radio"
+                                                                value="5"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputReview">Review <span
+                                                                    class="astk">*</span></label>
+                                                            <input type="hidden" name="produk_id"
+                                                                value="{{ $produk1->id }}">
+                                                            <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder="" name="komentar"
+                                                                required></textarea> <br>
+                                                            <div class="action text-right">
+                                                                <button class="btn btn-primary btn-upper"><i
+                                                                        class="fa fa-send"></i></button>
+                                                            </div><!-- /.form-group -->
+                                                        </div>
+                                                    </div><!-- /.row -->
 
 
-                                            </div><!-- /.action -->
-                                        </div>
-                                    </form><!-- /.cnt-form -->
-                                </div><!-- /.form-container -->
-                            </div><!-- /.review-form -->
+                                                </div><!-- /.action -->
+                                            </div>
+                                        </form><!-- /.cnt-form -->
+                                    </div><!-- /.form-container -->
+                                </div><!-- /.review-form -->
 
-                        </div><!-- /.product-add-review -->
+                            </div><!-- /.product-add-review -->
 
-                    </div><!-- /.product-tab -->
-                </div><!-- /.tab-pane -->
+                        </div><!-- /.product-tab -->
+                    </div><!-- /.tab-pane -->
+                </div>
+
             </div>
-
         </div>
-    </div>
-    </div>
+        </div>
 
-    <!-- more_products -->
-    <div class="you-might-like">
-        <div class="container">
-            <h3 class="you-might">Products You May Like</h3><br><br>
-            @foreach ($limit as $produk3)
-                <div class="col-md-4 grid-stn simpleCart_shelfItem">
-                    <!-- normal -->
-                    <div class="ih-item square effect3 bottom_to_top">
-                        <div class="bottom-2-top">
-                            <div class="img"><img src="{{ url('storage/'.$produk3->gambar_produk) }}"
-                                    alt="/" class="img-responsive gri-wid"></div>
-                            <div class="info">
-                                <div class="pull-left styl-hdn">
-                                    <h3>{{ $produk3->nama_produk }}</h3>
+        <!-- more_products -->
+        <div class="you-might-like">
+            <div class="container">
+                <h3 class="you-might">Products You May Like</h3><br><br>
+                @foreach ($limit as $produk3)
+                    <div class="col-md-4 grid-stn simpleCart_shelfItem">
+                        <!-- normal -->
+                        <div class="ih-item square effect3 bottom_to_top">
+                            <div class="bottom-2-top">
+                                <div class="img"><img src="{{ url('storage/' . $produk3->gambar_produk) }}"
+                                        alt="/" class="img-responsive gri-wid"></div>
+                                <div class="info">
+                                    <div class="pull-left styl-hdn">
+                                        <h3>{{ $produk3->nama_produk }}</h3>
+                                    </div>
+                                    <div class="pull-right styl-price">
+                                        <p>
+                                            <a href="#" class="item_add">
+                                                <span class="glyphicon glyphicon-shopping-cart grid-cart"
+                                                    aria-hidden="true"></span>
+                                                <span class="item_price">Rp.{{ $produk3->harga_produk }}</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="pull-right styl-price">
-                                    <p>
-                                        <a href="#" class="item_add">
-                                            <span class="glyphicon glyphicon-shopping-cart grid-cart"
-                                                aria-hidden="true"></span>
-                                            <span class="item_price">Rp.{{ $produk3->harga_produk }}</span>
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- end normal -->
-                    <div class="quick-view">
-                        <form action="{{ route('produk.show', ['id' => $produk3->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-light"><i class="fa fa-eye fa-1x"></i></button>
-                        </form>
+                        <!-- end normal -->
+                        <div class="quick-view">
+                            <form action="{{ route('produk.show', ['id' => $produk3->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-light"><i class="fa fa-eye fa-1x"></i></button>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
 
-    
-    <script>
-        function AlertCart() {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Successfully added to cart!!',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-        // Can also be used with $(document).ready()
-        $(window).load(function() {
-            $('.flexslider').flexslider({
-                animation: "slide",
-                controlNav: "thumbnails"
+
+        <script>
+            function AlertCart() {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successfully added to cart!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+            // Can also be used with $(document).ready()
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
             });
-        });
-    </script>
+        </script>
 
 
-    {{-- @include('frontend.frontend_layout.product_page.more_products') --}}
-    {{-- @endsection --}}
+        {{-- @include('frontend.frontend_layout.product_page.more_products') --}}
+        {{-- @endsection --}}
 
-    <!-- //FlexSlider-->
-    {{-- <div class="you-might-like">
+        <!-- //FlexSlider-->
+        {{-- <div class="you-might-like">
         <div class="container">
             <h3 class="you-might">Products You May Like</h3>
             <div class="col-md-4 grid-stn simpleCart_shelfItem">
@@ -412,14 +337,14 @@
                                             class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span>
                                         <span class=" item_price">$190</span></a></p> --}}
 
-    {{-- wishlist --}}
+        {{-- wishlist --}}
 
-    {{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
+        {{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
                                          title="" href="#" data-original-title="Wishlist">
                                          <i class="fa fa-heart"></i>
                                     </a> --}}
 
-    {{-- </div>
+        {{-- </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -481,7 +406,7 @@
         </div>
     </div> --}}
 
-    {{-- <script>
+        {{-- <script>
         // Can also be used with $(document).ready()
         $(window).load(function() {
             $('.flexslider').flexslider({
@@ -492,16 +417,16 @@
     </script>
     <!-- //FlexSlider--> --}}
 
-    {{-- <h3>Komentar Terakhir</h3>
+        {{-- <h3>Komentar Terakhir</h3>
 <ul>
     @foreach ($produk1->komentar->sortByDesc('created_at')->take(1) as $komentar)
         <li>{{ $komentar->komentar }}</li>
     @endforeach
 </ul> --}}
 
-    {{-- @if ($produk1->komentar->count() > 0) --}}
+        {{-- @if ($produk1->komentar->count() > 0) --}}
 
-    {{-- <h3>Komentar Terakhir</h3>
+        {{-- <h3>Komentar Terakhir</h3>
 
         <ul>
 

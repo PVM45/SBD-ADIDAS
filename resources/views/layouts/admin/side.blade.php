@@ -3,9 +3,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-smile"></i>
+            <i class="fas fa-people-arrows"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Adidas Admin    {{ __('Dashboard') }}</div>
+        <div class="sidebar-brand-text mx-3">Adidas {{ __('Dashboard') }}</div>
     </a>
 
     <!-- Divider -->

@@ -15,7 +15,7 @@
                             </div>
                             <div class="pull-right styl-price">
                                 <p>
-                                    <a href="#" class="item_add">
+                                    <a class="item_add">
                                         <span class="glyphicon glyphicon-shopping-cart grid-cart"
                                             aria-hidden="true"></span>
                                         <span class="item_price">Rp.{{ $produk3->harga_produk }}</span>
