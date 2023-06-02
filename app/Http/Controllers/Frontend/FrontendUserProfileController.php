@@ -111,19 +111,7 @@ public function userpasswordchange()
 
 }
 
-
-
-        return redirect()->route('author.user.profile')->with($notification);
-    }
-
-    public function userpasswordchange()
-    {
-        $kategoris = kategori::all();
-
-        $subkategoris = subkategori::all();
-        $user = Auth::user();
-        return view('frontend.profile.changepassword', compact('user','kategoris', 'subkategoris'));
-    }
+   
 
     public function register_proses(Request $request)
     {
